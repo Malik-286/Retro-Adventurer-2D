@@ -7,16 +7,18 @@ public class PlayerController : MonoBehaviour
 {
 
     [SerializeField] float moveSpeed = 10f;
-    [SerializeField] float jumpForce = 20f;
+    [SerializeField] float jumpForce = 5f;
     public Vector2 movement;
     Rigidbody2D rb;
-
+    CapsuleCollider2D capsuleCollider;
+ 
     [SerializeField] FixedJoystick joystick;
 
 
      void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        capsuleCollider = GetComponent<CapsuleCollider2D>();
     }
 
      void Update()
@@ -27,17 +29,37 @@ public class PlayerController : MonoBehaviour
     void PlayerMovement()
     {
         movement.x = joystick.Horizontal;
-        movement.y = joystick.Vertical;
-
-         transform.Translate(movement * moveSpeed * Time.deltaTime);
+       
+        transform.Translate(movement * moveSpeed * Time.deltaTime);
     }
-
+    
     public void Jump()
     {
-          rb.MovePosition(rb.position + new Vector2(0f,10f) * (jumpForce * Time.fixedDeltaTime));
+        if (CheckIfGrounded())
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        }
+          
     }
+
+
     public void Attack()
     {
 
-     }
+    }
+
+
+    bool CheckIfGrounded()
+    { 
+         if(capsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        {
+            return true;
+        }else
+        {
+            return false;
+        }
+            
+
+
+    }
 }
