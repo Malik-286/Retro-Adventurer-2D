@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     {
         movement.x = joystick.Horizontal;
        
-        transform.Translate(movement * moveSpeed * Time.deltaTime);
+        rb.velocity = new Vector2(movement.x * moveSpeed, rb.velocity.y);
     }
     
     public void Jump()
@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
 
     public void Attack()
     {
-
+        Debug.Log("Attacking...");
     }
 
 
@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
          if(capsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
             return true;
-        }else
+        }   else
         {
             return false;
         }
