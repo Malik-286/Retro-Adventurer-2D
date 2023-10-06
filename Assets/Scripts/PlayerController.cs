@@ -69,37 +69,37 @@ public class PlayerController : MonoBehaviour
 
         bool isMoving = Mathf.Abs(rb.velocity.x) > Mathf.Epsilon;
         animator.SetBool("isRunning", isMoving);
-       
+
     }
-    
-      public void Jump()
+
+    public void Jump()
     {
         if (CheckIfGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-             
-        }      
+
+        }
     }
 
 
-     public void Attack()
+    public void Attack()
     {
 
         Debug.Log("Attacking");
-       
+
     }
 
     void ClimbLadder()
     {
-        if (playerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
+        if (playerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ladder")))
         {
-            
+
             Vector2 climbVelocity = new Vector2(rb.velocity.x, movement.y * climbForce);
             rb.velocity = climbVelocity;
             bool onLadder = Mathf.Abs(rb.velocity.y) > Mathf.Epsilon;
             animator.SetBool("isClimbing", onLadder);
             rb.gravityScale = 0;
-             
+
         }
         else
         {
@@ -107,7 +107,7 @@ public class PlayerController : MonoBehaviour
             rb.gravityScale = startingGravity;
         }
 
-         
+
 
     }
 
