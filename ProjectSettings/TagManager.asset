@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Bullet
+  - Enemy
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -16,11 +19,11 @@ TagManager:
   - BackGround
   - Ladder
   - BackGroundWallpaper
-  - Water
+  - 
   - Sky
-  - 
-  - 
-  - 
+  - Bullets
+  - Items
+  - Enemies
   - 
   - 
   - 
@@ -56,12 +59,24 @@ TagManager:
   - name: Water
     uniqueID: 2663876041
     locked: 0
+  - name: Grass
+    uniqueID: 3088094147
+    locked: 0
   - name: Ground
     uniqueID: 3680969355
     locked: 0
   - name: Ladder
     uniqueID: 3504608115
     locked: 0
+  - name: Enemies
+    uniqueID: 961356993
+    locked: 0
+  - name: Bullets
+    uniqueID: 3343484955
+    locked: 0
   - name: Player
     uniqueID: 3867599231
+    locked: 0
+  - name: Items
+    uniqueID: 87055931
     locked: 0

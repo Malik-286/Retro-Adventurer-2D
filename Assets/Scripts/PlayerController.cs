@@ -6,9 +6,19 @@ using UnityEngine.UIElements;
 public class PlayerController : MonoBehaviour
 {
 
+    [Header("Player Movement Variables")]
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] float jumpForce = 5f;
     [SerializeField] float climbForce = 5f;
+
+    [Header("Bullet Variables")]
+    [SerializeField] GameObject bulletPrefeb;
+    [SerializeField] Transform bulletSpawnPoint;
+    [SerializeField] AudioClip bulletShotAudio;
+    [SerializeField] float bulletShotVolume;
+
+
+
 
     public Vector2 movement;
     Rigidbody2D rb;
@@ -17,23 +27,28 @@ public class PlayerController : MonoBehaviour
     SpriteRenderer spriteRenderer;
     Animator animator;
     float startingGravity;
-
+     
     bool isAlive = true;
 
     [SerializeField] FixedJoystick joystick;
 
-
+    AudioManager audioManager;
+    GamePlayUI gamePlayUI;
     void Start()
     {
+
         rb = GetComponent<Rigidbody2D>();
         playerBodyCollider = GetComponent<CapsuleCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         playerFeetCollider = GetComponent<BoxCollider2D>();
-
+        audioManager =FindObjectOfType<AudioManager>();
+        gamePlayUI = FindObjectOfType<GamePlayUI>();
 
         startingGravity = rb.gravityScale;
     }
+
+   
 
     void Update()
     {
@@ -56,8 +71,14 @@ public class PlayerController : MonoBehaviour
             PlayDeathAnimation();
         }
 
+ 
     }
 
+
+    public float GetPlayerLocalScale()
+    {
+        return transform.localScale.x;
+    }
     void PlayerRunning()
     {
         movement.x = joystick.Horizontal;          //Input.GetAxis("Horizontal");
@@ -84,9 +105,12 @@ public class PlayerController : MonoBehaviour
 
     public void Attack()
     {
-
-        Debug.Log("Attacking");
-
+        if(isAlive)
+        {
+            audioManager.PlaySingleShotAudio(bulletShotAudio, bulletShotVolume);
+            Instantiate(bulletPrefeb, bulletSpawnPoint.position, Quaternion.identity);       
+                    
+        }
     }
 
     void ClimbLadder()
