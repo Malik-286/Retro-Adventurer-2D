@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
     [SerializeField] float bulletSpeed = 20f;
     [SerializeField] GameObject bulletParticles;
-    PlayerController player;
+     PlayerController player;
     Rigidbody2D rb;
     SpriteRenderer spriteRenderer;
     float bulletDirection  = 1;
@@ -50,8 +51,8 @@ public class Bullet : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        CreateDestroyParticles();
-        Destroy(gameObject, 0.1f);
+        CreateDestroyParticles();      
+         Destroy(gameObject, 0.1f);
     }
 
     void CreateDestroyParticles()
@@ -61,10 +62,11 @@ public class Bullet : MonoBehaviour
             GameObject deathParticlesClone = Instantiate(bulletParticles, transform.position, Quaternion.identity);
             isCreated = true;
             Destroy(deathParticlesClone, 0.2f);
-        }
-        
-        
+        } 
     }
+
+
+    
 
 
 

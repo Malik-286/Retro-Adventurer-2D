@@ -7,14 +7,16 @@ public class ExitBox : MonoBehaviour
 
 
      [SerializeField] AudioClip levelCompletionSound;
-
+     [SerializeField] string nextLevelToLoad;
 
 
 
     AudioManager audioManager;
+    GameManager gameManager;
      void Start()
     {
         audioManager = FindObjectOfType<AudioManager>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
 
@@ -22,14 +24,17 @@ public class ExitBox : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Level 01 Completed.");
-            if (audioManager != null)
+             if (audioManager != null)
             {
                 audioManager.PlaySingleShotAudio(levelCompletionSound, 0.7f);
-                Destroy(gameObject);
+                gameManager.LoadNextScene(nextLevelToLoad);
+                Destroy(gameObject, 0.5f);
             }
         }
 
     }
+
+
+    
 
 }

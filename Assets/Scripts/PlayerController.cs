@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
      
     bool isAlive = true;
 
-    [SerializeField] FixedJoystick joystick;
+    [SerializeField] FloatingJoystick joystick;
 
     AudioManager audioManager;
     GamePlayUI gamePlayUI;
