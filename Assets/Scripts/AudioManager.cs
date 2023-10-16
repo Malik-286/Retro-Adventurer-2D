@@ -2,36 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
+public class AudioManager : Singelton<AudioManager>
 {
-
-
-
-
-
-
-
     AudioSource audioSource;
-
-    void Awake()
+     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        PlayGamePlayAudio();
     }
 
-    public void PlayGamePlayAudio()
-    {
-        audioSource.Play();
-        audioSource.loop = true;
-    }
 
     public void PlaySingleShotAudio(AudioClip audioClip, float volume)
     {
-        audioSource.PlayOneShot(audioClip, volume);
+         audioSource.PlayOneShot(audioClip, volume);
 
     }
-
-
-
-
+    
 }

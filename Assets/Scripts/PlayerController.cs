@@ -112,7 +112,6 @@ public class PlayerController : MonoBehaviour
                     
         }
     }
-
     void ClimbLadder()
     {
         if (playerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ladder")))
@@ -130,13 +129,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isClimbing", false);
             rb.gravityScale = startingGravity;
         }
-
-
-
     }
-
-
-
 
     bool CheckIfGrounded()
     {

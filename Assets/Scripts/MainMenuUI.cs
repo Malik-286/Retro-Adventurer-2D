@@ -6,6 +6,7 @@ public class MainMenuUI : MonoBehaviour
 {
 
     GameManager gameManager;
+    [SerializeField] string startingLevelToLoad;
      void Start()
     {
        gameManager =  FindObjectOfType<GameManager>(); 
@@ -14,7 +15,11 @@ public class MainMenuUI : MonoBehaviour
 
     public void StartGame()
     {
-        gameManager.LoadNextScene("Level 01");
+        if(gameManager != null)
+        {
+            gameManager.LoadNextScene(startingLevelToLoad);
+        }
+         
     }
 
      void Update()

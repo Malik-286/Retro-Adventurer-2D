@@ -9,7 +9,7 @@ public class GameManager : Singelton<GameManager>
 
 
     [SerializeField] float waitTime = 3f;
-     void Start()
+      void Start()
     {
         
     }
