@@ -33,7 +33,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -61.7, y: -20.3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 493415489281956429}
@@ -252,9 +252,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 241b4b1ffecea8349a54ddf6bd3a8fbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 300
+  currentHealth: 150
+  maxHealth: 125
   losehealthSound: {fileID: 8300000, guid: e98a824db7deef04ca8ea72d3a6d613c, type: 3}
   isAlive: 1
+  defaultColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &2392719351093612359
 GameObject:
   m_ObjectHideFlags: 0

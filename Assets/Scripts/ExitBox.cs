@@ -9,6 +9,9 @@ public class ExitBox : MonoBehaviour
      [SerializeField] AudioClip levelCompletionSound;
      [SerializeField] string nextLevelToLoad;
 
+     [SerializeField] List<GameObject> enemiesToDestroy;
+ 
+
 
 
     AudioManager audioManager;
@@ -26,10 +29,20 @@ public class ExitBox : MonoBehaviour
         {
              if (audioManager != null)
             {
+                DestroyRemaningEnemies();
                 audioManager.PlaySingleShotAudio(levelCompletionSound, 0.7f);
                 gameManager.LoadNextScene(nextLevelToLoad);
                 Destroy(gameObject, 0.5f);
             }
+        }
+
+    }
+
+    void DestroyRemaningEnemies()
+    {
+         for (int i = 0; i < enemiesToDestroy.Count; i++)
+        {
+            Destroy(enemiesToDestroy[i]);
         }
 
     }

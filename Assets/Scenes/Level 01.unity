@@ -389,7 +389,7 @@ Transform:
   m_GameObject: {fileID: 60575198}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -30.176647, y: -16.08956, z: -10.000034}
+  m_LocalPosition: {x: -30.876652, y: -16.08956, z: -10.000034}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -22071,7 +22071,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -68.86972, y: -20.28962, z: -10}
+  m_LocalPosition: {x: -68.86974, y: -20.28826, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -27383,7 +27383,7 @@ Transform:
   m_GameObject: {fileID: 1668178480}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -30.176647, y: -16.08956, z: -10.000034}
+  m_LocalPosition: {x: -30.876652, y: -16.08956, z: -10.000034}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -28695,7 +28695,7 @@ Transform:
   m_GameObject: {fileID: 2012117215}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -30.176647, y: -16.08956, z: -10.000034}
+  m_LocalPosition: {x: -30.876652, y: -16.08956, z: -10.000034}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -29081,7 +29081,7 @@ PrefabInstance:
       objectReference: {fileID: 41960693}
     - target: {fileID: 6625734047947070011, guid: e2169f555c9a1b745a881f819429e370, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -74.2
+      value: -74.9
       objectReference: {fileID: 0}
     - target: {fileID: 6625734047947070011, guid: e2169f555c9a1b745a881f819429e370, type: 3}
       propertyPath: m_LocalPosition.y
@@ -29463,6 +29463,18 @@ PrefabInstance:
       propertyPath: nextLevelToLoad
       value: Level 02
       objectReference: {fileID: 0}
+    - target: {fileID: 1774143790802022187, guid: 464a30ee11d342f4fb3ef842a84d291f, type: 3}
+      propertyPath: enemiesToDestroy.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1774143790802022187, guid: 464a30ee11d342f4fb3ef842a84d291f, type: 3}
+      propertyPath: enemiesToDestroy.Array.data[0]
+      value: 
+      objectReference: {fileID: 1606486806}
+    - target: {fileID: 1774143790802022187, guid: 464a30ee11d342f4fb3ef842a84d291f, type: 3}
+      propertyPath: enemiesToDestroy.Array.data[1]
+      value: 
+      objectReference: {fileID: 1862507307}
     - target: {fileID: 7701002030881481536, guid: 464a30ee11d342f4fb3ef842a84d291f, type: 3}
       propertyPath: m_Name
       value: Exit Box

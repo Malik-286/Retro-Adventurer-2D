@@ -6,15 +6,27 @@ public class PlayerHealth : MonoBehaviour
 {
 
     [SerializeField] int currentHealth;
+    [SerializeField] int maxHealth = 125;
     [SerializeField] AudioClip losehealthSound;
-     int maxHealth = 100;
+    public bool isAlive = true;
+
+
+    [Header("Colors Variables")]
+    [SerializeField] Color defaultColor;
  
-     public bool isAlive = true;
+
+    
+ 
+      
     AudioManager audioManager;
+    SpriteRenderer spriteRenderer;
       void Start()
     {
         currentHealth = maxHealth;
         audioManager = FindObjectOfType<AudioManager>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        defaultColor = spriteRenderer.color;
+
     }
 
 
@@ -55,9 +67,22 @@ public class PlayerHealth : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy")  )
         {
               DecreaseHealth(25);
+              spriteRenderer.color = Color.red;
+              StartCoroutine(ResetPlayerColor());
               audioManager.PlaySingleShotAudio(losehealthSound, 0.7f);
         }
     }
 
-   
+  
+
+    IEnumerator ResetPlayerColor()
+    {
+        if (isAlive)
+        {
+            yield return new WaitForSeconds(0.50f);
+            spriteRenderer.color = defaultColor;
+        }
+    }
+
+
 }

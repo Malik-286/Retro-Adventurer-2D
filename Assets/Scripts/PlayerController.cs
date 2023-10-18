@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] AudioClip bulletShotAudio;
     [SerializeField] float bulletShotVolume;
 
+ 
 
 
 
@@ -44,7 +45,7 @@ public class PlayerController : MonoBehaviour
         playerFeetCollider = GetComponent<BoxCollider2D>();
         audioManager =FindObjectOfType<AudioManager>();
         gamePlayUI = FindObjectOfType<GamePlayUI>();
-
+ 
         startingGravity = rb.gravityScale;
     }
 
@@ -61,16 +62,6 @@ public class PlayerController : MonoBehaviour
         PlayerRunning();
         FlipPlayerSprite();
         ClimbLadder();
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Jump();
-        }
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            PlayDeathAnimation();
-        }
-
  
     }
 
@@ -164,6 +155,12 @@ public class PlayerController : MonoBehaviour
         isAlive = false;
     }
 
+
+    void PlayerHealthLoseColor()
+    {
+
+
+    }
     
  
    

@@ -5,6 +5,9 @@ using UnityEngine;
 public class AudioManager : Singelton<AudioManager>
 {
     AudioSource audioSource;
+
+ 
+
      void Start()
     {
         audioSource = GetComponent<AudioSource>();
