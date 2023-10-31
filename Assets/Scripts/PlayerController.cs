@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] float jumpForce = 5f;
     [SerializeField] float climbForce = 5f;
-
+  
     [Header("Bullet Variables")]
     [SerializeField] GameObject bulletPrefeb;
     [SerializeField] Transform bulletSpawnPoint;
@@ -23,31 +23,27 @@ public class PlayerController : MonoBehaviour
 
     public Vector2 movement;
     Rigidbody2D rb;
-    CapsuleCollider2D playerBodyCollider;
     BoxCollider2D playerFeetCollider;
     SpriteRenderer spriteRenderer;
     Animator animator;
     float startingGravity;
-     
+      
     bool isAlive = true;
 
     [SerializeField] FloatingJoystick joystick;
 
     AudioManager audioManager;
-    GamePlayUI gamePlayUI;
-    void Start()
+     void Start()
     {
 
         rb = GetComponent<Rigidbody2D>();
-        playerBodyCollider = GetComponent<CapsuleCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         playerFeetCollider = GetComponent<BoxCollider2D>();
         audioManager =FindObjectOfType<AudioManager>();
-        gamePlayUI = FindObjectOfType<GamePlayUI>();
- 
+  
         startingGravity = rb.gravityScale;
-    }
+     }
 
    
 
@@ -156,12 +152,9 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    void PlayerHealthLoseColor()
-    {
-
-
-    }
     
- 
-   
+     
+
+
+
 }

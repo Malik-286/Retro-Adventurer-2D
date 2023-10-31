@@ -1,22 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class MainMenuUI : MonoBehaviour
 {
+    [SerializeField] TextMeshProUGUI gameText;
+    [SerializeField] TextMeshProUGUI gameVersionText;
+    [SerializeField] TextMeshProUGUI coinsText;
 
-    GameManager gameManager;
-   
-     void Start()
+    CurrencyManager currencyManager;
+    void Start()
     {
-       gameManager =  FindObjectOfType<GameManager>(); 
+        currencyManager = FindObjectOfType<CurrencyManager>();
     }
 
+    void UpdateGameVersionText()
+    {
+        gameVersionText.text = "version "+ Application.version;
+    }
+    void UpdateCurrencyText()
+    {
+        if(currencyManager.GetInstance() != null)
+        {
+            coinsText.text = currencyManager.GetCurrentCoins().ToString();
+        }
+    }
 
     
 
-     void Update()
+
+    void Update()
     {
-        
+        UpdateGameVersionText();  
+        UpdateCurrencyText();
     }
 }

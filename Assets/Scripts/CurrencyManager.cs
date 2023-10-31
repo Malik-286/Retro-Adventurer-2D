@@ -2,17 +2,73 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CurrencyManager : Singelton<CurrencyManager>
-{
-     void Start()
+public class CurrencyManager : MonoBehaviour
+{  
+     CurrencyManager instance;
+
+    [SerializeField] int coins;
+
+    void Awake()
     {
-        
+        RunSingelton();      
+        LoadCurrencyData();
     }
-     
+
+    void RunSingelton()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+
+    }
+
+    public CurrencyManager GetInstance()
+    {
+        return instance;
+    }
+
+    public int GetCurrentCoins()
+    {
+        return coins;   
+    }
 
 
-    void Update()
+    public void IncreaseCoins(int amountToIncrease)
     {
-        
+      coins += amountToIncrease;
+        Debug.Log(coins);
+
+        // save coins 
     }
+
+    public void DecreaseCoins(int amountToDecrease)
+    {
+        coins -= amountToDecrease;
+        Debug.Log(coins);
+
+        // save coins 
+    }
+
+    public void SaveCurrencyData()
+    {
+        SaveSystem.SaveData(this);
+    }
+
+    public void LoadCurrencyData()
+    {
+        CurrencyData data =  SaveSystem.LoadData();
+        coins = data.coins;
+
+    }
+
+    
+
+
+
 }

@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 677590373865136998}
   - component: {fileID: 6345064780408787559}
   - component: {fileID: 7640691048060211634}
-  - component: {fileID: 545796371620183255}
   - component: {fileID: 950818600570198329}
+  - component: {fileID: 545796371620183255}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -123,8 +123,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.021699393, y: 0.07953554}
-  m_Size: {x: 0.7194449, y: 1.1867291}
+  m_Offset: {x: -0.029830933, y: 0.07364352}
+  m_Size: {x: 0.65353394, y: 1.4173652}
   m_Direction: 0
 --- !u!50 &677590373865136998
 Rigidbody2D:
@@ -141,7 +141,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 5
+  m_GravityScale: 4.2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -195,6 +195,23 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &950818600570198329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 895151903171454469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 241b4b1ffecea8349a54ddf6bd3a8fbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 150
+  maxHealth: 100
+  losehealthSound: {fileID: 8300000, guid: e98a824db7deef04ca8ea72d3a6d613c, type: 3}
+  isAlive: 1
+  defaultColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!61 &545796371620183255
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -227,7 +244,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.06515169, y: -0.82335114}
+  m_Offset: {x: -0.05827053, y: -0.8139438}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -238,25 +255,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8187628, y: 0.11963129}
+  m_Size: {x: 0.8263904, y: 0.10081661}
   m_EdgeRadius: 0
---- !u!114 &950818600570198329
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 895151903171454469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 241b4b1ffecea8349a54ddf6bd3a8fbc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentHealth: 150
-  maxHealth: 125
-  losehealthSound: {fileID: 8300000, guid: e98a824db7deef04ca8ea72d3a6d613c, type: 3}
-  isAlive: 1
-  defaultColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &2392719351093612359
 GameObject:
   m_ObjectHideFlags: 0

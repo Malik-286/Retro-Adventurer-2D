@@ -9,14 +9,17 @@ public class GameManager : Singelton<GameManager>
 
 
     [SerializeField] float waitTime = 3f;
-      void Start()
+
+    
+    void Start()
     {
         
     }
 
     public void ReloadGame()
     {
-
+       string currentScene = SceneManager.GetActiveScene().name;
+        LoadNextScene(currentScene);
     }
 
     

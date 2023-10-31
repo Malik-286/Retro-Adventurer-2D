@@ -12,7 +12,13 @@ public class Enemy : MonoBehaviour
     [SerializeField] float enemyHealth = 3;
     [SerializeField] GameObject enemyDeathParticles;
     [SerializeField] float bulletForce;
-  
+
+
+    [Header("Rewards Array")]
+    [SerializeField] GameObject[] rewrdsPrefebs;
+    float minX = -4;
+    float maxX = 1;
+
     SpriteRenderer enemySprite;
     bool isAlive = true;
     void Start()
@@ -70,7 +76,8 @@ public class Enemy : MonoBehaviour
         if (!isAlive)
         {
             CreateDeathParticles();
-            Destroy(gameObject);
+ 
+            Destroy(gameObject, 0.4f);
         }
        
          rb.velocity = new Vector2(moveSpeed, 0.0f);
@@ -94,6 +101,8 @@ public class Enemy : MonoBehaviour
     void CreateDeathParticles()
     {
         GameObject deathParticlesClone = Instantiate(enemyDeathParticles, transform.position, Quaternion.identity);
-        Destroy(deathParticlesClone, 1.5f);
+        Destroy(deathParticlesClone, 0.3f);
     }
+
+    
 }

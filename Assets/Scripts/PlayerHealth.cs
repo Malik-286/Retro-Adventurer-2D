@@ -6,7 +6,7 @@ public class PlayerHealth : MonoBehaviour
 {
 
     [SerializeField] int currentHealth;
-    [SerializeField] int maxHealth = 125;
+    [SerializeField] int maxHealth = 100;
     [SerializeField] AudioClip losehealthSound;
     public bool isAlive = true;
 
@@ -20,19 +20,25 @@ public class PlayerHealth : MonoBehaviour
       
     AudioManager audioManager;
     SpriteRenderer spriteRenderer;
-      void Start()
+    GameManager gameManager;
+    void Start()
     {
         currentHealth = maxHealth;
         audioManager = FindObjectOfType<AudioManager>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         defaultColor = spriteRenderer.color;
+        gameManager = FindObjectOfType<GameManager>();
 
     }
 
 
-    public float GetCurrentHealth()
+    public int  GetCurrentHealth()
     {
         return currentHealth;
+    }
+    public int GetMaxHealth()
+    {
+        return maxHealth;
     }
 
     public void IncreaseHealth(int amountToIncrease)
@@ -54,8 +60,10 @@ public class PlayerHealth : MonoBehaviour
     {
         if(!isAlive)
         {
-            Destroy(gameObject);
-            // play player death audio
+            gameManager.ReloadGame();
+            Destroy(gameObject, 1f);
+            
+            // play player death audio and animation
         }
     }
 
