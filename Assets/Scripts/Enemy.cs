@@ -16,9 +16,7 @@ public class Enemy : MonoBehaviour
 
     [Header("Rewards Array")]
     [SerializeField] GameObject[] rewrdsPrefebs;
-    float minX = -4;
-    float maxX = 1;
-
+ 
     SpriteRenderer enemySprite;
     bool isAlive = true;
     void Start()

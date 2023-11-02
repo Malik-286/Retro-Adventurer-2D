@@ -22,6 +22,11 @@ public class GameManager : Singelton<GameManager>
         LoadNextScene(currentScene);
     }
 
+    public string GetActiveSceneName()
+    {
+        return SceneManager.GetActiveScene().name;
+    }
+
     
 
     public void QuitGame()

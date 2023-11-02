@@ -3,57 +3,38 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Timeline.TimelinePlaybackControls;
-
 public class GamePlayUI : MonoBehaviour
 {
 
 
 
-    [SerializeField] Slider healthSlider;
-    [SerializeField] GameObject silderFillArea;
-    [SerializeField] TextMeshProUGUI coinsText;
- 
+      [SerializeField] TextMeshProUGUI coinsText;
+      [SerializeField] TextMeshProUGUI levelNoText;
 
 
-    PlayerHealth playerHealth;
-    CurrencyManager currencyManager;    
+
+
+    CurrencyManager currencyManager;
+    GameManager gameManager;
 
     void Start()
     {
-        playerHealth = FindObjectOfType<PlayerHealth>();
-        healthSlider.maxValue = playerHealth.GetMaxHealth();
-        currencyManager = FindObjectOfType<CurrencyManager>();  
+          currencyManager = FindObjectOfType<CurrencyManager>(); 
+          gameManager = FindObjectOfType<GameManager>();
 
     }
 
     void Update()
     {
 
-        UpdateHealthSlider();
         UpdateCurrencyText();
+        UpdateLevelNoText();    
  
     }
 
     
 
-    void UpdateHealthSlider()
-    {
-        if (playerHealth != null)
-        {
-            healthSlider.value = playerHealth.GetCurrentHealth();
-            if (playerHealth.GetCurrentHealth() <= 0)
-            {
-                silderFillArea.SetActive(false);
-            }
-            else if (playerHealth.GetCurrentHealth() >= 1)
-            {
-                silderFillArea.SetActive(true);
-            }
-
-        }
-
-    }
+    
 
     void UpdateCurrencyText()
     {
@@ -62,4 +43,13 @@ public class GamePlayUI : MonoBehaviour
             coinsText.text = currencyManager.GetCurrentCoins().ToString();
         }
     }
+
+    void UpdateLevelNoText()
+    {
+        if (gameManager.GetInstance() != null)
+        {
+            levelNoText.text = gameManager.GetActiveSceneName();
+        }
+    }
+         
 }

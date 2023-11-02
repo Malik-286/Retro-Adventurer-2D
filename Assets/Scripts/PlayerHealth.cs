@@ -21,6 +21,7 @@ public class PlayerHealth : MonoBehaviour
     AudioManager audioManager;
     SpriteRenderer spriteRenderer;
     GameManager gameManager;
+    TimerPanel timerPanel;
     void Start()
     {
         currentHealth = maxHealth;
@@ -28,6 +29,7 @@ public class PlayerHealth : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         defaultColor = spriteRenderer.color;
         gameManager = FindObjectOfType<GameManager>();
+        timerPanel = FindObjectOfType<TimerPanel>();    
 
     }
 
@@ -61,6 +63,7 @@ public class PlayerHealth : MonoBehaviour
         if(!isAlive)
         {
             gameManager.ReloadGame();
+            timerPanel.RestTime();
             Destroy(gameObject, 1f);
             
             // play player death audio and animation

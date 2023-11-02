@@ -21,8 +21,7 @@ public class Coin : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Coin Collected");
-            if(audioManager != null)
+             if(audioManager != null)
             {
                 audioManager.PlaySingleShotAudio(coinCollectionSound, 0.8f);
                 if(currencyManager != null)
