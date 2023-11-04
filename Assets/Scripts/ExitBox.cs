@@ -7,9 +7,9 @@ public class ExitBox : MonoBehaviour
 
 
      [SerializeField] AudioClip levelCompletionSound;
-     [SerializeField] string nextLevelToLoad;
-
+ 
      [SerializeField] List<GameObject> enemiesToDestroy;
+     [SerializeField] GameObject levelCompletionPanel;
  
 
 
@@ -20,6 +20,7 @@ public class ExitBox : MonoBehaviour
     {
         audioManager = FindObjectOfType<AudioManager>();
         gameManager = FindObjectOfType<GameManager>();
+        levelCompletionPanel.SetActive(false);
     }
 
 
@@ -31,7 +32,7 @@ public class ExitBox : MonoBehaviour
             {
                 DestroyRemaningEnemies();
                 audioManager.PlaySingleShotAudio(levelCompletionSound, 0.7f);
-                gameManager.LoadNextScene(nextLevelToLoad);
+                levelCompletionPanel.SetActive(true);
                 Destroy(gameObject, 0.5f);
             }
         }

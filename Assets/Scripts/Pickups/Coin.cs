@@ -7,6 +7,7 @@ public class Coin : MonoBehaviour
 
 
     [SerializeField] AudioClip coinCollectionSound;
+    [SerializeField] int amountToIncrease;
  
     AudioManager audioManager;
     CurrencyManager currencyManager;
@@ -26,11 +27,15 @@ public class Coin : MonoBehaviour
                 audioManager.PlaySingleShotAudio(coinCollectionSound, 0.8f);
                 if(currencyManager != null)
                 {
-                    currencyManager.IncreaseCoins(1);
+                    if(this.gameObject.tag == "GoldBox")
+                    {
+                        amountToIncrease = Random.Range(10, 50);
+                    }
+                    currencyManager.IncreaseCoins(amountToIncrease);
                     currencyManager.SaveCurrencyData();
                 }           
             }
-                 Destroy(gameObject, 0.1f);
+                 Destroy(gameObject);
         }
     }
 }

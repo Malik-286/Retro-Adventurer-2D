@@ -18,7 +18,7 @@ public class CurrencyManager : MonoBehaviour
     {
         if (instance != null && instance != this)
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
         else
         {
@@ -42,17 +42,13 @@ public class CurrencyManager : MonoBehaviour
     public void IncreaseCoins(int amountToIncrease)
     {
       coins += amountToIncrease;
-        Debug.Log(coins);
-
-        // save coins 
+       
     }
 
     public void DecreaseCoins(int amountToDecrease)
     {
         coins -= amountToDecrease;
-        Debug.Log(coins);
-
-        // save coins 
+       
     }
 
     public void SaveCurrencyData()

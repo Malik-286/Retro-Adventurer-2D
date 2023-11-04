@@ -23,28 +23,33 @@ public class HealthPanel : MonoBehaviour
 
     void UpdateHeartIcon()
     {
-        if (playerHealth == null)
+        if (playerHealth != null)
         {
-            return;
-        }
-            
-        float currentHealth = playerHealth.GetCurrentHealth();
+            float currentHealth = playerHealth.GetCurrentHealth();
 
-        if (currentHealth == 75f)
-        {
-            heartImages[3].SetActive(false);
+            if (currentHealth == 75f)
+            {
+                heartImages[3].SetActive(false);
+                heartImages[2].SetActive(true);
+
+            }
+            else if (currentHealth == 50f)
+            {
+                heartImages[2].SetActive(false);
+                heartImages[1].SetActive(true);
+
+            }
+            else if (currentHealth == 25f)
+            {
+                heartImages[1].SetActive(false);
+                heartImages[0].SetActive(true);
+
+            }
+            else if (currentHealth <= 0)
+            {
+                heartImages[0].SetActive(false);
+            }
         }
-        else if (currentHealth == 50f  )
-        {
-            heartImages[2].SetActive(false);
-        }
-        else if (currentHealth == 25f)
-        {
-            heartImages[1].SetActive(false);
-        }
-        else if(currentHealth <= 0)
-        {
-            heartImages[0].SetActive(false);
-        }
+                   
     }
 }

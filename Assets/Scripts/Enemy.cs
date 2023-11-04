@@ -14,17 +14,20 @@ public class Enemy : MonoBehaviour
     [SerializeField] float bulletForce;
 
 
-    [Header("Rewards Array")]
-    [SerializeField] GameObject[] rewrdsPrefebs;
- 
+  
     SpriteRenderer enemySprite;
     bool isAlive = true;
+    bool isParticlesCreated = false;
+
+    KillsCounter killsCounter;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         enemySprite = GetComponent<SpriteRenderer>();
         audioManager = FindObjectOfType<AudioManager>();
         enemyHealth = Random.Range(3, 5);
+        killsCounter = FindObjectOfType<KillsCounter>();
     }
 
 
@@ -98,7 +101,13 @@ public class Enemy : MonoBehaviour
 
     void CreateDeathParticles()
     {
+        if(isParticlesCreated == true)
+        {          
+            return;
+        }
         GameObject deathParticlesClone = Instantiate(enemyDeathParticles, transform.position, Quaternion.identity);
+        killsCounter.IncreaseKillsCount();
+        isParticlesCreated = true;
         Destroy(deathParticlesClone, 0.3f);
     }
 

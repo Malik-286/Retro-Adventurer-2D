@@ -10,31 +10,52 @@ public class GamePlayUI : MonoBehaviour
 
       [SerializeField] TextMeshProUGUI coinsText;
       [SerializeField] TextMeshProUGUI levelNoText;
+      [SerializeField] TextMeshProUGUI killsCounterText;
+      [SerializeField] GameObject uiControllsButtons;
+      [SerializeField] Button pauseButton;
+ 
 
-
+    public GameObject pausePanel;
+    public GameObject deathPanel;
 
 
     CurrencyManager currencyManager;
     GameManager gameManager;
-
-    void Start()
+    KillsCounter killsCounter;
+    AudioManager audioManager;
+     void Start()
     {
-          currencyManager = FindObjectOfType<CurrencyManager>(); 
-          gameManager = FindObjectOfType<GameManager>();
-
+        currencyManager = FindObjectOfType<CurrencyManager>();
+        gameManager = FindObjectOfType<GameManager>();
+        killsCounter = FindObjectOfType<KillsCounter>();
+        pausePanel.SetActive(false);
+        deathPanel.SetActive(false);
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     void Update()
     {
 
         UpdateCurrencyText();
-        UpdateLevelNoText();    
- 
+        UpdateLevelNoText(); 
+        UpdateKillsCountText();
+        if(pausePanel.activeInHierarchy || deathPanel.activeInHierarchy)
+        {
+            pauseButton.interactable = false;
+            uiControllsButtons.SetActive(false);
+        }
+        else
+        {
+            pauseButton.interactable = true;
+            uiControllsButtons.SetActive(true);
+
+        }
+
     }
 
-    
 
-    
+
+
 
     void UpdateCurrencyText()
     {
@@ -51,5 +72,26 @@ public class GamePlayUI : MonoBehaviour
             levelNoText.text = gameManager.GetActiveSceneName();
         }
     }
+
+    void UpdateKillsCountText()
+    {
+        killsCounterText.text = killsCounter.GetCurrentSceneKills().ToString();
+    }
+
+
+    
+
+    public void PauseGame()
+    {
          
+        uiControllsButtons.SetActive(false);
+        pausePanel.SetActive(true);
+        Time.timeScale = 0f;
+
+        if (audioManager.GetInstance() != null)
+        {
+            audioManager.PlayTouchSoundEffect();
+        }            
+    }
+
 }

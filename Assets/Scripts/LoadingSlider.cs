@@ -9,30 +9,35 @@ public class LoadingSlider : MonoBehaviour
     [SerializeField] Slider loadingSlider;
 
     [SerializeField] TextMeshProUGUI loadingText;
-    [SerializeField] float loadingTime = 5;
+    [SerializeField] float loadingTime;
     [SerializeField] string levelToLoad;
 
     float currentValue;
     GameManager gameManager;
 
-      void Start()
+    void Start()
     {
-        gameManager  = FindObjectOfType<GameManager>();
+        gameManager = FindObjectOfType<GameManager>();
+        loadingTime = Random.Range(1.2f, 3.2f);
     }
     void Update()
     {
-        currentValue += Time.deltaTime / loadingTime;
-        loadingSlider.value  = Mathf.Clamp01(currentValue);  
-        loadingText.text = "Loading..."+(int)(loadingSlider.value* 100)+ "%";
-
-        if(loadingSlider.value >= 1)
+        if (gameManager.GetInstance() != null)
         {
-            if(gameManager != null)
+            currentValue += Time.deltaTime / loadingTime;
+            loadingSlider.value = Mathf.Clamp01(currentValue);
+            loadingText.text = "Loading..." + (int)(loadingSlider.value * 100) + "%";
+
+            if (loadingSlider.value >= 1)
             {
+
                 StartCoroutine(HideLoadingSlider());
-                gameManager.LoadNextScene(levelToLoad);                
+
+                gameManager.LoadNextScene(levelToLoad);
             }
         }
+       
+    
     }
 
     IEnumerator HideLoadingSlider()

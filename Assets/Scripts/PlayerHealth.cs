@@ -9,19 +9,19 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] int maxHealth = 100;
     [SerializeField] AudioClip losehealthSound;
     public bool isAlive = true;
-
+    [SerializeField] ParticleSystem playerSafeGuardParticles;
 
     [Header("Colors Variables")]
     [SerializeField] Color defaultColor;
+
+
  
 
-    
- 
-      
     AudioManager audioManager;
     SpriteRenderer spriteRenderer;
     GameManager gameManager;
     TimerPanel timerPanel;
+    public GameObject deathPanel;
     void Start()
     {
         currentHealth = maxHealth;
@@ -29,12 +29,13 @@ public class PlayerHealth : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         defaultColor = spriteRenderer.color;
         gameManager = FindObjectOfType<GameManager>();
-        timerPanel = FindObjectOfType<TimerPanel>();    
+        timerPanel = FindObjectOfType<TimerPanel>();
+        deathPanel.SetActive(false);
 
     }
 
 
-    public int  GetCurrentHealth()
+    public int GetCurrentHealth()
     {
         return currentHealth;
     }
@@ -45,54 +46,78 @@ public class PlayerHealth : MonoBehaviour
 
     public void IncreaseHealth(int amountToIncrease)
     {
-          currentHealth += amountToIncrease;
+        currentHealth += amountToIncrease;
     }
 
     public void DecreaseHealth(int amountToDecrease)
-    {        
+    {
         currentHealth -= amountToDecrease;
 
 
-        if(currentHealth <= 0)
+        if (this.currentHealth <= 0)
         {
             isAlive = false;
         }
     }
-     void Update()
+    void FixedUpdate()
     {
-        if(!isAlive)
+        if (!isAlive)
         {
+            Time.timeScale = 0;
+            deathPanel.SetActive(true);
+            if (deathPanel.activeInHierarchy)
+            {             
+                return;
+            }
+
+            Time.timeScale = 1;
             gameManager.ReloadGame();
             timerPanel.RestTime();
             Destroy(gameObject, 1f);
-            
-            // play player death audio and animation
+
         }
     }
+
+   
+
+
 
 
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        
-        if (collision.gameObject.CompareTag("Enemy")  )
+
+        if (collision.gameObject.CompareTag("Enemy") && GetComponent<PlayerHealth>().enabled)
         {
-              DecreaseHealth(25);
-              spriteRenderer.color = Color.red;
-              StartCoroutine(ResetPlayerColor());
-              audioManager.PlaySingleShotAudio(losehealthSound, 0.7f);
+            DecreaseHealth(25);
+            spriteRenderer.color = Color.red;
+            StartCoroutine(ResetPlayerColor());
+            audioManager.PlaySingleShotAudio(losehealthSound, 0.7f);
         }
     }
 
-  
 
+    
     IEnumerator ResetPlayerColor()
-    {
-        if (isAlive)
-        {
-            yield return new WaitForSeconds(0.50f);
+    {      
+            yield return new WaitForSeconds(0.40f);
             spriteRenderer.color = defaultColor;
-        }
+        
+    }
+
+    IEnumerator EnableAndDisablePlayerHealth()
+    {
+        GetComponent<PlayerHealth>().enabled = false;
+        playerSafeGuardParticles.Play();
+        yield return new WaitForSeconds(4f);
+        GetComponent<PlayerHealth>().enabled = true;
+        playerSafeGuardParticles.Stop();
+
+    }
+
+    public void EnableAndDisablePlayerHealthComponent()
+    {
+        StartCoroutine(EnableAndDisablePlayerHealth());
     }
 
 

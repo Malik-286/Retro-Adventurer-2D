@@ -10,16 +10,26 @@ public class GameManager : Singelton<GameManager>
 
     [SerializeField] float waitTime = 3f;
 
+    KillsCounter killsCounter;
+
     
     void Start()
     {
-        
+       killsCounter = FindObjectOfType<KillsCounter>();   
     }
 
+    public int GetCurrentSceneIndex()
+    {
+        return SceneManager.GetActiveScene().buildIndex;
+    }
     public void ReloadGame()
     {
        string currentScene = SceneManager.GetActiveScene().name;
-        LoadNextScene(currentScene);
+        if(killsCounter != null)
+        {
+            killsCounter.ResetKillsCount();
+        }
+         LoadNextScene(currentScene);
     }
 
     public string GetActiveSceneName()

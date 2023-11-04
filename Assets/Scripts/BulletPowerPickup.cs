@@ -8,8 +8,7 @@ public class BulletPowerPickup : MonoBehaviour
 
     [SerializeField] Button attackButton;
     [SerializeField] AudioClip powerPickupSFX;
-    [SerializeField] GameObject handGuide;
-
+ 
 
 
     AudioManager audioManager;
@@ -24,8 +23,7 @@ public class BulletPowerPickup : MonoBehaviour
         {
             audioManager.PlaySingleShotAudio(powerPickupSFX, 1.0f);
             attackButton.interactable = true;
-            Destroy(handGuide);
-            Destroy(gameObject);
+             Destroy(gameObject);
         }
     }
 }
