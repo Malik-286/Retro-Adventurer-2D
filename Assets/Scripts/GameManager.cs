@@ -12,11 +12,19 @@ public class GameManager : Singelton<GameManager>
 
     KillsCounter killsCounter;
 
+ 
+
+
     
     void Start()
     {
-       killsCounter = FindObjectOfType<KillsCounter>();   
+       killsCounter = FindObjectOfType<KillsCounter>();
+         
     }
+
+   
+
+ 
 
     public int GetCurrentSceneIndex()
     {
@@ -24,12 +32,13 @@ public class GameManager : Singelton<GameManager>
     }
     public void ReloadGame()
     {
-       string currentScene = SceneManager.GetActiveScene().name;
-        if(killsCounter != null)
+        Time.timeScale = 1.0f;
+        if (killsCounter != null)
         {
             killsCounter.ResetKillsCount();
         }
-         LoadNextScene(currentScene);
+        string currentScene = SceneManager.GetActiveScene().name;
+        LoadNextScene(currentScene);
     }
 
     public string GetActiveSceneName()
@@ -37,12 +46,11 @@ public class GameManager : Singelton<GameManager>
         return SceneManager.GetActiveScene().name;
     }
 
-    
+
 
     public void QuitGame()
     {
-
-
+        Application.Quit();
     }
 
     public void LoadNextScene(string sceneToLoad)
@@ -56,7 +64,7 @@ public class GameManager : Singelton<GameManager>
         yield return new WaitForSeconds(waitTime);
         SceneManager.LoadScene(sceneToLoad);
     }
-
    
-    
+
+
 }

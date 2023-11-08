@@ -65,11 +65,6 @@ public class DeathPanel : MonoBehaviour
     public void PressReloadButton()
     {
         Time.timeScale = 1.0f;
-
-        if (audioManager.GetInstance() != null)
-        {
-            audioManager.PlayTouchSoundEffect();
-        }
         if (gameManager.GetInstance() != null) 
         {
             gameManager.ReloadGame();

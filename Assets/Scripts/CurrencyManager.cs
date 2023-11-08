@@ -63,6 +63,12 @@ public class CurrencyManager : MonoBehaviour
 
     }
 
+    public void ResetCurrency()
+    {
+        this.coins = 0;
+        SaveCurrencyData();
+    }
+
     
 
 

@@ -10,7 +10,7 @@ public class ExitBox : MonoBehaviour
  
      [SerializeField] List<GameObject> enemiesToDestroy;
      [SerializeField] GameObject levelCompletionPanel;
- 
+  
 
 
 

@@ -19,9 +19,18 @@ public class LoadingSlider : MonoBehaviour
     {
         gameManager = FindObjectOfType<GameManager>();
         loadingTime = Random.Range(1.2f, 3.2f);
+        
+    }
+
+    public void SetLevelToLoad(string settingLevelName)
+    {
+        levelToLoad = settingLevelName;
+        Debug.Log(levelToLoad);
     }
     void Update()
     {
+
+ 
         if (gameManager.GetInstance() != null)
         {
             currentValue += Time.deltaTime / loadingTime;
@@ -46,4 +55,6 @@ public class LoadingSlider : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
+
+   
 }

@@ -8,13 +8,16 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI gameText;
     [SerializeField] TextMeshProUGUI gameVersionText;
     [SerializeField] TextMeshProUGUI coinsText;
-    [SerializeField] GameObject loadingPanel;
+    [SerializeField] GameObject levelsPanel;
+    [SerializeField] GameObject settingsPanel;
+
 
     CurrencyManager currencyManager;
     void Start()
     {
         currencyManager = FindObjectOfType<CurrencyManager>();
-        loadingPanel.SetActive(false);
+        levelsPanel.SetActive(false);
+        settingsPanel.SetActive(false); 
     }
 
     void UpdateGameVersionText()
@@ -40,6 +43,6 @@ public class MainMenuUI : MonoBehaviour
 
     public void StartGame()
     {
-        loadingPanel.SetActive(true);
+        levelsPanel.SetActive(true);
     }
 }

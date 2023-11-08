@@ -21,7 +21,7 @@ public class LevelCompletionPanel : MonoBehaviour
     AudioManager audioManager;
 
 
-      void Start()
+    void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
         currencyManager = FindObjectOfType<CurrencyManager>();
@@ -69,7 +69,6 @@ public class LevelCompletionPanel : MonoBehaviour
         if (gameManager.GetInstance() != null)
         {
               gameManager.LoadNextScene(nextSceneToLoad);
-
         }
     }
 }
