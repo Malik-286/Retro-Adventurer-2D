@@ -13,16 +13,15 @@ public class PausePanel : MonoBehaviour
 
     [SerializeField] AudioClip touchSound;
     [SerializeField] GameObject uiControllsButtons;
-    public Sprite[] audioIcons;
-    public Image audioImage;
+     public Sprite[] audioIcons;
+     [SerializeField] Image audioImage;
  
 
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
         audioManager  = FindObjectOfType<AudioManager>();
-       
-
+ 
        
     }
 
@@ -30,12 +29,15 @@ public class PausePanel : MonoBehaviour
     public void ResumeGame()
     {
         Time.timeScale = 1;
-        uiControllsButtons.SetActive(true);
         this.gameObject.SetActive(false);
+
+        uiControllsButtons.SetActive(true);
         if (audioManager.GetInstance() != null)
         {
             audioManager.PlayTouchSoundEffect();
         }
+          this.gameObject.SetActive(false);
+
     }
 
     public void PressHomeButton()
@@ -59,17 +61,18 @@ public class PausePanel : MonoBehaviour
         {
             audioManager.PlayTouchSoundEffect();
 
-            if (audioManager.GetComponent<AudioSource>().mute == true)
+            if (audioManager.GetComponent<AudioSource>().mute == false)
             {
-                audioManager.GetComponent<AudioSource>().mute = false;
-                audioImage.sprite = audioIcons[0];
-            }
-            else if (audioManager.GetComponent<AudioSource>().mute == false)
-            {
-                audioManager.GetComponent<AudioSource>().mute = true;
                 audioImage.sprite = audioIcons[1];
-
+                audioManager.GetComponent<AudioSource>().mute = true;
             }
+
+            else if (audioManager.GetComponent<AudioSource>().mute == true)
+            {
+                audioImage.sprite = audioIcons[0];
+                audioManager.GetComponent<AudioSource>().mute = false;
+            }
+
         }
     }
      

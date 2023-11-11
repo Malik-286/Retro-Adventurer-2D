@@ -32,12 +32,12 @@ public class GameManager : Singelton<GameManager>
     }
     public void ReloadGame()
     {
-        Time.timeScale = 1.0f;
-        if (killsCounter != null)
+         if (killsCounter != null)
         {
             killsCounter.ResetKillsCount();
         }
         string currentScene = SceneManager.GetActiveScene().name;
+        Time.timeScale = 1.0f;
         LoadNextScene(currentScene);
     }
 
@@ -55,6 +55,7 @@ public class GameManager : Singelton<GameManager>
 
     public void LoadNextScene(string sceneToLoad)
     {
+        Time.timeScale = 1.0f;
         StartCoroutine(LoadingNextScene(sceneToLoad));
     }
 
@@ -62,9 +63,10 @@ public class GameManager : Singelton<GameManager>
     IEnumerator LoadingNextScene(string sceneToLoad)
     {
         yield return new WaitForSeconds(waitTime);
+        Time.timeScale = 1.0f;
         SceneManager.LoadScene(sceneToLoad);
     }
-   
 
+    
 
 }

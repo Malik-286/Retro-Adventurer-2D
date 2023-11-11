@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class FireBallMachine : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    [SerializeField] float rotateSpeed;
+     void Start()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+     void Update()
     {
-        
+        transform.Rotate(0, 0,rotateSpeed);
     }
 }

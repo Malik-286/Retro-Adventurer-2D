@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class SettingsPanel : MonoBehaviour
@@ -7,6 +8,7 @@ public class SettingsPanel : MonoBehaviour
 
     [SerializeField] string privacyPolicyURL;
 
+   
 
 
     GameManager gameManager;
@@ -27,12 +29,20 @@ public class SettingsPanel : MonoBehaviour
 
     }
 
+    public void OpenSocialChannelURL(string link)
+    {
+        Application.OpenURL(link);
+        Debug.Log(link);
+    }
+
     public void ResetGame()
     {
-        if(currencyManager != null && gameManager != null)
+        if(currencyManager != null )
         {
+            PlayerPrefs.DeleteAll();
+            PlayerPrefs.Save();
             currencyManager.ResetCurrency(); 
-          //  gameManager.ResetLevel();
+           
         }
        
 
