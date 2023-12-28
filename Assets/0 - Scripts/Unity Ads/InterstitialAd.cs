@@ -10,15 +10,22 @@ public class InterstitialAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsSho
     [SerializeField] string _iOsAdUnitId = "Interstitial_iOS";
     string _adUnitId;
 
+
+
+    public bool areAdsEnabled; 
+     
+
+
     void Awake()
     {
+        
         RunSingelton();
         // Get the Ad Unit ID for the current platform:
         _adUnitId = (Application.platform == RuntimePlatform.IPhonePlayer)
             ? _iOsAdUnitId
             : _androidAdUnitId;
         
-        
+        areAdsEnabled = PlayerPrefs.GetInt("AdsStatus", 1) == 1;
     }
  
 
@@ -26,9 +33,8 @@ public class InterstitialAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsSho
     {
         if (Instance != null && Instance != this)
         {
-            Destroy(Instance);
-            Destroy(this.gameObject);
-             
+            Destroy(this.Instance);
+              
         }
         else
         {
@@ -40,31 +46,50 @@ public class InterstitialAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsSho
     // Load content to the Ad Unit:
     public void LoadAd()
     {
-        if(this.gameObject != null)
+        if (areAdsEnabled == false)
         {
-            if (Advertisement.isInitialized)
+            return;
+        }
+        else
+        {
+            if(areAdsEnabled == true)
             {
-                // IMPORTANT! Only load content AFTER initialization (in this example, initialization is handled in a different script).
-                Debug.Log("Loading Ad: " + _adUnitId);
-                Advertisement.Load(_adUnitId, this);
+                if (this.gameObject != null)
+                {
+                    if (Advertisement.isInitialized)
+                    {
+                        // IMPORTANT! Only load content AFTER initialization (in this example, initialization is handled in a different script).
+                        Debug.Log("Loading Ad: " + _adUnitId);
+                        Advertisement.Load(_adUnitId, this);
+                    }
+                }
             }
         }
-        
+                  
          
     }
 
     // Show the loaded content in the Ad Unit:
     public void ShowAd()
     {
-        if(this.gameObject != null)
+        if(areAdsEnabled == false)
         {
-            if (Advertisement.isInitialized)
+            return;
+             
+        }
+        else if(areAdsEnabled == true)
+        {
+            if (this.gameObject != null)
             {
-                // Note that if the ad content wasn't previously loaded, this method will fail
-                Debug.Log("Showing Ad: " + _adUnitId);
-                Advertisement.Show(_adUnitId, this);
+                if (Advertisement.isInitialized)
+                {
+                    // Note that if the ad content wasn't previously loaded, this method will fail
+                    Debug.Log("Showing Ad: " + _adUnitId);
+                    Advertisement.Show(_adUnitId, this);
+                }
             }
         }
+                      
 
     }
 

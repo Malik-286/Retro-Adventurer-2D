@@ -8,20 +8,23 @@ public class MainMenuUI : MonoBehaviour
     [Header("Texts")]
 
     [SerializeField] TextMeshProUGUI gameText;
-    [SerializeField] TextMeshProUGUI [] gameVersionTexts;
+    [SerializeField] TextMeshProUGUI[] gameVersionTexts;
     [SerializeField] TextMeshProUGUI coinsText;
+ 
 
 
     [Header("MainMenu Panels")]
 
     [SerializeField] GameObject levelsPanel;
     [SerializeField] GameObject settingsPanel;
- 
+    [SerializeField] GameObject updatePanel;
+
+
 
 
 
     [SerializeField] int defaultUnLockLevelNo = 0;
- 
+
 
     CurrencyManager currencyManager;
     LevelUnLocker levelUnLocker;
@@ -35,6 +38,7 @@ public class MainMenuUI : MonoBehaviour
         settingsPanel.SetActive(false);
         levelUnLocker.UnlockLevel(defaultUnLockLevelNo);
         audioManager = FindObjectOfType<AudioManager>();
+        updatePanel.SetActive(false);
         ActiveScreenTime();
     }
 
@@ -44,22 +48,22 @@ public class MainMenuUI : MonoBehaviour
         {
             gameVersionTexts[i].text = "ver. " + Application.version.ToLower();
         }
- 
+
     }
     void UpdateCurrencyText()
     {
-        if(currencyManager.GetInstance() != null)
+        if (currencyManager.GetInstance() != null)
         {
             coinsText.text = currencyManager.GetCurrentCoins().ToString();
         }
     }
 
-    
+
 
 
     void Update()
     {
-        UpdateGameVersionText();  
+        UpdateGameVersionText();
         UpdateCurrencyText();
     }
 
@@ -75,11 +79,20 @@ public class MainMenuUI : MonoBehaviour
 
     public void PlayTouchSoundEffect()
     {
-        if(audioManager != null)
+        if (audioManager != null)
         {
             audioManager.GetInstance().PlayTouchSoundEffect();
         }
     }
+
+
+    public void ActivateUpdatePanel()
+    {
+        updatePanel.SetActive(true);
+    }
+
+   
+
 }
 
 
