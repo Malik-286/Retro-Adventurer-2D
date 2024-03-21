@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Singelton<T>: MonoBehaviour where T : Singelton<T>
+public  class Singelton<T>: MonoBehaviour where T : Singelton<T>
 {
-    public static T instance;
+      static T instance;
 
-    public T GetInstance()
+    public static T GetInstance()
     {
         return instance;
     }

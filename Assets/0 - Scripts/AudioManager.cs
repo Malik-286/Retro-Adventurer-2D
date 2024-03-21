@@ -7,15 +7,19 @@ public class AudioManager : Singelton<AudioManager>
 
     [SerializeField] AudioClip touchSound;
     [SerializeField] float touchVolume = 0.8f;
-    AudioSource audioSource;
 
  
+    public AudioSource audioSource;
+    public bool bTouchSoundEnable = true;
+    
 
      void Start()
     {
         audioSource = GetComponent<AudioSource>();
     }
 
+
+   
 
     public void PlaySingleShotAudio(AudioClip audioClip, float volume)
     {
@@ -24,8 +28,13 @@ public class AudioManager : Singelton<AudioManager>
     }
 
     public void PlayTouchSoundEffect()
-    {       
-            PlaySingleShotAudio(touchSound, touchVolume);       
+    {
+        if (!bTouchSoundEnable)
+        {
+            return;
+        }
+          PlaySingleShotAudio(touchSound, touchVolume);
+ 
     }
 
 }

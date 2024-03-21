@@ -13,12 +13,10 @@ public class LoadingSlider : MonoBehaviour
     [SerializeField] string levelToLoad;
 
     float currentValue;
-    GameManager gameManager;
-
+ 
     void Start()
     {
-        gameManager = FindObjectOfType<GameManager>();
-        loadingTime = Random.Range(1.2f, 3.2f);
+         loadingTime = Random.Range(1.2f, 3.2f);
         
     }
 
@@ -31,7 +29,7 @@ public class LoadingSlider : MonoBehaviour
     {
 
  
-        if (gameManager.GetInstance() != null)
+        if (GameManager.GetInstance() != null)
         {
             currentValue += Time.deltaTime / loadingTime;
             loadingSlider.value = Mathf.Clamp01(currentValue);
@@ -42,7 +40,7 @@ public class LoadingSlider : MonoBehaviour
 
                 StartCoroutine(HideLoadingSlider());
 
-                gameManager.LoadNextScene(levelToLoad);
+                GameManager.GetInstance().LoadNextScene(levelToLoad);
             }
         }
        

@@ -32,6 +32,7 @@ namespace Platformer
             }
         }
 
+        [System.Obsolete]
         private void ReloadLevel()
         {
             Application.LoadLevel(Application.loadedLevel);

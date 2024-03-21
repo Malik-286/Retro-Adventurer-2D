@@ -29,6 +29,7 @@ public class LevelUnLocker : MonoBehaviour
         }
     }
 
+     
     public void UnlockLevel(int index)
     {
         // Set the level as unlocked in PlayerPrefs
@@ -40,7 +41,7 @@ public class LevelUnLocker : MonoBehaviour
         lockedImages[index].enabled = false;
         levelsNoText[index].SetActive(true);
     }
-
+      
     public bool IsLevelUnlocked(int index)
     {
         // Check if the level is unlocked in PlayerPrefs

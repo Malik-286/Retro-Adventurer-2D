@@ -21,20 +21,16 @@ public class GamePlayUI : MonoBehaviour
     TimerPanel timerPanel;
 
     CurrencyManager currencyManager;
-    GameManager gameManager;
     KillsCounter killsCounter;
-    AudioManager audioManager;
-    
+     
      void Start()
     {
         currencyManager = FindObjectOfType<CurrencyManager>();
-        gameManager = FindObjectOfType<GameManager>();
-        killsCounter = FindObjectOfType<KillsCounter>();
+         killsCounter = FindObjectOfType<KillsCounter>();
         pausePanel.SetActive(false);
         deathPanel.SetActive(false);
         timeEndPanel.SetActive(false);
-        audioManager = FindObjectOfType<AudioManager>();
-        timerPanel = FindObjectOfType<TimerPanel>();
+         timerPanel = FindObjectOfType<TimerPanel>();
     }
 
     void Update()
@@ -85,9 +81,9 @@ public class GamePlayUI : MonoBehaviour
 
     void UpdateLevelNoText()
     {
-        if (gameManager.GetInstance() != null)
+        if (GameManager.GetInstance() != null)
         {
-            levelNoText.text = gameManager.GetActiveSceneName();
+            levelNoText.text = GameManager.GetInstance().GetActiveSceneName();
         }
     }
 
@@ -106,9 +102,9 @@ public class GamePlayUI : MonoBehaviour
         pausePanel.SetActive(true);
         Time.timeScale = 0f;
 
-        if (audioManager.GetInstance() != null)
+        if (AudioManager.GetInstance() != null)
         {
-            audioManager.PlayTouchSoundEffect();
+            AudioManager.GetInstance().PlayTouchSoundEffect();
         }            
     }
 

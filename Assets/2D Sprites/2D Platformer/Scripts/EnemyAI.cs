@@ -10,7 +10,7 @@ namespace Platformer
         public LayerMask ground;
         public LayerMask wall;
 
-        private Rigidbody2D rigidbody; 
+         new  Rigidbody2D  rigidbody; 
         public Collider2D triggerCollider;
         
         void Start()

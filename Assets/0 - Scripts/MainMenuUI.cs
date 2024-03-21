@@ -8,7 +8,6 @@ public class MainMenuUI : MonoBehaviour
     [Header("Texts")]
 
     [SerializeField] TextMeshProUGUI gameText;
-    [SerializeField] TextMeshProUGUI[] gameVersionTexts;
     [SerializeField] TextMeshProUGUI coinsText;
  
 
@@ -17,10 +16,7 @@ public class MainMenuUI : MonoBehaviour
 
     [SerializeField] GameObject levelsPanel;
     [SerializeField] GameObject settingsPanel;
-    [SerializeField] GameObject updatePanel;
-
-
-
+ 
 
 
     [SerializeField] int defaultUnLockLevelNo = 0;
@@ -28,8 +24,7 @@ public class MainMenuUI : MonoBehaviour
 
     CurrencyManager currencyManager;
     LevelUnLocker levelUnLocker;
-    AudioManager audioManager;
-
+ 
     void Start()
     {
         currencyManager = FindObjectOfType<CurrencyManager>();
@@ -37,19 +32,15 @@ public class MainMenuUI : MonoBehaviour
         levelsPanel.SetActive(false);
         settingsPanel.SetActive(false);
         levelUnLocker.UnlockLevel(defaultUnLockLevelNo);
-        audioManager = FindObjectOfType<AudioManager>();
-        updatePanel.SetActive(false);
         ActiveScreenTime();
     }
 
-    void UpdateGameVersionText()
+    void Update()
     {
-        for (int i = 0; i < gameVersionTexts.Length; i++)
-        {
-            gameVersionTexts[i].text = "ver. " + Application.version.ToLower();
-        }
-
+        UpdateCurrencyText();
     }
+
+
     void UpdateCurrencyText()
     {
         if (currencyManager.GetInstance() != null)
@@ -58,15 +49,7 @@ public class MainMenuUI : MonoBehaviour
         }
     }
 
-
-
-
-    void Update()
-    {
-        UpdateGameVersionText();
-        UpdateCurrencyText();
-    }
-
+ 
     public void StartGame()
     {
         levelsPanel.SetActive(true);
@@ -79,19 +62,13 @@ public class MainMenuUI : MonoBehaviour
 
     public void PlayTouchSoundEffect()
     {
-        if (audioManager != null)
+        if (AudioManager.GetInstance() != null)
         {
-            audioManager.GetInstance().PlayTouchSoundEffect();
+            AudioManager.GetInstance().PlayTouchSoundEffect();  
         }
     }
 
-
-    public void ActivateUpdatePanel()
-    {
-        updatePanel.SetActive(true);
-    }
-
-   
+ 
 
 }
 

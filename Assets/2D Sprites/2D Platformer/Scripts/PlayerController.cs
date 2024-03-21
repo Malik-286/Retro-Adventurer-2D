@@ -17,7 +17,7 @@ namespace Platformer
         private bool isGrounded;
         public Transform groundCheck;
 
-        private Rigidbody2D rigidbody;
+        new  Rigidbody2D rigidbody;
         private Animator animator;
         private GameManager gameManager;
 

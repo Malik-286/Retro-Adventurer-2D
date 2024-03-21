@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class TimeEndPanel : MonoBehaviour
 {
-
-    GameManager gameManager;
-    AudioManager audioManager;
+ 
+    Interstitial interstitial;
 
 
     [SerializeField] GameObject UiControlls;
     void Start()
     {
-        gameManager = FindObjectOfType<GameManager>();  
-        audioManager = FindObjectOfType<AudioManager>();
+ 
+        interstitial = FindObjectOfType<Interstitial>();
     }
 
       void Update()
@@ -26,22 +25,24 @@ public class TimeEndPanel : MonoBehaviour
     public void PressHomeButton()
     {
         Time.timeScale = 1.0f;
-        if (audioManager.GetInstance() != null)
+        if (AudioManager.GetInstance() != null)
         {
-            audioManager.PlayTouchSoundEffect();
+            AudioManager.GetInstance().PlayTouchSoundEffect();
         }
-        if (gameManager.GetInstance() != null)
+        if (GameManager.GetInstance() != null)
         {
-            gameManager.LoadNextScene("Main Menu");
+            interstitial.LoadInterstitialAd();
+            GameManager.GetInstance().LoadNextScene("Main Menu");
         }
     }
 
     public void PressReloadButton()
     {
         Time.timeScale = 1.0f;
-        if (gameManager.GetInstance() != null)
+        if (GameManager.GetInstance() != null)
         {
-            gameManager.ReloadGame();
+            interstitial.LoadInterstitialAd();
+            GameManager.GetInstance().ReloadGame();
         }
     }
 

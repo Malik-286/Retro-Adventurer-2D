@@ -9,40 +9,37 @@ public class DeathPanel : MonoBehaviour
 {
 
 
-    GameManager gameManager;
-    AudioManager audioManager;
     CurrencyManager currencyManager;
     PlayerHealth playerHealth;
     HealthPanel healthPanel;
+ 
+
     [SerializeField] TextMeshProUGUI deathHeadingText;
     [SerializeField] GameObject UiControlls;
     [SerializeField] GameObject detailsPanel;
 
-    [SerializeField] GameObject ContinueSlogan;
 
 
 
 
     void Start()
     {
-        gameManager = FindObjectOfType<GameManager>(); 
-        audioManager = FindObjectOfType<AudioManager>();
-        currencyManager = FindObjectOfType<CurrencyManager>();
+         currencyManager = FindObjectOfType<CurrencyManager>();
         playerHealth = FindObjectOfType<PlayerHealth>();
         healthPanel = FindObjectOfType<HealthPanel>();
-  
+   
      }
 
     public void PressHomeButton()
     {
         Time.timeScale = 1.0f;  
-        if (audioManager.GetInstance() != null)
+        if (AudioManager.GetInstance() != null)
         {
-            audioManager.PlayTouchSoundEffect();
+            AudioManager.GetInstance().PlayTouchSoundEffect();
         }
-        if (gameManager.GetInstance() != null)
+        if (GameManager.GetInstance() != null)
         {
-             gameManager.LoadNextScene("Main Menu");
+              GameManager.GetInstance().LoadNextScene("Main Menu");
         }
     }
 
@@ -50,9 +47,9 @@ public class DeathPanel : MonoBehaviour
     {
    
         Time.timeScale = 1.0f;
-        if (audioManager.GetInstance() != null)
+        if (AudioManager.GetInstance() != null)
         {
-            audioManager.PlayTouchSoundEffect();
+            AudioManager.GetInstance().PlayTouchSoundEffect();
         }
         if (currencyManager != null)
         {
@@ -73,20 +70,19 @@ public class DeathPanel : MonoBehaviour
             {
                 playerHealth.EnableAndDisablePlayerHealthComponent();
                 deathHeadingText.text = " Not enough Coins ! ";
-                ContinueSlogan.SetActive(false); 
 
             }
         }
-
+ 
     }
 
 
     public void PressReloadButton()
     {
         Time.timeScale = 1.0f;
-        if (gameManager.GetInstance() != null)
+        if (GameManager.GetInstance() != null)
         {
-            gameManager.ReloadGame();
+             GameManager.GetInstance().ReloadGame();
         }
     }
 

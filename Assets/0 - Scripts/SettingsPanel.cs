@@ -2,54 +2,51 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SettingsPanel : MonoBehaviour
 {
 
-    [SerializeField] string privacyPolicyURL;
-    [SerializeField] GameObject resetPanel;
-
-   
-
-
-    GameManager gameManager;
-    CurrencyManager currencyManager;
-
-
+    [SerializeField] Slider musicSwitch;
+    [SerializeField] Slider soundSwitch;
+    [SerializeField] AudioClip gamePlayAudio;
+    [SerializeField] TextMeshProUGUI versionText;
 
       void Start()
     {
-        currencyManager = FindObjectOfType<CurrencyManager>(); 
-        gameManager = FindObjectOfType<GameManager>();
-        resetPanel.SetActive(false);
+        versionText.text = Application.version;
     }
-
-    public void ViewPrivacyPolicy()
+    public void AdjustMusicSettings()
     {
-        Application.OpenURL(privacyPolicyURL);
-        Debug.Log("Opening Privacy Policy URL...");
-
-    }
-
-    public void OpenSocialChannelURL(string link)
-    {
-        Application.OpenURL(link);
-        Debug.Log(link);
-    }
-
-    public void ResetGame()
-    {
-        if(currencyManager != null && currencyManager != null )
+        if (AudioManager.GetInstance() != null)
         {
-            PlayerPrefs.DeleteAll();
-            PlayerPrefs.Save();
-            currencyManager.ResetCurrency();
-            gameManager.GetInstance().ReloadGame();
-           
+            if (musicSwitch.value > 0)
+            {
+                AudioManager.GetInstance().GetComponent<AudioSource>().mute = false;
+            }
+            else if (musicSwitch.value <= 0)
+            {
+                AudioManager.GetInstance().GetComponent<AudioSource>().mute = true;
+            }
         }
-       
 
     }
 
+    public void AdjustSoundSettings()
+    {
+        if(AudioManager.GetInstance() != null)
+        {
+            if(soundSwitch.value > 0)
+            {
+                AudioManager.GetInstance().bTouchSoundEnable = true;
+            }
+            else if (soundSwitch.value <= 0)
+            {
+                AudioManager.GetInstance().bTouchSoundEnable = false;
+            }
+        }
+    }
 
 }
+
+    

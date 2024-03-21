@@ -5,26 +5,14 @@ using UnityEngine.UI;
 
 public class PausePanel : MonoBehaviour
 {
-    
-
-    GameManager gameManager;
-    AudioManager audioManager;
-
+ 
 
     [SerializeField] AudioClip touchSound;
     [SerializeField] GameObject uiControllsButtons;
-     public Sprite[] audioIcons;
-     [SerializeField] Image audioImage;
+    public Sprite[] audioIcons;
+    [SerializeField] Image audioImage;
   
-
-    void Start()
-    {
-        gameManager = FindObjectOfType<GameManager>();
-        audioManager  = FindObjectOfType<AudioManager>();
  
-       
-    }
-
 
     public void ResumeGame()
     {
@@ -32,9 +20,9 @@ public class PausePanel : MonoBehaviour
         this.gameObject.SetActive(false);
 
         uiControllsButtons.SetActive(true);
-        if (audioManager.GetInstance() != null)
+        if (AudioManager.GetInstance() != null)
         {
-            audioManager.PlayTouchSoundEffect();
+            AudioManager.GetInstance().PlayTouchSoundEffect();
         }
           this.gameObject.SetActive(false);
 
@@ -43,35 +31,35 @@ public class PausePanel : MonoBehaviour
     public void PressHomeButton()
     {
 
-        if(audioManager.GetInstance() != null)
+        if(AudioManager.GetInstance() != null)
         {
-            audioManager.PlayTouchSoundEffect();
+            AudioManager.GetInstance().PlayTouchSoundEffect();
         }
-        if(gameManager.GetInstance() != null)
+        if(GameManager.GetInstance() != null)
         {
             Time.timeScale = 1;
-            gameManager.LoadNextScene("Main Menu");
+            GameManager.GetInstance().LoadNextScene("Main Menu");
         }
     }
 
     public void MuteUnMuteAudio()
     {  
 
-        if (audioManager.GetInstance() != null)
+        if (AudioManager.GetInstance() != null)
         {
-            audioManager.PlayTouchSoundEffect();
+            AudioManager.GetInstance().PlayTouchSoundEffect();
 
-            if (audioManager.GetComponent<AudioSource>().mute == false)
+            if (AudioManager.GetInstance().GetComponent<AudioSource>().mute == false)
             {
                  
-                audioManager.GetComponent<AudioSource>().mute = true;
+                AudioManager.GetInstance().GetComponent<AudioSource>().mute = true;
                 audioImage.sprite = audioIcons[1];
             }
 
-            else if (audioManager.GetComponent<AudioSource>().mute == true)
+            else if (AudioManager.GetInstance().GetComponent<AudioSource>() == true)
             {
                 
-                audioManager.GetComponent<AudioSource>().mute = false;
+                AudioManager.GetInstance().GetComponent<AudioSource>().mute = false;
                 audioImage.sprite = audioIcons[0];
             }
 

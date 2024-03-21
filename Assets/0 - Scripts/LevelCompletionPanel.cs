@@ -13,23 +13,13 @@ public class LevelCompletionPanel : MonoBehaviour
 
 
 
-
-
-    GameManager gameManager;
-    CurrencyManager currencyManager;
-    KillsCounter killsCounter;
-    AudioManager audioManager;
-    InterstitialAd interstitialAd;
-
+     KillsCounter killsCounter;
+ 
 
     void Start()
     {
-        gameManager = FindObjectOfType<GameManager>();
-        currencyManager = FindObjectOfType<CurrencyManager>();
         killsCounter = FindObjectOfType<KillsCounter>();
-        audioManager = FindObjectOfType<AudioManager>();
-        interstitialAd = FindObjectOfType<InterstitialAd>();
-    }
+     }
     void Update()
     {
         UpdateTexts();
@@ -44,22 +34,20 @@ public class LevelCompletionPanel : MonoBehaviour
 
     void UpdateTexts()
     {
-        levelCompletedText.text = gameManager.GetActiveSceneName() + " Completed !";
+        levelCompletedText.text = GameManager.GetInstance().GetActiveSceneName() + " Completed !";
         totalKillsText.text = "Total Kills:  " + killsCounter.GetCurrentSceneKills().ToString("0");
     }
 
     public void PressHomeButton()
     {
 
-        if (audioManager.GetInstance() != null)
+        if (AudioManager.GetInstance() != null)
         {
-            audioManager.PlayTouchSoundEffect();
+            AudioManager.GetInstance().PlayTouchSoundEffect();
         }
-        if (gameManager.GetInstance() != null)
+        if (GameManager.GetInstance() != null)
         {
-            interstitialAd.LoadAd();
-            interstitialAd.ShowAd();
-            gameManager.LoadNextScene("Main Menu");
+             GameManager.GetInstance().LoadNextScene("Main Menu");
         }
        
     }
@@ -67,15 +55,13 @@ public class LevelCompletionPanel : MonoBehaviour
     public void PressNextLevelButton()
     {
 
-        if (audioManager.GetInstance() != null)
+        if (AudioManager.GetInstance() != null)
         {
-            audioManager.PlayTouchSoundEffect();
+            AudioManager.GetInstance().PlayTouchSoundEffect();
         }
-        if (gameManager.GetInstance() != null)
+        if (GameManager.GetInstance() != null)
         {
-            interstitialAd.LoadAd();
-            interstitialAd.ShowAd();
-            gameManager.LoadNextScene(nextSceneToLoad);
+             GameManager.GetInstance().LoadNextScene(nextSceneToLoad);
         }
     }
 }

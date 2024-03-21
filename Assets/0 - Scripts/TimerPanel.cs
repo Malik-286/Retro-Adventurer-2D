@@ -15,7 +15,7 @@ public class TimerPanel : MonoBehaviour
     PlayerHealth playerHealth;
     public bool isTimeCompleted = false;
 
-      void Start()
+    void Start()
     {
         levelStartupTime = levelCompletionTime;
         playerHealth = FindObjectOfType<PlayerHealth>();
