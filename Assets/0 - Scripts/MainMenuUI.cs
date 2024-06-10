@@ -16,10 +16,15 @@ public class MainMenuUI : MonoBehaviour
 
     [SerializeField] GameObject levelsPanel;
     [SerializeField] GameObject settingsPanel;
- 
+    [SerializeField] GameObject storePanel;
 
+
+    [Header("Default Unlock Level No ")]
 
     [SerializeField] int defaultUnLockLevelNo = 0;
+
+
+
 
 
     CurrencyManager currencyManager;
@@ -27,6 +32,7 @@ public class MainMenuUI : MonoBehaviour
  
     void Start()
     {
+        storePanel.SetActive(false);
         currencyManager = FindObjectOfType<CurrencyManager>();
         levelUnLocker = FindObjectOfType<LevelUnLocker>();
         levelsPanel.SetActive(false);

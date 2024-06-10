@@ -21,7 +21,17 @@ public class Interstitial : MonoBehaviour
     void Start()
     {
          
-            MobileAds.Initialize((InitializationStatus initStatus) => { });      
+         MobileAds.Initialize((InitializationStatus initStatus) => { });
+
+        if (PlayerPrefs.GetString("AdsStatusKey") == "disabled")
+        {
+            return;
+        }
+        else
+        {
+            InvokeRepeating("LoadInterstitialAd", 60f, 60f);
+        }
+        
     }
 
 

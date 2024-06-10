@@ -20,8 +20,17 @@ public class Banner : MonoBehaviour
     public void Start()
     {
          MobileAds.Initialize((InitializationStatus initStatus) =>  {});
-         CreateBannerView();
-         LoadAd();
+
+        if (PlayerPrefs.GetString("AdsStatusKey") == "disabled")
+        {
+            return;
+        }
+        else
+        {
+            CreateBannerView();
+            LoadAd();
+        } 
+         
           
     }
 
