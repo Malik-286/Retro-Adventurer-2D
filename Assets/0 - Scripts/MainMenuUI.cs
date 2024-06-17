@@ -17,6 +17,8 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField] GameObject levelsPanel;
     [SerializeField] GameObject settingsPanel;
     [SerializeField] GameObject storePanel;
+    [SerializeField] GameObject spinPanel;
+
 
 
     [Header("Default Unlock Level No ")]
@@ -37,6 +39,7 @@ public class MainMenuUI : MonoBehaviour
         levelUnLocker = FindObjectOfType<LevelUnLocker>();
         levelsPanel.SetActive(false);
         settingsPanel.SetActive(false);
+        spinPanel.SetActive(false);
         levelUnLocker.UnlockLevel(defaultUnLockLevelNo);
         ActiveScreenTime();
     }
