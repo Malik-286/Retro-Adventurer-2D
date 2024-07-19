@@ -142,20 +142,26 @@ public class PlayerController : MonoBehaviour
         if ((moveLeftPressed && moveRightPressed) || (!moveLeftPressed && !moveRightPressed))
         {
             StopMoving();
+            animator.SetBool("isRunning", false);
+            animator.SetBool("isIdeling", true);
+
         }
         else if (moveLeftPressed)
         {
             MoveLeft();
-        }
+         }
         else if (moveRightPressed)
         {
             MoveRight();
-        }
+         }
 
         rb.velocity = new Vector2(movement.x * moveSpeed, rb.velocity.y);
 
         bool isMoving = Mathf.Abs(rb.velocity.x) > Mathf.Epsilon;
-        animator.SetBool("isRunning", isMoving);
+
+ 
+        animator.SetBool("isRunning", isMoving);      
+         
     }
 
 
@@ -165,6 +171,8 @@ public class PlayerController : MonoBehaviour
         {
 
             rb.velocity = new Vector2(rb.velocity.x, climbForce);
+            animator.SetBool("isIdeling", false);
+
             animator.SetBool("isClimbing", true);
         }
         else
@@ -177,20 +185,21 @@ public class PlayerController : MonoBehaviour
         if (playerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ladder")) && moveDownPressed)
         {
             // Climb down the ladder
+
+            playerFeetCollider.isTrigger = true;
             rb.velocity = new Vector2(rb.velocity.x, -climbForce);
+            animator.SetBool("isIdeling", false);
+
             animator.SetBool("isClimbing", true);
         }
-        else
-        {
-            // Stop climbing and maintain current vertical velocity
-            animator.SetBool("isClimbing", false);
-        }
+       
     }
     public void Jump()
     {
         if (CheckIfGrounded())
         {
-            animator.SetBool("isClimbing", false);
+         //   animator.SetBool("isClimbing", false);
+ 
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
 
         }
@@ -211,6 +220,8 @@ public class PlayerController : MonoBehaviour
         if (playerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ladder")))
         {
 
+            playerFeetCollider.isTrigger = false;
+
             Vector2 climbVelocity = new Vector2(rb.velocity.x, movement.y * climbForce);
             rb.velocity = climbVelocity;
             bool onLadder = Mathf.Abs(rb.velocity.y) > Mathf.Epsilon;
@@ -222,6 +233,8 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("isClimbing", false);
             rb.gravityScale = startingGravity;
+            playerFeetCollider.isTrigger = false;
+
         }
     }
 
@@ -254,6 +267,12 @@ public class PlayerController : MonoBehaviour
 
     public void PlayDeathAnimation()
     {
+        // Stop all the other animations
+        animator.SetBool("isClimbing",false);
+        animator.SetBool("isIdeling", false);
+        animator.SetBool("isRunning", false);
+
+
         animator.SetTrigger("isDead");
         isAlive = false;
     }
