@@ -279,7 +279,7 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-         rb.velocity = new Vector2(0f, rb.velocity.y);
+       //  rb.velocity = new Vector2(0f, rb.velocity.y);
     }
 
 
