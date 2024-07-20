@@ -144,18 +144,20 @@ public class PlayerController : MonoBehaviour
             StopMoving();
             animator.SetBool("isRunning", false);
             animator.SetBool("isJumping", false);
-
+ 
             animator.SetBool("isIdeling", true);
 
         }
         else if (moveLeftPressed)
         {
             MoveLeft();
-         }
+ 
+        }
         else if (moveRightPressed)
         {
             MoveRight();
-         }
+ 
+        }
 
         rb.velocity = new Vector2(movement.x * moveSpeed, rb.velocity.y);
 
@@ -175,7 +177,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, climbForce);
             animator.SetBool("isIdeling", false);
             animator.SetBool("isJumping", false);
-
+ 
 
             animator.SetBool("isClimbing", true);
         }
@@ -194,7 +196,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, -climbForce);
             animator.SetBool("isIdeling", false);
             animator.SetBool("isJumping", false);
-
+ 
 
             animator.SetBool("isClimbing", true);
         }
@@ -202,13 +204,15 @@ public class PlayerController : MonoBehaviour
     }
     public void Jump()
     {
+
         if (CheckIfGrounded())
         {
             animator.SetBool("isClimbing", false);
             animator.SetBool("isIdeling", false);
             animator.SetBool("isRunning", false);
-
  
+
+
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             animator.SetBool("isJumping", true);
 
@@ -289,6 +293,7 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("isIdeling", false);
         animator.SetBool("isRunning", false);
         animator.SetBool("isJumping", false);
+        animator.SetBool("isRolling", false);
 
 
 
@@ -301,6 +306,27 @@ public class PlayerController : MonoBehaviour
        //  rb.velocity = new Vector2(0f, rb.velocity.y);
     }
 
+
+    public void RollingMovement()
+    {
+        animator.SetBool("isClimbing", false);
+        animator.SetBool("isIdeling", false);
+        animator.SetBool("isRunning", false);
+        animator.SetBool("isJumping", false);
+        animator.SetBool("isRolling", true);
+        
+        StartCoroutine(DeActivateRollingAnimation());
+        
+    }
+
+
+    IEnumerator DeActivateRollingAnimation()
+    {
+         yield return new WaitForSeconds(0.1f);
+         animator.SetBool("isRolling", false);
+         Debug.Log("Rolling Animation Stopped");
+
+    }
 
 
 
