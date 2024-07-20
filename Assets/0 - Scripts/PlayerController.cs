@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -10,6 +11,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] float jumpForce = 5f;
     [SerializeField] float climbForce = 5f;
+    [SerializeField] AudioClip jumpSoundEffect;
+
+    [Header("Player Particle Effects Variables")]
+
+    [SerializeField] Transform dustParticlesPosition;
+    [SerializeField] GameObject dustParticlesPrefeb;
+
 
     [Header("Bullet Variables")]
     [SerializeField] GameObject bulletPrefeb;
@@ -210,11 +218,15 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isClimbing", false);
             animator.SetBool("isIdeling", false);
             animator.SetBool("isRunning", false);
- 
 
-
+            
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             animator.SetBool("isJumping", true);
+            CreateDustParticles();
+            if (audioManager != null)
+            {
+                audioManager.PlaySingleShotAudio(jumpSoundEffect, 1.0f);
+            }
 
         }
         else
@@ -322,6 +334,12 @@ public class PlayerController : MonoBehaviour
          yield return new WaitForSeconds(0.4f);
          animator.SetBool("isRolling", false);
  
+    }
+
+    void CreateDustParticles()
+    {
+        GameObject dustParticlesClone = Instantiate(dustParticlesPrefeb, dustParticlesPosition.position, Quaternion.identity);
+        Destroy(dustParticlesClone, 1f);
     }
 
 
