@@ -143,6 +143,8 @@ public class PlayerController : MonoBehaviour
         {
             StopMoving();
             animator.SetBool("isRunning", false);
+            animator.SetBool("isJumping", false);
+
             animator.SetBool("isIdeling", true);
 
         }
@@ -172,6 +174,8 @@ public class PlayerController : MonoBehaviour
 
             rb.velocity = new Vector2(rb.velocity.x, climbForce);
             animator.SetBool("isIdeling", false);
+            animator.SetBool("isJumping", false);
+
 
             animator.SetBool("isClimbing", true);
         }
@@ -189,6 +193,8 @@ public class PlayerController : MonoBehaviour
             playerFeetCollider.isTrigger = true;
             rb.velocity = new Vector2(rb.velocity.x, -climbForce);
             animator.SetBool("isIdeling", false);
+            animator.SetBool("isJumping", false);
+
 
             animator.SetBool("isClimbing", true);
         }
@@ -198,9 +204,18 @@ public class PlayerController : MonoBehaviour
     {
         if (CheckIfGrounded())
         {
-         //   animator.SetBool("isClimbing", false);
+            animator.SetBool("isClimbing", false);
+            animator.SetBool("isIdeling", false);
+            animator.SetBool("isRunning", false);
+
  
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            animator.SetBool("isJumping", true);
+
+        }
+        else
+        {
+            animator.SetBool("isJumping", false);
 
         }
     }
@@ -232,6 +247,8 @@ public class PlayerController : MonoBehaviour
         else
         {
             animator.SetBool("isClimbing", false);
+            animator.SetBool("isJumping", false);
+
             rb.gravityScale = startingGravity;
             playerFeetCollider.isTrigger = false;
 
@@ -271,6 +288,8 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("isClimbing",false);
         animator.SetBool("isIdeling", false);
         animator.SetBool("isRunning", false);
+        animator.SetBool("isJumping", false);
+
 
 
         animator.SetTrigger("isDead");

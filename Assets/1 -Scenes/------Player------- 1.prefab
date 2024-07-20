@@ -4892,7 +4892,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4137717379130192737}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -73.70007, y: -18.570068, z: 0}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 0
@@ -5028,7 +5028,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 7
-  jumpForce: 22
+  jumpForce: 20
   climbForce: 5
   bulletPrefeb: {fileID: 5189622070181520308, guid: d6e3b41d5f05ae048b33a38c1a703226, type: 3}
   bulletSpawnPoint: {fileID: 477818495721943521}
@@ -5106,9 +5106,9 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.034389436, y: -0.66144377}
+  m_Offset: {x: -0.034389436, y: -0.6705724}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -5119,5 +5119,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.67292523, y: 0.057145}
+  m_Size: {x: 0.67292523, y: 0.013325989}
   m_EdgeRadius: 0
