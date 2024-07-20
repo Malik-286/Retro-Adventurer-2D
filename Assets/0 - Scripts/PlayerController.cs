@@ -192,7 +192,7 @@ public class PlayerController : MonoBehaviour
         {
             // Climb down the ladder
 
-            playerFeetCollider.isTrigger = true;
+            playerFeetCollider.isTrigger = false;
             rb.velocity = new Vector2(rb.velocity.x, -climbForce);
             animator.SetBool("isIdeling", false);
             animator.SetBool("isJumping", false);
@@ -250,8 +250,8 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            animator.SetBool("isClimbing", false);
-            animator.SetBool("isJumping", false);
+           // animator.SetBool("isClimbing", false);
+         //   animator.SetBool("isJumping", false);
 
             rb.gravityScale = startingGravity;
             playerFeetCollider.isTrigger = false;
@@ -289,32 +289,29 @@ public class PlayerController : MonoBehaviour
     public void PlayDeathAnimation()
     {
         // Stop all the other animations
-        animator.SetBool("isClimbing",false);
-        animator.SetBool("isIdeling", false);
-        animator.SetBool("isRunning", false);
-        animator.SetBool("isJumping", false);
-        animator.SetBool("isRolling", false);
+        string[] states = { "isClimbing", "isIdeling", "isRunning", "isJumping", "isRolling" };
 
-
+        foreach (var state in states)
+        {
+            animator.SetBool(state, false);
+        }
 
         animator.SetTrigger("isDead");
         isAlive = false;
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-       //  rb.velocity = new Vector2(0f, rb.velocity.y);
-    }
+   
 
 
     public void RollingMovement()
     {
-        animator.SetBool("isClimbing", false);
-        animator.SetBool("isIdeling", false);
-        animator.SetBool("isRunning", false);
-        animator.SetBool("isJumping", false);
-        animator.SetBool("isRolling", true);
-        
+        string[] states = { "isClimbing", "isIdeling", "isRunning", "isJumping", "isRolling" };
+
+        foreach (var state in states)
+        {
+            animator.SetBool(state, state == "isRolling");
+        }
+
         StartCoroutine(DeActivateRollingAnimation());
         
     }
@@ -322,10 +319,9 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator DeActivateRollingAnimation()
     {
-         yield return new WaitForSeconds(0.1f);
+         yield return new WaitForSeconds(0.4f);
          animator.SetBool("isRolling", false);
-         Debug.Log("Rolling Animation Stopped");
-
+ 
     }
 
 
