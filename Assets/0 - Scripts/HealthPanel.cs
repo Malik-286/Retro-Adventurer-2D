@@ -37,17 +37,21 @@ public class HealthPanel : MonoBehaviour
             else if (currentHealth == 75f)
             {
                 heartImages[3].SetActive(false);
- 
+                heartImages[2].SetActive(true);
+
             }
-            else if (currentHealth >= 50f)
+            else if (currentHealth == 50f)
             {
                  heartImages[2].SetActive(false);
- 
+                 heartImages[1].SetActive(true);
+
+
             }
-            else if (currentHealth >= 25f)
+            else if (currentHealth == 25f)
             {
                  heartImages[1].SetActive(false);
- 
+                 heartImages[0].SetActive(true);
+
 
             }
             else if (currentHealth <= 0)

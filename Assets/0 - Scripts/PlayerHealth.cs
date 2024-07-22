@@ -48,7 +48,16 @@ public class PlayerHealth : MonoBehaviour
 
     public void IncreaseHealth(int amountToIncrease)
     {
-        currentHealth += amountToIncrease;
+        if (currentHealth >= maxHealth)
+        {
+            currentHealth = maxHealth;
+            return;
+        }
+        else
+        {
+            currentHealth += amountToIncrease;
+        }
+        
     }
 
     public void DecreaseHealth(int amountToDecrease)
