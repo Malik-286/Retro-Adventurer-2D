@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
-
+ 
 public class PlayerController : MonoBehaviour
 {
 
@@ -12,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float jumpForce = 5f;
     [SerializeField] float climbForce = 5f;
     [SerializeField] AudioClip jumpSoundEffect;
+ 
 
     [Header("Player Particle Effects Variables")]
 
@@ -338,6 +338,7 @@ public class PlayerController : MonoBehaviour
 
     void CreateDustParticles()
     {
+        
         GameObject dustParticlesClone = Instantiate(dustParticlesPrefeb, dustParticlesPosition.position, Quaternion.identity);
         Destroy(dustParticlesClone, 1f);
     }
