@@ -29,7 +29,7 @@ public class Interstitial : MonoBehaviour
         }
         else
         {
-            InvokeRepeating("LoadInterstitialAd", 60f, 60f);
+            LoadInterstitialAd();
         }
         
     }
@@ -65,8 +65,7 @@ public class Interstitial : MonoBehaviour
                              + ad.GetResponseInfo());
 
                    _interstitialAd = ad;
-                   ShowInterstitialAd();
-
+ 
                });
         
                  

@@ -53,8 +53,7 @@ public class Rewarded : MonoBehaviour
                           + ad.GetResponseInfo());
 
                 _rewardedAd = ad;
-                ShowRewardedAd();
-            });
+             });
     }
 
     public void ShowRewardedAd()

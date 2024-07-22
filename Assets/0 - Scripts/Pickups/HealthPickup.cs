@@ -10,7 +10,7 @@ public class HealthPickup : MonoBehaviour
     AudioManager audioManager;
 
     [SerializeField] AudioClip healthPickupSound;
-
+ 
 
     void Start()
     {
@@ -29,15 +29,17 @@ public class HealthPickup : MonoBehaviour
             gameObject.GetComponent<CircleCollider2D>().enabled = false;
             
             playerHealth.IncreaseHealth(25);
-
+ 
             if (audioManager != null)
             {
                 audioManager.PlaySingleShotAudio(healthPickupSound, 1.0f);
 
             }
-            Destroy(gameObject, 0.2f);
+             Destroy(gameObject, 0.2f);
         }
 
 
     }
+
+    
 }
