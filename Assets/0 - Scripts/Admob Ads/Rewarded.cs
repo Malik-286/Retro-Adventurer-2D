@@ -8,8 +8,19 @@ using System;
 public class Rewarded : MonoBehaviour
 {
 
+    public static Rewarded Instance;
+
+
     RewardedAd _rewardedAd;
     CurrencyManager currencyManager;
+
+    private void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+    }
     void Start()
     {
          MobileAds.Initialize((InitializationStatus initStatus) =>  {});
@@ -57,15 +68,13 @@ public class Rewarded : MonoBehaviour
     }
 
     public void ShowRewardedAd()
-    {
-         
-
+    {         
         if (_rewardedAd != null && _rewardedAd.CanShowAd())
         {
             _rewardedAd.Show((Reward reward) =>
             {
-                currencyManager.GetInstance().IncreaseCoins(200);
-                currencyManager.SaveCurrencyData();
+                //currencyManager.GetInstance().IncreaseCoins(200);
+                //currencyManager.SaveCurrencyData();
                 RegisterEventHandlers(_rewardedAd);
                 RegisterReloadHandler(_rewardedAd);
 

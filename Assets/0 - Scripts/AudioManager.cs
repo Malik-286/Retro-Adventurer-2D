@@ -5,15 +5,23 @@ using UnityEngine;
 public class AudioManager : Singelton<AudioManager>
 {
 
+    public static AudioManager Instance;
+
     [SerializeField] AudioClip touchSound;
     [SerializeField] float touchVolume = 0.8f;
 
  
     public AudioSource audioSource;
     public bool bTouchSoundEnable = true;
-    
+    private void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+    }
 
-     void Start()
+    void Start()
     {
         audioSource = GetComponent<AudioSource>();
     }

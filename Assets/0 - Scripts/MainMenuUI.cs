@@ -62,6 +62,7 @@ public class MainMenuUI : MonoBehaviour
     public void StartGame()
     {
         levelsPanel.SetActive(true);
+        PlayerPrefs.SetInt("CurrencybeforePlay", currencyManager.GetCurrentCoins());
     }
 
     void ActiveScreenTime()

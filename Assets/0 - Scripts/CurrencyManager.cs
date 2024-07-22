@@ -7,13 +7,17 @@ public class CurrencyManager : MonoBehaviour
      CurrencyManager instance;
 
     [SerializeField] int coins;
+    public int LevelCollectedcoins;
 
     void Awake()
     {
         RunSingelton();      
         LoadCurrencyData();
     }
+    private void Start()
+    {
 
+    }
     void RunSingelton()
     {
         if (instance != null && instance != this)
@@ -41,16 +45,13 @@ public class CurrencyManager : MonoBehaviour
 
     public void IncreaseCoins(int amountToIncrease)
     {
-      coins += amountToIncrease;
-       
+        coins += amountToIncrease;
     }
 
     public void DecreaseCoins(int amountToDecrease)
     {
-        coins -= amountToDecrease;
-       
+        coins -= amountToDecrease;    
     }
-
     public void SaveCurrencyData()
     {
         SaveSystem.SaveData(this);
@@ -69,8 +70,11 @@ public class CurrencyManager : MonoBehaviour
         SaveCurrencyData();
     }
 
-    
 
+    private void Update()
+    {
+        PlayerPrefs.SetInt("UpdatedCurrency", coins);
+    }
 
 
 }

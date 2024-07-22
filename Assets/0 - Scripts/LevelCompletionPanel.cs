@@ -9,16 +9,21 @@ public class LevelCompletionPanel : MonoBehaviour
     [SerializeField] GameObject[] otherPanels;
     [SerializeField] TextMeshProUGUI levelCompletedText;
     [SerializeField] TextMeshProUGUI totalKillsText;
+    [SerializeField] TextMeshProUGUI CollectedCoinsText;
     [SerializeField] string nextSceneToLoad;
+    CurrencyManager currencyManager;
 
 
 
-     KillsCounter killsCounter;
+    KillsCounter killsCounter;
  
 
     void Start()
     {
         killsCounter = FindObjectOfType<KillsCounter>();
+
+        //PlayerPrefs.SetInt("CollectedCurrency", PlayerPrefs.GetInt("UpdatedCurrency") - PlayerPrefs.GetInt("CurrencyeBeforeLevel"));
+        //print("Collected Coins aa:  " + PlayerPrefs.GetInt("CollectedCurrency"));
      }
     void Update()
     {
@@ -36,6 +41,8 @@ public class LevelCompletionPanel : MonoBehaviour
     {
         levelCompletedText.text = GameManager.GetInstance().GetActiveSceneName() + " Completed !";
         totalKillsText.text = "Total Kills:  " + killsCounter.GetCurrentSceneKills().ToString("0");
+        PlayerPrefs.SetInt("CollectedCurrency", PlayerPrefs.GetInt("UpdatedCurrency") - PlayerPrefs.GetInt("CurrencybeforePlay"));
+        CollectedCoinsText.text = "Collected Coins:  " + PlayerPrefs.GetInt("CollectedCurrency").ToString();
     }
 
     public void PressHomeButton()
