@@ -135,8 +135,14 @@ namespace CoppraGames
                     ResultIcon.sprite = rewards[actualRewardIndex].icon;
                     ResultCount.text = "x" + rewards[actualRewardIndex].count.ToString();
                 }
-
                 ResultPanel.GetComponent<Animator>().Play("clip");
+
+                //Pay Rewards
+                if (CurrencyManager.instance)
+                {
+                    CurrencyManager.instance.IncreaseCoins(rewards[actualRewardIndex].count);
+                    CurrencyManager.instance.SaveCurrencyData();
+                }
             }
             yield return new WaitForSeconds(3.3f);
             HideResult();

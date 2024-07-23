@@ -27,8 +27,8 @@ public class Banner : MonoBehaviour
         }
         else
         {
-            CreateBannerView();
-            LoadAd();
+            //CreateBannerView();
+            //LoadAd();  Created in Adsmanager Already
         } 
          
           
