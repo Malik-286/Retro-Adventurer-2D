@@ -71,6 +71,7 @@ public class PlayerHealth : MonoBehaviour
  
         if (this.currentHealth <= 0)
         {
+            currentHealth = 0;
             isAlive = false;
         }
     }

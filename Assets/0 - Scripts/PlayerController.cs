@@ -17,13 +17,21 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] Transform dustParticlesPosition;
     [SerializeField] GameObject dustParticlesPrefeb;
+    [SerializeField] GameObject safeZoneParticlesPrefeb;
 
 
     [Header("Bullet Variables")]
-    [SerializeField] GameObject bulletPrefeb;
+
+    [SerializeField] GameObject blueBulletPrefeb;
+    [SerializeField] GameObject yellowBulletPrefeb;
+
     [SerializeField] Transform bulletSpawnPoint;
     [SerializeField] AudioClip bulletShotAudio;
     [SerializeField] float bulletShotVolume;
+
+
+    [SerializeField] public bool isBlueBulletActive;
+    [SerializeField] public bool isYellowBulletActive;
 
 
 
@@ -38,19 +46,23 @@ public class PlayerController : MonoBehaviour
     SpriteRenderer spriteRenderer;
     Animator animator;
     float startingGravity;
-
+ 
     bool isAlive = true;
 
 
     AudioManager audioManager;
     void Start()
     {
+        isBlueBulletActive = false;
+        isYellowBulletActive = false;
 
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         playerFeetCollider = GetComponent<BoxCollider2D>();
         audioManager = FindObjectOfType<AudioManager>();
+ 
+        safeZoneParticlesPrefeb.SetActive(false);
 
         startingGravity = rb.gravityScale;
 
@@ -241,8 +253,32 @@ public class PlayerController : MonoBehaviour
     {
         if (isAlive)
         {
-            audioManager.PlaySingleShotAudio(bulletShotAudio, bulletShotVolume);
-            Instantiate(bulletPrefeb, bulletSpawnPoint.position, Quaternion.identity);
+            if(isBlueBulletActive == true || isYellowBulletActive == true)
+            {
+                audioManager.PlaySingleShotAudio(bulletShotAudio, bulletShotVolume);
+            }
+            else
+            {
+                return;
+            }
+             
+           
+            // instantiate blue bullet
+            if(isBlueBulletActive == true)
+            {
+                GameObject blueBulletClone = Instantiate(blueBulletPrefeb, bulletSpawnPoint.position, Quaternion.identity);
+                Destroy(blueBulletClone, 1f);
+                return;
+            }
+            else if (isYellowBulletActive == true)
+            {
+                // instantiate yellow bullet
+
+                GameObject yellowBulletClone = Instantiate(yellowBulletPrefeb, bulletSpawnPoint.position, Quaternion.identity);
+                Destroy(yellowBulletClone, 1f);
+                return;
+            }
+                 
 
         }
     }
@@ -342,6 +378,19 @@ public class PlayerController : MonoBehaviour
         GameObject dustParticlesClone = Instantiate(dustParticlesPrefeb, dustParticlesPosition.position, Quaternion.identity);
         Destroy(dustParticlesClone, 1f);
     }
+
+
+    public GameObject  GetSafeZoneParticlesPrefeb()
+    {
+        return safeZoneParticlesPrefeb;
+    }
+
+
+
+
+
+
+
 
 
 

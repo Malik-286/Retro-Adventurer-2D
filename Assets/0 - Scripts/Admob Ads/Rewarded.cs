@@ -25,7 +25,8 @@ public class Rewarded : MonoBehaviour
     {
          MobileAds.Initialize((InitializationStatus initStatus) =>  {});
          currencyManager = FindObjectOfType<CurrencyManager>();
-    }
+         LoadRewardedAd();
+     }
 
 
  #if UNITY_ANDROID

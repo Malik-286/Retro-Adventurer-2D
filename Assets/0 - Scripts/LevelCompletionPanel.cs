@@ -22,8 +22,8 @@ public class LevelCompletionPanel : MonoBehaviour
     {
         killsCounter = FindObjectOfType<KillsCounter>();
 
-        //PlayerPrefs.SetInt("CollectedCurrency", PlayerPrefs.GetInt("UpdatedCurrency") - PlayerPrefs.GetInt("CurrencyeBeforeLevel"));
-        //print("Collected Coins aa:  " + PlayerPrefs.GetInt("CollectedCurrency"));
+       // PlayerPrefs.SetInt("CollectedCurrency", PlayerPrefs.GetInt("UpdatedCurrency") - PlayerPrefs.GetInt("CurrencyeBeforeLevel"));
+       // print("Collected Coins aa:  " + PlayerPrefs.GetInt("CollectedCurrency"));
      }
     void Update()
     {

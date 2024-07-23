@@ -52,7 +52,7 @@ public class Bullet : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         CreateDestroyParticles();      
-         Destroy(gameObject, 0.1f);
+        Destroy(gameObject, 0.1f);
     }
 
     void CreateDestroyParticles()
