@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ScrollBarMovement : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class ScrollBarMovement : MonoBehaviour
     public float finalValue = 0;
     public int Value;
     public int MultiplyBy;
+
+    public TextMeshProUGUI[] IncreamentNumber;
 
     bool Delay = true;
 
@@ -40,7 +43,7 @@ public class ScrollBarMovement : MonoBehaviour
         scrollbar = GetComponent<Scrollbar>();
         MainAudioSource = AudioManager.Instance.audioSource;
         MainAudioSource.volume = 0.5f;
-        InvokeRepeating("PlayAudio", 1f, 1.1f);
+       // InvokeRepeating("PlayAudio", 1f, 1.1f);
         print("Collected Score in = " + PlayerPrefs.GetInt("CollectedCurrency"));
     }
     public void PlayAudio()
@@ -75,6 +78,12 @@ public class ScrollBarMovement : MonoBehaviour
             Value = Value * 5;
             RewardBtnAmount.text = Value.ToString();
             RewardBtnAIncreament.text = "Get 5X".ToString();
+            for (int i = 0; i < IncreamentNumber.Length; i++)
+            {
+                IncreamentNumber[i].fontSize = 35;
+            }
+            IncreamentNumber[0].fontSize = 50;
+
         }
         else if (scrollbar.value >= 0.21f && scrollbar.value <= 0.4f)
         {
@@ -83,12 +92,11 @@ public class ScrollBarMovement : MonoBehaviour
             Value = Value * 3;
             RewardBtnAmount.text = Value.ToString();
             RewardBtnAIncreament.text = "Get 3X".ToString();
-            //if (Delay == true)
-            //{
-            //    GetComponent<AudioSource>().PlayOneShot(Roller);
-            //    Delay = false;
-            //    Invoke(nameof(RemoveDelay),1.2f);
-            //}
+            for (int i = 0; i < IncreamentNumber.Length; i++)
+            {
+                IncreamentNumber[i].fontSize = 35;
+            }
+            IncreamentNumber[1].fontSize = 50;
         }
         else if (scrollbar.value >= 0.41f && scrollbar.value <= 0.59f)
         {
@@ -97,6 +105,11 @@ public class ScrollBarMovement : MonoBehaviour
             Value = Value * 2;
             RewardBtnAmount.text = Value.ToString();
             RewardBtnAIncreament.text = "Get 2X".ToString();
+            for (int i = 0; i < IncreamentNumber.Length; i++)
+            {
+                IncreamentNumber[i].fontSize = 35;
+            }
+            IncreamentNumber[2].fontSize = 50;
         }
         else if (scrollbar.value >= 0.6f && scrollbar.value <= 0.8f)
         {
@@ -106,6 +119,11 @@ public class ScrollBarMovement : MonoBehaviour
             Value = Value * 3;
             RewardBtnAmount.text = Value.ToString();
             RewardBtnAIncreament.text = "Get 3X".ToString();
+            for (int i = 0; i < IncreamentNumber.Length; i++)
+            {
+                IncreamentNumber[i].fontSize = 35;
+            }
+            IncreamentNumber[3].fontSize = 50;
         }
         else if (scrollbar.value >= 0.81f && scrollbar.value <= 1f)
         {
@@ -115,7 +133,17 @@ public class ScrollBarMovement : MonoBehaviour
             Value = Value * 5;
             RewardBtnAmount.text = Value.ToString();
             RewardBtnAIncreament.text = "Get 5X".ToString();
+            for (int i = 0; i < IncreamentNumber.Length; i++)
+            {
+                IncreamentNumber[i].fontSize = 35;
+            }
+            IncreamentNumber[4].fontSize = 50;
+            //if (Delay == true)
+            //{
+            //    GetComponent<AudioSource>().PlayOneShot(Roller);
+            //    Delay = false;
+            //    Invoke(nameof(RemoveDelay), 1.5f);
+            //}
         }
-        Debug.Log(finalValue);
     }
 }

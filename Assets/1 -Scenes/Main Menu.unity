@@ -1714,6 +1714,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 328797264}
+  - component: {fileID: 328797265}
   m_Layer: 0
   m_Name: AdsManager
   m_TagString: Untagged
@@ -1739,6 +1740,21 @@ Transform:
   - {fileID: 148734987312212638}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &328797265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328797263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 067269843c325f94fa4d83f06f2c939b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Banner: {fileID: 2737321488214031208}
+  Interstitial: {fileID: 3890948375954406804}
+  Rewarded: {fileID: 8989017959052784465}
 --- !u!1 &332702102
 GameObject:
   m_ObjectHideFlags: 0

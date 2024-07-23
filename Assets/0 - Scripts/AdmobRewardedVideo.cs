@@ -7,7 +7,6 @@ public class AdmobRewardedVideo : MonoBehaviour
     public static AdmobRewardedVideo Instance;
     public int Index = 0;
 
-    CurrencyManager currencyManager;
 
     private void Awake()
     {
@@ -17,27 +16,39 @@ public class AdmobRewardedVideo : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        //currencyManager = FindObjectOfType("")
+    }
+
+
     #region Give Reward
 
     public void RewardAfterAd()
     {
         if (Index == 0)
         {
-            currencyManager.GetInstance().IncreaseCoins(200);
-            currencyManager.SaveCurrencyData();
+            if (CurrencyManager.instance)
+            {
+                CurrencyManager.instance.IncreaseCoins(200);
+                CurrencyManager.instance.SaveCurrencyData();
+            }
         }
-        if(Index == 1)
+        if (Index == 1)
         {
-            currencyManager.GetInstance().IncreaseCoins(PlayerPrefs.GetInt("CollectedCurrency"));
-            currencyManager.SaveCurrencyData();
+            if (CurrencyManager.instance)
+            {
+                CurrencyManager.instance.IncreaseCoins(ScrollBarMovement.Instance.Value);
+                print("Awarded Coins are: " + ScrollBarMovement.Instance.Value);
+            }
         }
     }
     #endregion
 
     public void ShowRewardedVideo()
     {
-        if(Rewarded.Instance)
-        Rewarded.Instance.ShowRewardedAd();
+        if(Adsmanager.Instance)
+        Adsmanager.Instance.ShowRewardedVideoAd();
     }
 
 }

@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class CurrencyManager : MonoBehaviour
 {  
-     CurrencyManager instance;
+     
+    public static CurrencyManager instance;
 
     [SerializeField] int coins;
     public int LevelCollectedcoins;
 
     void Awake()
-    {
+    { 
         RunSingelton();      
         LoadCurrencyData();
     }

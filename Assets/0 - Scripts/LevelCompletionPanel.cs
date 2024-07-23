@@ -42,7 +42,7 @@ public class LevelCompletionPanel : MonoBehaviour
         levelCompletedText.text = GameManager.GetInstance().GetActiveSceneName() + " Completed !";
         totalKillsText.text = "Total Kills:  " + killsCounter.GetCurrentSceneKills().ToString("0");
         PlayerPrefs.SetInt("CollectedCurrency", PlayerPrefs.GetInt("UpdatedCurrency") - PlayerPrefs.GetInt("CurrencybeforePlay"));
-        CollectedCoinsText.text = "Collected Coins:  " + PlayerPrefs.GetInt("CollectedCurrency").ToString();
+        CollectedCoinsText.text = "Collected Coins:  " + PlayerPrefs.GetInt("CollectedCurrency").ToString("0");
     }
 
     public void PressHomeButton()
