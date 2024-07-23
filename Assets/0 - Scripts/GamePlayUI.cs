@@ -20,13 +20,11 @@ public class GamePlayUI : MonoBehaviour
     public GameObject timeEndPanel;
     TimerPanel timerPanel;
 
-    CurrencyManager currencyManager;
-    KillsCounter killsCounter;
+     KillsCounter killsCounter;
      
      void Start()
     {
-        currencyManager = FindObjectOfType<CurrencyManager>();
-         killsCounter = FindObjectOfType<KillsCounter>();
+          killsCounter = FindObjectOfType<KillsCounter>();
         pausePanel.SetActive(false);
         deathPanel.SetActive(false);
         timeEndPanel.SetActive(false);
@@ -73,15 +71,15 @@ public class GamePlayUI : MonoBehaviour
 
     void UpdateCurrencyText()
     {
-        if (currencyManager.GetInstance() != null)
+        if (CurrencyManager.instance)
         {
-            coinsText.text = currencyManager.GetCurrentCoins().ToString();
+            coinsText.text = CurrencyManager.instance.GetCurrentCoins().ToString();
         }
     }
 
     void UpdateLevelNoText()
     {
-        if (GameManager.GetInstance() != null)
+        if (GameManager.GetInstance())
         {
             levelNoText.text = GameManager.GetInstance().GetActiveSceneName();
         }
@@ -102,7 +100,7 @@ public class GamePlayUI : MonoBehaviour
         pausePanel.SetActive(true);
         Time.timeScale = 0f;
 
-        if (AudioManager.GetInstance() != null)
+        if (AudioManager.GetInstance())
         {
             AudioManager.GetInstance().PlayTouchSoundEffect();
         }            

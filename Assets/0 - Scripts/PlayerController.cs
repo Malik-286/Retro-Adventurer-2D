@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
  
 public class PlayerController : MonoBehaviour
@@ -50,8 +48,7 @@ public class PlayerController : MonoBehaviour
     bool isAlive = true;
 
 
-    AudioManager audioManager;
-    void Start()
+     void Start()
     {
         isBlueBulletActive = false;
         isYellowBulletActive = false;
@@ -60,8 +57,7 @@ public class PlayerController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         playerFeetCollider = GetComponent<BoxCollider2D>();
-        audioManager = FindObjectOfType<AudioManager>();
- 
+  
         safeZoneParticlesPrefeb.SetActive(false);
 
         startingGravity = rb.gravityScale;
@@ -235,9 +231,9 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             animator.SetBool("isJumping", true);
             CreateDustParticles();
-            if (audioManager != null)
+            if (AudioManager.GetInstance())
             {
-                audioManager.PlaySingleShotAudio(jumpSoundEffect, 1.0f);
+                AudioManager.GetInstance().PlaySingleShotAudio(jumpSoundEffect, 1.0f);
             }
 
         }
@@ -255,7 +251,11 @@ public class PlayerController : MonoBehaviour
         {
             if(isBlueBulletActive == true || isYellowBulletActive == true)
             {
-                audioManager.PlaySingleShotAudio(bulletShotAudio, bulletShotVolume);
+                if(AudioManager.GetInstance())
+                {
+                    AudioManager.GetInstance().PlaySingleShotAudio(bulletShotAudio, bulletShotVolume);
+
+                }
             }
             else
             {
@@ -298,9 +298,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-           // animator.SetBool("isClimbing", false);
-         //   animator.SetBool("isJumping", false);
-
+    
             rb.gravityScale = startingGravity;
             playerFeetCollider.isTrigger = false;
 

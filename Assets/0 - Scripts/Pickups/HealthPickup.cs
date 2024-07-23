@@ -7,16 +7,14 @@ public class HealthPickup : MonoBehaviour
 
 
     PlayerHealth playerHealth;
-    AudioManager audioManager;
-
-    [SerializeField] AudioClip healthPickupSound;
  
+    [SerializeField] AudioClip healthPickupSound;
+
 
     void Start()
     {
         playerHealth = FindObjectOfType<PlayerHealth>();
-        audioManager = FindObjectOfType<AudioManager>();
-
+ 
     }
 
 
@@ -30,9 +28,9 @@ public class HealthPickup : MonoBehaviour
             
             playerHealth.IncreaseHealth(25);
  
-            if (audioManager != null)
+            if (AudioManager.GetInstance())
             {
-                audioManager.PlaySingleShotAudio(healthPickupSound, 1.0f);
+                AudioManager.GetInstance().PlaySingleShotAudio(healthPickupSound, 1.0f);
 
             }
              Destroy(gameObject, 0.2f);

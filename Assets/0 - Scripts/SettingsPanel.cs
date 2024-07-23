@@ -12,21 +12,22 @@ public class SettingsPanel : MonoBehaviour
     [SerializeField] AudioClip gamePlayAudio;
     [SerializeField] TextMeshProUGUI versionText;
 
-      void Start()
+    void Start()
     {
         versionText.text = Application.version;
     }
     public void AdjustMusicSettings()
     {
-        if (AudioManager.GetInstance() != null)
+         
+        if (AudioManager.GetInstance())
         {
             if (musicSwitch.value > 0)
             {
-                AudioManager.GetInstance().GetComponent<AudioSource>().mute = false;
+                AudioManager.GetInstance().GetComponent<AudioSource>().mute = true;
             }
             else if (musicSwitch.value <= 0)
             {
-                AudioManager.GetInstance().GetComponent<AudioSource>().mute = true;
+                AudioManager.GetInstance().GetComponent<AudioSource>().mute = false;
             }
         }
 
@@ -34,15 +35,16 @@ public class SettingsPanel : MonoBehaviour
 
     public void AdjustSoundSettings()
     {
-        if(AudioManager.GetInstance() != null)
+      
+        if (AudioManager.GetInstance())
         {
             if(soundSwitch.value > 0)
             {
-                AudioManager.GetInstance().bTouchSoundEnable = true;
+                AudioManager.GetInstance().bTouchSoundEnable = false;
             }
             else if (soundSwitch.value <= 0)
             {
-                AudioManager.GetInstance().bTouchSoundEnable = false;
+                AudioManager.GetInstance().bTouchSoundEnable = true;
             }
         }
     }

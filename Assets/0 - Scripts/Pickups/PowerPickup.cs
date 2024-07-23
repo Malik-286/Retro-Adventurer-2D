@@ -8,16 +8,14 @@ public class PowerPickup : MonoBehaviour
 
     [SerializeField] AudioClip powerPickupSound;
  
-    AudioManager audioManager;
-
+ 
     PlayerController playerController;
 
      
 
     void Start()
     {
-         audioManager = FindObjectOfType<AudioManager>();
-         playerController = FindObjectOfType<PlayerController>();
+          playerController = FindObjectOfType<PlayerController>();
     }
 
 
@@ -25,9 +23,9 @@ public class PowerPickup : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-              if (audioManager != null)
+              if (AudioManager.GetInstance())
             {
-                audioManager.PlaySingleShotAudio(powerPickupSound, 0.8f);
+                AudioManager.GetInstance().PlaySingleShotAudio(powerPickupSound, 0.8f);
                  
             }
 

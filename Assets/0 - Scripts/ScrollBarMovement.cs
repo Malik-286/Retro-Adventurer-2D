@@ -41,7 +41,7 @@ public class ScrollBarMovement : MonoBehaviour
     {
         Value = PlayerPrefs.GetInt("CollectedCurrency");
         scrollbar = GetComponent<Scrollbar>();
-        MainAudioSource = AudioManager.Instance.audioSource;
+        MainAudioSource = AudioManager.GetInstance().audioSource;
         MainAudioSource.volume = 0.5f;
        // InvokeRepeating("PlayAudio", 1f, 1.1f);
         print("Collected Score in = " + PlayerPrefs.GetInt("CollectedCurrency"));
