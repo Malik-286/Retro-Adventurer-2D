@@ -37591,6 +37591,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1774143790802022187, guid: 464a30ee11d342f4fb3ef842a84d291f, type: 3}
+      propertyPath: levelCompletionPanel
+      value: 
+      objectReference: {fileID: 7948854251430965112}
+    - target: {fileID: 1774143790802022187, guid: 464a30ee11d342f4fb3ef842a84d291f, type: 3}
       propertyPath: enemiesToDestroy.Array.data[0]
       value: 
       objectReference: {fileID: 1606486806}
@@ -37608,7 +37612,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7701002030881481536, guid: 464a30ee11d342f4fb3ef842a84d291f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7706320519840064558, guid: 464a30ee11d342f4fb3ef842a84d291f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -38174,6 +38178,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 133e3a891c1841b47a117e67c78daa50, type: 3}
+--- !u!1 &7948854251430965112 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6428664755294076588, guid: 133e3a891c1841b47a117e67c78daa50, type: 3}
+  m_PrefabInstance: {fileID: 7948854251430965111}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &8076780299053012843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38222,7 +38231,7 @@ Transform:
   m_GameObject: {fileID: 6239359418246127478}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -41.566597, y: -11.686107, z: -5.7595396}
+  m_LocalPosition: {x: -40.883232, y: -11.684844, z: -5.7595396}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
