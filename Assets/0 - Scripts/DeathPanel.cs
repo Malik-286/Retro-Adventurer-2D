@@ -9,8 +9,7 @@ public class DeathPanel : MonoBehaviour
 {
 
 
-    CurrencyManager currencyManager;
-    PlayerHealth playerHealth;
+     PlayerHealth playerHealth;
     HealthPanel healthPanel;
  
 
@@ -24,11 +23,11 @@ public class DeathPanel : MonoBehaviour
 
     void Start()
     {
-         currencyManager = FindObjectOfType<CurrencyManager>();
+      
         playerHealth = FindObjectOfType<PlayerHealth>();
         healthPanel = FindObjectOfType<HealthPanel>();
-   
-     }
+
+    }
 
     public void PressHomeButton()
     {
@@ -51,12 +50,12 @@ public class DeathPanel : MonoBehaviour
         {
             AudioManager.GetInstance().PlayTouchSoundEffect();
         }
-        if (currencyManager != null)
+        if (CurrencyManager.instance)
         {
-            if(currencyManager.GetCurrentCoins() >= 100 && playerHealth != null)
+            if(CurrencyManager.instance.GetCurrentCoins() >= 100 && playerHealth != null)
             {
-                currencyManager.DecreaseCoins(100);
-                currencyManager.SaveCurrencyData();
+                CurrencyManager.instance.DecreaseCoins(100);
+                CurrencyManager.instance.SaveCurrencyData();
                 playerHealth.IncreaseHealth(25);
                 playerHealth.isAlive = true;
                 UpdateHealthIcon();
@@ -66,7 +65,7 @@ public class DeathPanel : MonoBehaviour
                 playerHealth.EnableAndDisablePlayerHealthComponent();
 
             }
-            else if(currencyManager.GetCurrentCoins() < 100 && playerHealth != null)
+            else if(CurrencyManager.instance.GetCurrentCoins() < 100 && playerHealth != null)
             {
                 playerHealth.EnableAndDisablePlayerHealthComponent();
                 deathHeadingText.text = " Not enough Coins ! ";
