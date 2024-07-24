@@ -9,19 +9,15 @@ public class AdmobRewardedVideo : MonoBehaviour
     public int Index = 0;
 
 
-    private void Awake()
+    void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
         {
             Instance = this;
         }
     }
 
-    private void Start()
-    {
-        //currencyManager = FindObjectOfType("")
-    }
-
+  
 
     #region Give Reward
 
@@ -29,14 +25,24 @@ public class AdmobRewardedVideo : MonoBehaviour
     {
         print("Reward Adding up");
 
+        /* 
+
         if (Index == 0)
         {
             if (CurrencyManager.instance)
             {
+<<<<<<< Updated upstream
                 CurrencyManager.instance.IncreaseCoins(PlayerPrefs.GetInt("CollectedCurrency") * 2);
                 print(PlayerPrefs.GetInt("CollectedCurrency") + " Collected coins Value");
+=======
+
+                //   CurrencyManager.instance.IncreaseCoins(200);
+                CurrencyManager.instance.IncreaseCoins(PlayerPrefs.GetInt("CollectedCurrency") * 2);
+
+>>>>>>> Stashed changes
                 CurrencyManager.instance.SaveCurrencyData();
             }
+
         }
         if (Index == 1)
         {
@@ -56,6 +62,7 @@ public class AdmobRewardedVideo : MonoBehaviour
                 Invoke(nameof(EnableAgaino), 10f);
             }
         }
+        */
     }
     #endregion
 
@@ -67,7 +74,10 @@ public class AdmobRewardedVideo : MonoBehaviour
     public void ShowRewardedVideo()
     {
         if(Adsmanager.Instance)
-        Adsmanager.Instance.ShowRewardedVideoAd();
+        {
+             Adsmanager.Instance.ShowRewardedVideoAd();
+        }
+        
     }
 
 }

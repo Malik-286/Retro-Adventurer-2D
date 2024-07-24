@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,8 +10,9 @@ public class DeathPanel : MonoBehaviour
 {
 
 
-     PlayerHealth playerHealth;
+    PlayerHealth playerHealth;
     HealthPanel healthPanel;
+    PlayerController playerController;
  
 
     [SerializeField] TextMeshProUGUI deathHeadingText;
@@ -26,6 +28,7 @@ public class DeathPanel : MonoBehaviour
       
         playerHealth = FindObjectOfType<PlayerHealth>();
         healthPanel = FindObjectOfType<HealthPanel>();
+        playerController = FindObjectOfType<PlayerController>();
 
     }
 
@@ -44,8 +47,9 @@ public class DeathPanel : MonoBehaviour
 
     public void PressContinueButton()
     {
-   
+        playerController.GetComponent<Animator>().Rebind();
         Time.timeScale = 1.0f;
+
         if (AudioManager.GetInstance() != null)
         {
             AudioManager.GetInstance().PlayTouchSoundEffect();

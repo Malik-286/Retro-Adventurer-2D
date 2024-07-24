@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     BoxCollider2D playerFeetCollider;
     SpriteRenderer spriteRenderer;
-    Animator animator;
+    public Animator animator;
     float startingGravity;
  
     bool isAlive = true;

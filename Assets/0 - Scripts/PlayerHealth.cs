@@ -18,16 +18,20 @@ public class PlayerHealth : MonoBehaviour
 
  
 
-     SpriteRenderer spriteRenderer;
+    SpriteRenderer spriteRenderer;
     GameManager gameManager;
     TimerPanel timerPanel;
     public GameObject deathPanel;
     public GameObject detailsPanel;
     ScreenShake screenShake;
+
+
+    bool isGamePaused = false;
+
     void Start()
     {
         currentHealth = maxHealth;
-         spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         defaultColor = spriteRenderer.color;
         gameManager = FindObjectOfType<GameManager>();
         timerPanel = FindObjectOfType<TimerPanel>();
@@ -78,21 +82,21 @@ public class PlayerHealth : MonoBehaviour
     {
         if (!isAlive)
         {
-             
-          //  deathPanel.SetActive(true);
-
-             deathPanel.GetComponent<Dialog>().ShowDialog();
-            //  Time.timeScale = 0;
-            Invoke(nameof(PauseGame), 1.0f);
-
+           
+              deathPanel.GetComponent<Dialog>().ShowDialog();
+            
+              Invoke(nameof(PauseGame), 1.0f);
+ 
             if (deathPanel.activeInHierarchy)
             {  
                 detailsPanel.SetActive(false);  
                 return;
             }
             detailsPanel.SetActive(true);
-
+ 
             Time.timeScale = 1;
+             
+
             gameManager.ReloadGame();
             timerPanel.RestTime();
             Destroy(gameObject, 1f);
@@ -142,10 +146,17 @@ public class PlayerHealth : MonoBehaviour
         StartCoroutine(EnableAndDisablePlayerHealth());
     }
 
+
     void PauseGame()
     {
-        Time.timeScale = 0;
+        if (isGamePaused == false)
+        {
+            Time.timeScale = 0;
+            isGamePaused = true;
+        }
+
     }
 
+   
 
 }
