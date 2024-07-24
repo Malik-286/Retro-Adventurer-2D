@@ -1,3 +1,4 @@
+using hardartcore.CasualGUI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,8 +18,7 @@ public class PlayerHealth : MonoBehaviour
 
  
 
-    AudioManager audioManager;
-    SpriteRenderer spriteRenderer;
+     SpriteRenderer spriteRenderer;
     GameManager gameManager;
     TimerPanel timerPanel;
     public GameObject deathPanel;
@@ -27,8 +27,7 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
-        audioManager = FindObjectOfType<AudioManager>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+         spriteRenderer = GetComponent<SpriteRenderer>();
         defaultColor = spriteRenderer.color;
         gameManager = FindObjectOfType<GameManager>();
         timerPanel = FindObjectOfType<TimerPanel>();
@@ -79,8 +78,13 @@ public class PlayerHealth : MonoBehaviour
     {
         if (!isAlive)
         {
-            Time.timeScale = 0;
-            deathPanel.SetActive(true);
+             
+          //  deathPanel.SetActive(true);
+
+             deathPanel.GetComponent<Dialog>().ShowDialog();
+            //  Time.timeScale = 0;
+            Invoke(nameof(PauseGame), 1.0f);
+
             if (deathPanel.activeInHierarchy)
             {  
                 detailsPanel.SetActive(false);  
@@ -110,7 +114,7 @@ public class PlayerHealth : MonoBehaviour
             DecreaseHealth(25);
             spriteRenderer.color = Color.red;
             StartCoroutine(ResetPlayerColor());
-            audioManager.PlaySingleShotAudio(losehealthSound, 0.7f);
+            AudioManager.GetInstance().PlaySingleShotAudio(losehealthSound, 0.7f);
         }
     }
 
@@ -136,6 +140,11 @@ public class PlayerHealth : MonoBehaviour
     public void EnableAndDisablePlayerHealthComponent()
     {
         StartCoroutine(EnableAndDisablePlayerHealth());
+    }
+
+    void PauseGame()
+    {
+        Time.timeScale = 0;
     }
 
 
