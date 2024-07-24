@@ -7722,6 +7722,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1731023310}
   m_CullTransparentMesh: 0
+--- !u!1 &1779880087
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1779880088}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1779880088
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1779880087}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.309274, y: -2.7804008, z: -0.45036995}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1787890436
 GameObject:
   m_ObjectHideFlags: 0
@@ -23490,6 +23521,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Icon: {fileID: 8754789523439064588}
   CountText: {fileID: 8754789522899335796}
+  RewardAmount: 0
 --- !u!1 &8754789522250684149
 GameObject:
   m_ObjectHideFlags: 0
@@ -23631,6 +23663,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Icon: {fileID: 8754789523724082116}
   CountText: {fileID: 8754789522951503554}
+  RewardAmount: 0
 --- !u!224 &8754789522265722384
 RectTransform:
   m_ObjectHideFlags: 0
@@ -24284,6 +24317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Icon: {fileID: 8754789523034531712}
   CountText: {fileID: 8754789523511507371}
+  RewardAmount: 0
 --- !u!224 &8754789522461340104
 RectTransform:
   m_ObjectHideFlags: 0
@@ -24975,6 +25009,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Icon: {fileID: 8754789523719255779}
   CountText: {fileID: 8754789522423882783}
+  RewardAmount: 0
 --- !u!224 &8754789522733911795
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25365,6 +25400,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Icon: {fileID: 8754789522797637115}
   CountText: {fileID: 8754789523584660762}
+  RewardAmount: 0
 --- !u!224 &8754789522805372723
 RectTransform:
   m_ObjectHideFlags: 0
@@ -26301,6 +26337,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Icon: {fileID: 8754789523602795086}
   CountText: {fileID: 8754789522628362225}
+  RewardAmount: 0
 --- !u!224 &8754789523023536257
 RectTransform:
   m_ObjectHideFlags: 0
@@ -26722,6 +26759,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Icon: {fileID: 8754789523757801564}
   CountText: {fileID: 8754789522998265402}
+  RewardAmount: 0
 --- !u!224 &8754789523079436668
 RectTransform:
   m_ObjectHideFlags: 0
@@ -27316,6 +27354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Icon: {fileID: 8754789524177895925}
   CountText: {fileID: 8754789523036150613}
+  RewardAmount: 0
 --- !u!224 &8754789523305952769
 RectTransform:
   m_ObjectHideFlags: 0
@@ -27645,6 +27684,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Icon: {fileID: 8754789524089603825}
   CountText: {fileID: 8754789522826234773}
+  RewardAmount: 0
 --- !u!224 &8754789523403671792
 RectTransform:
   m_ObjectHideFlags: 0
@@ -29119,6 +29159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Icon: {fileID: 8754789522868398984}
   CountText: {fileID: 8754789523118813591}
+  RewardAmount: 0
 --- !u!224 &8754789523811038901
 RectTransform:
   m_ObjectHideFlags: 0
@@ -31482,3 +31523,4 @@ SceneRoots:
   - {fileID: 3747360354509131046}
   - {fileID: 766488189}
   - {fileID: 328797264}
+  - {fileID: 1779880088}
