@@ -10,11 +10,12 @@ namespace CoppraGames
     {
         public Image Icon;
         public TextMeshProUGUI CountText;
+        public int RewardAmount;
 
         public void SetData(SpinWheelController.RewardItem reward)
         {
             this.Icon.sprite = reward.icon;
-            this.CountText.text = reward.count.ToString();
+            this.CountText.text = RewardAmount.ToString();
         }
 
     }

@@ -8,6 +8,9 @@ namespace CoppraGames
 {
     public class SpinWheelController : MonoBehaviour
     {
+
+        public static SpinWheelController Instance;
+
         [System.Serializable]
         public class RewardItem
         {
@@ -37,6 +40,12 @@ namespace CoppraGames
 
         private void Awake()
         {
+
+            if(Instance == null)
+            {
+                Instance = this;
+            }
+
             HideResult();
         }
 
@@ -106,15 +115,16 @@ namespace CoppraGames
         public void ApplyValues()
         {
             int index = 0;
-            foreach (var r in rewards)
-            {
-                if (rewardItemComponents.Length > index)
-                {
-                    rewardItemComponents[index].SetData(r);
-                }
+            //foreach (var r in rewards)
+            //{
+            //    if (rewardItemComponents.Length > index)
+            //    {
+            //        rewardItemComponents[index].SetData(r);
+            //    }
 
-                index++;
-            }
+            //    index++;
+            //}
+
         }
 
         public void ShowResult(int resultIndex)
@@ -133,7 +143,7 @@ namespace CoppraGames
                 if (rewards.Length > actualRewardIndex)
                 {
                     ResultIcon.sprite = rewards[actualRewardIndex].icon;
-                    ResultCount.text = "x" + rewards[actualRewardIndex].count.ToString();
+                    ResultCount.text = "+" + rewards[actualRewardIndex].count.ToString();
                 }
                 ResultPanel.GetComponent<Animator>().Play("clip");
 

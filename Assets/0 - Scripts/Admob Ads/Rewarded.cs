@@ -76,6 +76,13 @@ public class Rewarded : MonoBehaviour
             {
                 //currencyManager.GetInstance().IncreaseCoins(200);
                 //currencyManager.SaveCurrencyData();
+
+                //Add Up reward.
+                if (AdmobRewardedVideo.Instance)
+                {
+                    AdmobRewardedVideo.Instance.RewardAfterAd();
+                }
+
                 RegisterEventHandlers(_rewardedAd);
                 RegisterReloadHandler(_rewardedAd);
 
