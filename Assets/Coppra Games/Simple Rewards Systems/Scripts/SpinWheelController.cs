@@ -130,7 +130,7 @@ namespace CoppraGames
         public void ShowResult(int resultIndex)
         {
             StartCoroutine(_ShowResult(resultIndex));
-            SoundController.instance.PlaySoundEffect("spin_win", false, 1);
+          //  SoundController.instance.PlaySoundEffect("spin_win", false, 1);
         }
 
         private IEnumerator _ShowResult(int resultIndex)

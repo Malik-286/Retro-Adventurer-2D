@@ -1,4 +1,3 @@
-//using GoogleMobileAds.Api;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
@@ -33,8 +32,7 @@ public class AdmobRewardedVideo : MonoBehaviour
             {
                 CurrencyManager.instance.IncreaseCoins(PlayerPrefs.GetInt("CollectedCurrency") * 2);
                 print(PlayerPrefs.GetInt("CollectedCurrency") + " Collected coins Value");
->>>>>>> Stashed changes
-                CurrencyManager.instance.SaveCurrencyData();
+                 CurrencyManager.instance.SaveCurrencyData();
             }
 
         }
