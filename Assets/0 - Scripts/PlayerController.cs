@@ -382,15 +382,4 @@ public class PlayerController : MonoBehaviour
     {
         return safeZoneParticlesPrefeb;
     }
-
-
-
-
-
-
-
-
-
-
-
 }

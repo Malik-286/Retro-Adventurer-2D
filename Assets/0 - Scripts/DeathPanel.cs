@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class DeathPanel : MonoBehaviour
 {
-
+    public static DeathPanel Instance;
 
     PlayerHealth playerHealth;
     HealthPanel healthPanel;
@@ -20,12 +20,22 @@ public class DeathPanel : MonoBehaviour
     [SerializeField] GameObject detailsPanel;
 
 
-
+    private void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+    }
 
 
     void Start()
     {
-      
+        if (GamePlayUI.Instance)
+        {
+            GamePlayUI.Instance.Player.GetComponent<Animator>().SetBool("isRunning", false);
+            GamePlayUI.Instance.Player.GetComponent<Animator>().SetBool("isIdeling", true);
+        }
         playerHealth = FindObjectOfType<PlayerHealth>();
         healthPanel = FindObjectOfType<HealthPanel>();
         playerController = FindObjectOfType<PlayerController>();
@@ -56,25 +66,13 @@ public class DeathPanel : MonoBehaviour
         }
         if (CurrencyManager.instance)
         {
-            if(CurrencyManager.instance.GetCurrentCoins() >= 100 && playerHealth != null)
-            {
-                CurrencyManager.instance.DecreaseCoins(100);
-                CurrencyManager.instance.SaveCurrencyData();
-                playerHealth.IncreaseHealth(25);
-                playerHealth.isAlive = true;
-                UpdateHealthIcon();
-                this.gameObject.SetActive(false);
-                UiControlls.SetActive(true);
-                detailsPanel.SetActive(true);
-                playerHealth.EnableAndDisablePlayerHealthComponent();
-
-            }
-            else if(CurrencyManager.instance.GetCurrentCoins() < 100 && playerHealth != null)
-            {
-                playerHealth.EnableAndDisablePlayerHealthComponent();
-                deathHeadingText.text = " Not enough Coins ! ";
-
-            }
+            playerHealth.IncreaseHealth(25);
+            playerHealth.isAlive = true;
+            UpdateHealthIcon();
+            this.gameObject.SetActive(false);
+            UiControlls.SetActive(true);
+            detailsPanel.SetActive(true);
+            playerHealth.EnableAndDisablePlayerHealthComponent();
         }
  
     }

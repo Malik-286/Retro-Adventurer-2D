@@ -38101,6 +38101,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4830233852725350328, guid: 507a31d39de480b49b65995caeed1652, type: 3}
+      propertyPath: Index
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5851219006920454995, guid: 507a31d39de480b49b65995caeed1652, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -38181,11 +38185,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9220913114804374508, guid: 507a31d39de480b49b65995caeed1652, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7707649755703071999}
+    - target: {fileID: 9220913114804374508, guid: 507a31d39de480b49b65995caeed1652, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowRewardedVideo
+      objectReference: {fileID: 0}
+    - target: {fileID: 9220913114804374508, guid: 507a31d39de480b49b65995caeed1652, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: AdmobRewardedVideo, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 507a31d39de480b49b65995caeed1652, type: 3}
+--- !u!114 &7707649755703071999 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4830233852725350328, guid: 507a31d39de480b49b65995caeed1652, type: 3}
+  m_PrefabInstance: {fileID: 7707649755703071998}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bdbd7b3b2bfad548a6375811f31cc23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7796838130635815361 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5614841526102790273, guid: 98ae7c270fdf4914e9f79d5f4e620f8d, type: 3}
@@ -38410,7 +38437,7 @@ Transform:
   m_GameObject: {fileID: 6239359418246127478}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -40.88899, y: -11.68485, z: -5.7595396}
+  m_LocalPosition: {x: -41.566597, y: -11.686107, z: -5.7595396}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

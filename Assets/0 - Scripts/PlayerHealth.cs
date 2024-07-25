@@ -76,6 +76,9 @@ public class PlayerHealth : MonoBehaviour
         {
             currentHealth = 0;
             isAlive = false;
+            GetComponent<Animator>().SetBool("isRunning", false);
+            GetComponent<Animator>().SetBool("isJumping", false);
+            GetComponent<Animator>().SetBool("isIdeling", true);
         }
     }
     void FixedUpdate()

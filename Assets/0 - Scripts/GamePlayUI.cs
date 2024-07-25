@@ -6,15 +6,15 @@ using UnityEngine.UI;
 public class GamePlayUI : MonoBehaviour
 {
 
-
+    public static GamePlayUI Instance;
 
       [SerializeField] TextMeshProUGUI coinsText;
       [SerializeField] TextMeshProUGUI levelNoText;
       [SerializeField] TextMeshProUGUI killsCounterText;
       [SerializeField] GameObject uiControllsButtons;
       [SerializeField] Button pauseButton;
- 
 
+    public GameObject Player;
     public GameObject pausePanel;
     public GameObject deathPanel;
     public GameObject timeEndPanel;
