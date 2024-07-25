@@ -57,6 +57,7 @@ public class TimerPanel : MonoBehaviour
     public void ResetTime()
     {
         levelCompletionTime += 30;
+        isTimeCompleted = false;
         Time.timeScale = 1.0f;
         PlayerHealth playerHealth = FindObjectOfType<PlayerHealth>();
         playerHealth.enabled = true;

@@ -31,7 +31,6 @@ public class TimeEndPanel : MonoBehaviour
         }
         if (GameManager.GetInstance() != null)
         {
-            interstitial.LoadInterstitialAd();
             GameManager.GetInstance().LoadNextScene("Main Menu");
         }
     }
