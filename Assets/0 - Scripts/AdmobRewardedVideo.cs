@@ -64,7 +64,15 @@ public class AdmobRewardedVideo : MonoBehaviour
                 Invoke(nameof(EnableAgaino), 5f);
             }
         }
-
+        if (Index == 4)
+        {
+            if (TimerPanel.Instance)
+            {
+                TimerPanel.Instance.ResetTime();
+                print("Death Panel Admob Reward Generated");
+                this.gameObject.transform.parent.gameObject.SetActive(false);
+            }
+        }
     }
     #endregion
 

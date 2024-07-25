@@ -16,6 +16,11 @@ public class LevelSelection : MonoBehaviour
      
     public void LevelSelected(string levelSelected)
     {
+        if (Adsmanager.Instance)
+        {
+            Adsmanager.Instance.ShowIntersitial();
+        }
+
         if(loadingSlider != null)
         {
             loadingSlider.SetLevelToLoad(levelSelected);
@@ -23,5 +28,6 @@ public class LevelSelection : MonoBehaviour
             this.gameObject.SetActive(false);
  
         }
+
     }
 }

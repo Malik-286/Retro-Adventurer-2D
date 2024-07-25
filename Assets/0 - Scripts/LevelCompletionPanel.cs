@@ -61,6 +61,13 @@ public class LevelCompletionPanel : MonoBehaviour
 
     public void PressNextLevelButton()
     {
+        if (PlayerPrefs.GetInt("SelectedLevel") % 2 == 0)
+        {
+            if (Adsmanager.Instance)
+            {
+                Adsmanager.Instance.ShowIntersitial();
+            }
+        }
 
         if (AudioManager.GetInstance() != null)
         {
@@ -70,5 +77,7 @@ public class LevelCompletionPanel : MonoBehaviour
         {
              GameManager.GetInstance().LoadNextScene(nextSceneToLoad);
         }
+
+        PlayerPrefs.SetInt("SelectedLevel", PlayerPrefs.GetInt("SelectedLevel") + 1);
     }
 }

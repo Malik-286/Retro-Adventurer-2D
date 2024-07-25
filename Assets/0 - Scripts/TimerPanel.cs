@@ -6,6 +6,8 @@ using UnityEngine;
 public class TimerPanel : MonoBehaviour
 {
 
+    public static TimerPanel Instance;
+
     [SerializeField] TextMeshProUGUI timeText;
     [SerializeField] float levelCompletionTime;
     [SerializeField] float levelStartupTime;
@@ -14,7 +16,13 @@ public class TimerPanel : MonoBehaviour
 
     PlayerHealth playerHealth;
     public bool isTimeCompleted = false;
-
+    private void Awake()
+    {
+        if (Instance==null)
+        {
+            Instance = this;
+        }
+    }
     void Start()
     {
         levelStartupTime = levelCompletionTime;
@@ -46,5 +54,11 @@ public class TimerPanel : MonoBehaviour
         levelCompletionTime = levelStartupTime;
     }
 
-    
+    public void ResetTime()
+    {
+        levelCompletionTime += 30;
+        Time.timeScale = 1.0f;
+        PlayerHealth playerHealth = FindObjectOfType<PlayerHealth>();
+        playerHealth.enabled = true;
+    }
 }

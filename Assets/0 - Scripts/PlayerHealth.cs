@@ -88,7 +88,7 @@ public class PlayerHealth : MonoBehaviour
            
               deathPanel.GetComponent<Dialog>().ShowDialog();
             
-              Invoke(nameof(PauseGame), 1.0f);
+             // Invoke(nameof(PauseGame), 1.0f);
  
             if (deathPanel.activeInHierarchy)
             {  
