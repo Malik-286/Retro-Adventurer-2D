@@ -169,8 +169,8 @@ namespace CoppraGames
 
         public void OnTriggerNeedle()
         {
-            if (_isStarted)
-                SoundController.instance.PlaySoundEffect("spin_tuk", false, 1);
+          //  if (_isStarted)
+          //      SoundController.instance.PlaySoundEffect("spin_tuk", false, 1);
 
         }
 

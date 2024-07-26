@@ -76,19 +76,20 @@ public class PlayerHealth : MonoBehaviour
         {
             currentHealth = 0;
             isAlive = false;
-            GetComponent<Animator>().SetBool("isRunning", false);
-            GetComponent<Animator>().SetBool("isJumping", false);
-            GetComponent<Animator>().SetBool("isIdeling", true);
+
+            gameObject.GetComponent<Animator>().SetBool("isRunning", false);
+            gameObject.GetComponent<Animator>().SetBool("isJumping", false);
+            gameObject.GetComponent<Animator>().SetBool("isIdeling", true);
         }
     }
     void FixedUpdate()
     {
-        if (!isAlive)
+        if (isAlive == false)
         {
-           
-              deathPanel.GetComponent<Dialog>().ShowDialog();
-            
-             // Invoke(nameof(PauseGame), 1.0f);
+            gameObject.GetComponent<Animator>().SetBool("isDead", true);
+ 
+            deathPanel.GetComponent<Dialog>().ShowDialog();
+
  
             if (deathPanel.activeInHierarchy)
             {  
@@ -104,9 +105,14 @@ public class PlayerHealth : MonoBehaviour
             timerPanel.RestTime();
             Destroy(gameObject, 1f);
 
+        }else if (isAlive == true)
+        {
+            gameObject.GetComponent<Animator>().SetBool("isDead", false);
+
         }
     }
 
+  
    
 
 
@@ -150,16 +156,7 @@ public class PlayerHealth : MonoBehaviour
     }
 
 
-    void PauseGame()
-    {
-        if (isGamePaused == false)
-        {
-            Time.timeScale = 0;
-            isGamePaused = true;
-        }
-
-    }
-
+  
    
 
 }

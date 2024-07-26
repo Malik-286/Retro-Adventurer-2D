@@ -9,8 +9,7 @@ public class Coin : MonoBehaviour
     [SerializeField] AudioClip coinCollectionSound;
     [SerializeField] int amountToIncrease;
   
-    AudioManager audioManager;
-    CurrencyManager currencyManager;
+     CurrencyManager currencyManager;
     CurrencyPanelAnimation currencyPanelAnimation;
 
     [Header("Coin Move Animation")]
@@ -21,8 +20,7 @@ public class Coin : MonoBehaviour
       void Start()
     {
         moveCoin = false;
-        audioManager = FindObjectOfType<AudioManager>();
-        currencyManager = FindObjectOfType<CurrencyManager>();
+         currencyManager = FindObjectOfType<CurrencyManager>();
         currencyPanelAnimation = FindObjectOfType<CurrencyPanelAnimation>();
       }
    
@@ -35,9 +33,9 @@ public class Coin : MonoBehaviour
             currencyPanelAnimation.PlayCoinIconAnimation();
 
             gameObject.GetComponent<CircleCollider2D>().enabled = false;
-             if(audioManager != null)
+             if(AudioManager.GetInstance() != null)
             {
-                audioManager.PlaySingleShotAudio(coinCollectionSound, 0.8f);
+                AudioManager.GetInstance().PlaySingleShotAudio(coinCollectionSound, 0.8f);
                 if(currencyManager != null)
                 {
                      

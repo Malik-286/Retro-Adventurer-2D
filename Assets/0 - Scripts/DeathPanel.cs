@@ -31,14 +31,18 @@ public class DeathPanel : MonoBehaviour
 
     void Start()
     {
-        if (GamePlayUI.Instance)
-        {
-            GamePlayUI.Instance.Player.GetComponent<Animator>().SetBool("isRunning", false);
-            GamePlayUI.Instance.Player.GetComponent<Animator>().SetBool("isIdeling", true);
-        }
+        
+                 
         playerHealth = FindObjectOfType<PlayerHealth>();
         healthPanel = FindObjectOfType<HealthPanel>();
         playerController = FindObjectOfType<PlayerController>();
+
+
+        playerController.GetComponent<Animator>().SetBool("isRunning", false);
+        playerController.GetComponent<Animator>().SetBool("isClimbing", false); 
+        playerController.GetComponent<Animator>().SetBool("isJumping", false);
+
+        playerController.GetComponent<Animator>().SetBool("isIdeling", true);
 
     }
 
@@ -57,8 +61,7 @@ public class DeathPanel : MonoBehaviour
 
     public void PressContinueButton()
     {
-        playerController.GetComponent<Animator>().Rebind();
-        Time.timeScale = 1.0f;
+         Time.timeScale = 1.0f;
 
         if (AudioManager.GetInstance() != null)
         {
@@ -67,6 +70,11 @@ public class DeathPanel : MonoBehaviour
         if (CurrencyManager.instance)
         {
             playerHealth.IncreaseHealth(25);
+            
+            playerHealth.GetComponent<Animator>().SetBool("isDead", false);
+            playerHealth.GetComponent<Animator>().SetBool("isRunning", false);
+            playerHealth.GetComponent<Animator>().SetBool("isIdeling", true);
+
             playerHealth.isAlive = true;
             UpdateHealthIcon();
             this.gameObject.SetActive(false);

@@ -267,7 +267,7 @@ public class PlayerController : MonoBehaviour
             if(isBlueBulletActive == true)
             {
                 GameObject blueBulletClone = Instantiate(blueBulletPrefeb, bulletSpawnPoint.position, Quaternion.identity);
-                Destroy(blueBulletClone, 1f);
+                Destroy(blueBulletClone, 5f);
                 return;
             }
             else if (isYellowBulletActive == true)
@@ -334,16 +334,24 @@ public class PlayerController : MonoBehaviour
 
     public void PlayDeathAnimation()
     {
-        // Stop all the other animations
-        string[] states = { "isClimbing", "isIdeling", "isRunning", "isJumping", "isRolling" };
-
-        foreach (var state in states)
+        if(isAlive == false)
         {
-            animator.SetBool(state, false);
-        }
+            // Stop all the other animations
+            string[] states = { "isClimbing", "isIdeling", "isRunning", "isJumping", "isRolling" };
 
-        animator.SetTrigger("isDead");
-        isAlive = false;
+            foreach (var state in states)
+            {
+                animator.SetBool(state, false);
+            }
+
+            animator.SetBool("isDead", true);
+            isAlive = false;
+        }
+        else
+        {
+            return;
+        }
+         
     }
 
    
@@ -351,6 +359,7 @@ public class PlayerController : MonoBehaviour
 
     public void RollingMovement()
     {
+
         string[] states = { "isClimbing", "isIdeling", "isRunning", "isJumping", "isRolling" };
 
         foreach (var state in states)

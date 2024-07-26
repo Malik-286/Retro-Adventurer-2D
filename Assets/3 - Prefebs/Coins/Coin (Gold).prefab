@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 6098478392655574972}
   - component: {fileID: 8909436651778592248}
   - component: {fileID: 9210471600283824078}
-  - component: {fileID: 5957344121222651722}
-  - component: {fileID: 6365979090913757019}
+  - component: {fileID: 7514435499656974136}
   m_Layer: 14
   m_Name: Coin (Gold)
   m_TagString: Untagged
@@ -52,8 +51,6 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -97,7 +94,6 @@ CircleCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6078447265694947811}
   m_Enabled: 1
-  serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -121,33 +117,11 @@ CircleCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
+  m_UsedByComposite: 0
   m_Offset: {x: 0.003326416, y: 0}
+  serializedVersion: 2
   m_Radius: 0.28176117
---- !u!95 &5957344121222651722
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6078447265694947811}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b18090e70604fef4e8bf030df6dfb036, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6365979090913757019
+--- !u!114 &7514435499656974136
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -163,4 +137,4 @@ MonoBehaviour:
   amountToIncrease: 1
   moveCoin: 0
   moveSpeed: 0.01
-  moveTargetPosition: {fileID: 4947715507769486389, guid: 5f9f4f5863cae964488edea8325c1ac3, type: 3}
+  moveTargetPosition: {fileID: 0}

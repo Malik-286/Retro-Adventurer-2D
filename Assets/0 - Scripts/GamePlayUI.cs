@@ -14,6 +14,7 @@ public class GamePlayUI : MonoBehaviour
       [SerializeField] GameObject uiControllsButtons;
       [SerializeField] Button pauseButton;
 
+
     public GameObject Player;
     public GameObject pausePanel;
     public GameObject deathPanel;
@@ -21,14 +22,15 @@ public class GamePlayUI : MonoBehaviour
     TimerPanel timerPanel;
 
      KillsCounter killsCounter;
-     
-     void Start()
+ 
+    void Start()
     {
-          killsCounter = FindObjectOfType<KillsCounter>();
+        killsCounter = FindObjectOfType<KillsCounter>();
         pausePanel.SetActive(false);
         deathPanel.SetActive(false);
         timeEndPanel.SetActive(false);
-         timerPanel = FindObjectOfType<TimerPanel>();
+        timerPanel = FindObjectOfType<TimerPanel>();
+      
     }
 
     void Update()

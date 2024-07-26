@@ -1,28 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
     [SerializeField] float bulletSpeed = 20f;
     [SerializeField] GameObject bulletParticles;
-     PlayerController player;
+    PlayerController player;
     Rigidbody2D rb;
     SpriteRenderer spriteRenderer;
     float bulletDirection  = 1;
     bool isCreated = false;
 
 
-    AudioManager audioManager;
-
+ 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         player = FindObjectOfType<PlayerController>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        audioManager = FindObjectOfType<AudioManager>();
-        SetBulletDirection();
+         SetBulletDirection();
  
 
     }
@@ -52,7 +49,7 @@ public class Bullet : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         CreateDestroyParticles();      
-        Destroy(gameObject, 0.1f);
+        Destroy(gameObject, 0.3f);
     }
 
     void CreateDestroyParticles()

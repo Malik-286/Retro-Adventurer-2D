@@ -77,7 +77,11 @@ public class Interstitial : MonoBehaviour
         if (_interstitialAd != null && _interstitialAd.CanShowAd())
         {
             Debug.Log("Showing interstitial ad.");
-            _interstitialAd.Show();
+            if(_interstitialAd.CanShowAd())
+            {
+                _interstitialAd.Show();
+            }
+             
         }
         else
         {
