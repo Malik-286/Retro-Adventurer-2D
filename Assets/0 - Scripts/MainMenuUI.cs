@@ -31,6 +31,7 @@ public class MainMenuUI : MonoBehaviour
 
     CurrencyManager currencyManager;
     LevelUnLocker levelUnLocker;
+    [SerializeField] SwipeControllerUI swipeControllerUI;
  
     void Start()
     {
@@ -78,7 +79,33 @@ public class MainMenuUI : MonoBehaviour
         }
     }
 
- 
+    public void PlayNextButton()
+    {
+        if(swipeControllerUI != null)
+        {
+            swipeControllerUI.Next();
+            PlayTouchSoundEffect();
+        }
+        else
+        {
+            print("Swipe Controller not detected");
+        }
+         
+    }
+    public void PlayPreviousButton()
+    {
+        if (swipeControllerUI != null)
+        {
+            swipeControllerUI.Previous();
+            PlayTouchSoundEffect();
+        }
+        else
+        {
+            print("Swipe Controller not detected");
+        }
+    }
+
+
 
 }
 

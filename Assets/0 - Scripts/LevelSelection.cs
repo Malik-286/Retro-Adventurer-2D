@@ -8,7 +8,9 @@ public class LevelSelection : MonoBehaviour
 
     [SerializeField] LoadingSlider loadingSlider;
     [SerializeField] GameObject loadingPanel;
-    void Start()
+
+
+     void Start()
     {
         loadingPanel.SetActive(false);
     }
