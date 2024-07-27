@@ -7,6 +7,8 @@ public class AdmobRewardedVideo : MonoBehaviour
     public static AdmobRewardedVideo Instance;
     public int Index = 0;
 
+    DeathPanel deathPanel;
+
 
     void Awake()
     {
@@ -16,7 +18,12 @@ public class AdmobRewardedVideo : MonoBehaviour
         }
     }
 
-  
+    void Start()
+    {
+        deathPanel = FindObjectOfType<DeathPanel>();
+    }
+
+
 
     #region Give Reward
 
@@ -56,9 +63,9 @@ public class AdmobRewardedVideo : MonoBehaviour
         }
         if (Index == 3)
         {
-            if (DeathPanel.Instance)
+            if (deathPanel != null)
             {
-                DeathPanel.Instance.PressContinueButton();
+                deathPanel.PressContinueButton();
                 print("Death Panel Admob Reward Generated");
                 this.gameObject.GetComponent<Button>().interactable = false;
                 Invoke(nameof(EnableAgaino), 5f);

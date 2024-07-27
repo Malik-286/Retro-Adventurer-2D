@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class DeathPanel : MonoBehaviour
 {
-    public static DeathPanel Instance;
+   
 
     PlayerHealth playerHealth;
     HealthPanel healthPanel;
@@ -18,15 +18,6 @@ public class DeathPanel : MonoBehaviour
     [SerializeField] TextMeshProUGUI deathHeadingText;
     [SerializeField] GameObject UiControlls;
     [SerializeField] GameObject detailsPanel;
-
-
-    private void Awake()
-    {
-        if(Instance == null)
-        {
-            Instance = this;
-        }
-    }
 
 
     void Start()

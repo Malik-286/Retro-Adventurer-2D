@@ -595,6 +595,7 @@ GameObject:
   - component: {fileID: 809045650394588196}
   - component: {fileID: 9220913114804374508}
   - component: {fileID: 4830233852725350328}
+  - component: {fileID: 7103329839323023729}
   m_Layer: 5
   m_Name: Watchad Continue Btn
   m_TagString: Untagged
@@ -621,8 +622,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -19.088993, y: -11.0616}
-  m_SizeDelta: {x: 377.4832, y: 122.7957}
+  m_AnchoredPosition: {x: -31.888287, y: -8.661603}
+  m_SizeDelta: {x: 318.5643, y: 118.8905}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4915188637876756798
 CanvasRenderer:
@@ -744,6 +745,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Index: 3
+--- !u!95 &7103329839323023729
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3076501552605242165}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6759d701ad9e8674d930df3d12b93696, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3431077453521745673
 GameObject:
   m_ObjectHideFlags: 0
@@ -778,8 +800,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 79.7, y: 0}
-  m_SizeDelta: {x: 68.582, y: 59.601}
+  m_AnchoredPosition: {x: 69.9938, y: -2.9289}
+  m_SizeDelta: {x: 56.4942, y: 50.0016}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5684586418599999568
 CanvasRenderer:
@@ -1196,8 +1218,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 56.996, y: 0}
-  m_SizeDelta: {x: -113.99, y: 0}
+  m_AnchoredPosition: {x: 46.8376, y: -3.9052}
+  m_SizeDelta: {x: -134.3069, y: 7.8105}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5314486352990714513
 CanvasRenderer:
@@ -1254,8 +1276,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45
-  m_fontSizeBase: 45
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 6
