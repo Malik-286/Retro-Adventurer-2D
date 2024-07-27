@@ -20,52 +20,29 @@ public class DialogueBox : MonoBehaviour
     [SerializeField] float rotateSpeed = 1f;
 
 
-    int index;
+    [SerializeField] int index;
 
     void Awake()
     {
-       //  CheckAndShowDialogue();
     }
 
     void Start()
-    {
+    { 
         textComponent.text = string.Empty;
         continueButton.interactable = false;
         uiImage.enabled = false;
         lineToRotate.gameObject.SetActive(false);
 
         // Only start dialogue if the game object is active
-        if (gameObject.activeSelf)
-        {
-            StartDialogue();
-        }
-
-
+        StartDialogue();
     }
 
       void Update()
     {
         lineToRotate.gameObject.transform.Rotate(0, 0, rotateSpeed);
-
-    }
-
-    public void CheckAndShowDialogue()
-    { 
-        // Print PlayerPrefs for debugging
-        Debug.Log("DialogueBoxShown: " + PlayerPrefs.GetInt("DialogueBoxShown", -1));
-
-        // Check if the dialogue has been shown before
-        if (PlayerPrefs.GetInt("DialogueBoxShown", 0) == 1)
+        if(index == 3)
         {
-            // Dialogue box has been shown before, deactivate the game object
-            gameObject.SetActive(false);
-        }
-        else
-        {
-            // Dialogue box has not been shown before, show it and mark it as shown
-            gameObject.SetActive(true);
-            PlayerPrefs.SetInt("DialogueBoxShown", 1);
-            PlayerPrefs.Save(); // Ensure changes are saved
+            PlayerPrefs.SetInt("OneTime", 1);
         }
     }
 
@@ -128,7 +105,7 @@ public class DialogueBox : MonoBehaviour
         }
         else
         {
-            gameObject.SetActive(false);
+           gameObject.SetActive(false);
 
         }
     }

@@ -17,12 +17,23 @@ public class GamePlayUI : MonoBehaviour
 
     public GameObject Player;
     public GameObject pausePanel;
+    public GameObject TutotialPanel;
     public GameObject deathPanel;
     public GameObject timeEndPanel;
     TimerPanel timerPanel;
 
      KillsCounter killsCounter;
- 
+    private void Awake()
+    {
+        if (PlayerPrefs.GetInt("OneTime") == 0)
+        {
+            TutotialPanel.SetActive(true);
+        }
+        else
+        {
+            TutotialPanel.SetActive(false);
+        }
+    }
     void Start()
     {
         killsCounter = FindObjectOfType<KillsCounter>();
