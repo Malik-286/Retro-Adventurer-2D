@@ -78,6 +78,10 @@ public class Interstitial : MonoBehaviour
  
     public void ShowInterstitialAd()
     {
+        if (PlayerPrefs.GetString("AdsStatusKey") == "disabled")
+        {
+            return;
+        }
         if (_interstitialAd != null && _interstitialAd.CanShowAd())
         {
             Debug.Log("Showing interstitial ad.");
