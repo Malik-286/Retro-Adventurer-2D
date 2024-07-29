@@ -19,7 +19,7 @@ public class Banner : MonoBehaviour
 
     public void Start()
     {
-         MobileAds.Initialize((InitializationStatus initStatus) =>  {});
+          
 
         if (PlayerPrefs.GetString("AdsStatusKey") == "disabled")
         {
@@ -27,6 +27,7 @@ public class Banner : MonoBehaviour
         }
         else
         {
+            MobileAds.Initialize((InitializationStatus initStatus) => { });
             //CreateBannerView();
             //LoadAd();  Created in Adsmanager Already
         } 
@@ -42,6 +43,7 @@ public class Banner : MonoBehaviour
    
     public void CreateBannerView()
     {
+       
         Debug.Log("Creating banner view");
 
         // If we already have a banner, destroy the old one.
@@ -78,7 +80,7 @@ public class Banner : MonoBehaviour
     /// <summary>
     /// listen to events the banner view may raise.
     /// </summary>
-    private void ListenToAdEvents()
+      void ListenToAdEvents()
     {
         // Raised when an ad is loaded into the banner view.
         _bannerView.OnBannerAdLoaded += () =>
