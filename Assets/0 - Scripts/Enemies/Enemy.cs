@@ -12,9 +12,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] float enemyHealth = 3;
     [SerializeField] GameObject enemyDeathParticles;
     [SerializeField] float bulletForce;
+    public bool bigRoar;
 
 
-  
+
     SpriteRenderer enemySprite;
     bool isAlive = true;
     bool isParticlesCreated = false;
@@ -88,13 +89,29 @@ public class Enemy : MonoBehaviour
     void FlipEnemiesSprite()
     {
         moveSpeed = -moveSpeed;
-        if (moveSpeed <= 0)
+
+        if (bigRoar)
         {
-            enemySprite.flipX = false;
+            if (moveSpeed <= 0)
+            {
+                enemySprite.flipX = true;
+            }
+            else if (moveSpeed >= 1)
+            {
+                enemySprite.flipX = false;
+            }
         }
-        else if (moveSpeed >= 1)
+        else
         {
-            enemySprite.flipX = true;
+            if (moveSpeed <= 0)
+            {
+                enemySprite.flipX = false;
+            }
+            else if (moveSpeed >= 1)
+            {
+                enemySprite.flipX = true;
+            }
+
         }
     }
 

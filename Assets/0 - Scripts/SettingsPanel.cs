@@ -18,7 +18,6 @@ public class SettingsPanel : MonoBehaviour
     }
     public void AdjustMusicSettings()
     {
-         
         if (AudioManager.GetInstance())
         {
             if (musicSwitch.value > 0)
@@ -30,23 +29,22 @@ public class SettingsPanel : MonoBehaviour
                 AudioManager.GetInstance().GetComponent<AudioSource>().mute = false;
             }
         }
-
     }
 
     public void AdjustSoundSettings()
     {
-      
-        if (AudioManager.GetInstance())
+        if (AudioManager.Instance)
         {
-            if(soundSwitch.value > 0)
+            if (musicSwitch.value > 0)
             {
-                AudioManager.GetInstance().bTouchSoundEnable = false;
+                AudioManager.Instance.SoundAdjust(false);
             }
-            else if (soundSwitch.value <= 0)
+            else if (musicSwitch.value <= 0)
             {
-                AudioManager.GetInstance().bTouchSoundEnable = true;
+                AudioManager.Instance.SoundAdjust(true);
             }
         }
+
     }
 
 }
