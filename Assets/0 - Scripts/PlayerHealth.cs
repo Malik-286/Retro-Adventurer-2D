@@ -127,7 +127,7 @@ public class PlayerHealth : MonoBehaviour
             DecreaseHealth(25);
             spriteRenderer.color = Color.red;
             StartCoroutine(ResetPlayerColor());
-            AudioManager.GetInstance().PlaySingleShotAudio(losehealthSound, 0.7f);
+            AudioManager.Instance.PlaySingleShotAudio(losehealthSound, 0.7f);
         }
     }
 
