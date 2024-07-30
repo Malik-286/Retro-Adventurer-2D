@@ -354,30 +354,6 @@ public class PlayerController : MonoBehaviour
          
     }
 
-   
-
-
-    public void RollingMovement()
-    {
-
-        string[] states = { "isClimbing", "isIdeling", "isRunning", "isJumping", "isRolling" };
-
-        foreach (var state in states)
-        {
-            animator.SetBool(state, state == "isRolling");
-        }
-
-        StartCoroutine(DeActivateRollingAnimation());
-        
-    }
-
-
-    IEnumerator DeActivateRollingAnimation()
-    {
-         yield return new WaitForSeconds(0.4f);
-         animator.SetBool("isRolling", false);
- 
-    }
 
     void CreateDustParticles()
     {

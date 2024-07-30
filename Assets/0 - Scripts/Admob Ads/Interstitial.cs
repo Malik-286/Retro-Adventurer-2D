@@ -35,45 +35,53 @@ public class Interstitial : MonoBehaviour
     }
 
 
-  
 
- 
-  public void LoadInterstitialAd()
+
+
+    public void LoadInterstitialAd()
     {
-        
-            if (_interstitialAd != null)
-            {
-                _interstitialAd.Destroy();
-                _interstitialAd = null;
-            }
+        if (PlayerPrefs.GetString("AdsStatusKey") == "disabled")
+        {
+            return;
+        }
 
-            Debug.Log("Loading the interstitial ad.");
+        if (_interstitialAd != null)
+        {
+            _interstitialAd.Destroy();
+            _interstitialAd = null;
+        }
 
-            var adRequest = new AdRequest();
+        Debug.Log("Loading the interstitial ad.");
 
-            InterstitialAd.Load(_adUnitId, adRequest,
-               (InterstitialAd ad, LoadAdError error) =>
+        var adRequest = new AdRequest();
+
+        InterstitialAd.Load(_adUnitId, adRequest,
+           (InterstitialAd ad, LoadAdError error) =>
+           {
+               if (error != null || ad == null)
                {
-                   if (error != null || ad == null)
-                   {
-                       Debug.LogError("interstitial ad failed to load an ad " +
-                                      "with error : " + error);
-                       return;
-                   }
+                   Debug.LogError("interstitial ad failed to load an ad " +
+                                  "with error : " + error);
+                   return;
+               }
 
-                   Debug.Log("Interstitial ad loaded with response : "
-                             + ad.GetResponseInfo());
+               Debug.Log("Interstitial ad loaded with response : "
+                         + ad.GetResponseInfo());
 
-                   _interstitialAd = ad;
- 
-               });
-        
-                 
+               _interstitialAd = ad;
+
+           });
+
+
     }
 
  
     public void ShowInterstitialAd()
     {
+        if (PlayerPrefs.GetString("AdsStatusKey") == "disabled")
+        {
+            return;
+        }
         if (_interstitialAd != null && _interstitialAd.CanShowAd())
         {
             Debug.Log("Showing interstitial ad.");
