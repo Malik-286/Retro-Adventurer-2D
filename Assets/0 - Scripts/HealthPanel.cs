@@ -26,44 +26,29 @@ public class HealthPanel : MonoBehaviour
         if (playerHealth != null)
         {
             float currentHealth = playerHealth.GetCurrentHealth();
+            int maxHealth = playerHealth.GetMaxHealth();
+            int heartCount = heartImages.Length;
 
-            if (currentHealth >= 100f)
-            { 
-               for(int i = 0; i < heartImages.Length; i++)
+            // Calculate the health per heart segment
+            float healthPerHeart = maxHealth / (float)heartCount;
+
+            for (int i = 0; i < heartCount; i++)
+            {
+                // Determine the threshold for each heart to be active or inactive
+                if (currentHealth > i * healthPerHeart)
                 {
                     heartImages[i].SetActive(true);
                 }
-            }
-            else if (currentHealth == 75f)
-            {
-                heartImages[3].SetActive(false);
-                heartImages[2].SetActive(true);
-
-            }
-            else if (currentHealth == 50f)
-            {
-                 heartImages[2].SetActive(false);
-                 heartImages[1].SetActive(true);
-
-
-            }
-            else if (currentHealth == 25f)
-            {
-                 heartImages[1].SetActive(false);
-                 heartImages[0].SetActive(true);
-
-
-            }
-            else if (currentHealth <= 0)
-            {
-                heartImages[0].SetActive(false);
-
+                else
+                {
+                    heartImages[i].SetActive(false);
+                }
             }
         }
-                   
     }
 
-    
+
+
 }
 
 

@@ -15,8 +15,9 @@ public class PlayerHealth : MonoBehaviour
     [Header("Colors Variables")]
     [SerializeField] Color defaultColor;
 
-
- 
+    [Header("Player Health Damage Variables")]
+    [SerializeField] float damageCooldown = 3.0f; // 3 to 4 seconds delay
+    private bool canTakeDamage = true; // Flag to control damage cooldown
 
     SpriteRenderer spriteRenderer;
     GameManager gameManager;
@@ -24,6 +25,8 @@ public class PlayerHealth : MonoBehaviour
     public GameObject deathPanel;
     public GameObject detailsPanel;
     ScreenShake screenShake;
+
+    public bool isDeathPanelActive;
 
 
     bool isGamePaused = false;
@@ -37,6 +40,7 @@ public class PlayerHealth : MonoBehaviour
         timerPanel = FindObjectOfType<TimerPanel>();
         deathPanel.SetActive(false);
         screenShake = FindObjectOfType<ScreenShake>();
+        isDeathPanelActive = false;
     }
 
 
@@ -82,52 +86,67 @@ public class PlayerHealth : MonoBehaviour
             gameObject.GetComponent<Animator>().SetBool("isIdeling", true);
         }
     }
-    void FixedUpdate()
+    void Update()
     {
-        if (isAlive == false)
+
+        if (!isAlive && !isDeathPanelActive)
         {
+            isDeathPanelActive = true;
             gameObject.GetComponent<Animator>().SetBool("isDead", true);
- 
+
             deathPanel.GetComponent<Dialog>().ShowDialog();
 
- 
             if (deathPanel.activeInHierarchy)
-            {  
-                detailsPanel.SetActive(false);  
+            {
+                detailsPanel.SetActive(false);
                 return;
             }
             detailsPanel.SetActive(true);
- 
+
             Time.timeScale = 1;
-             
 
             gameManager.ReloadGame();
             timerPanel.RestTime();
             Destroy(gameObject, 1f);
 
-        }else if (isAlive == true)
+        }
+        else if (isAlive && isDeathPanelActive)
         {
+            // Revive logic
+            isDeathPanelActive = false;
             gameObject.GetComponent<Animator>().SetBool("isDead", false);
 
+            // Ensure all other animations are reset
+            gameObject.GetComponent<Animator>().SetBool("isRunning", false);
+            gameObject.GetComponent<Animator>().SetBool("isJumping", false);
+
+            // Set idle state
+            gameObject.GetComponent<Animator>().SetBool("isIdeling", true);
+
+            // Optionally, reset player position or other states
         }
+
     }
 
-  
-   
 
-
-
-
+ 
 
     void OnCollisionEnter2D(Collision2D collision)
     {
 
-        if (collision.gameObject.CompareTag("Enemy") && GetComponent<PlayerHealth>().enabled)
+        if (collision.gameObject.CompareTag("Enemy") && GetComponent<PlayerHealth>().enabled && canTakeDamage)
         {
             DecreaseHealth(25);
             spriteRenderer.color = Color.red;
             StartCoroutine(ResetPlayerColor());
-            AudioManager.Instance.PlaySingleShotAudio(losehealthSound, 0.7f);
+
+            if (isAlive)
+            {
+                AudioManager.GetInstance().PlaySingleShotAudio(losehealthSound, 0.6f);
+            }
+
+            // Start cooldown
+            StartCoroutine(DamageCooldown());
         }
     }
 
@@ -155,8 +174,11 @@ public class PlayerHealth : MonoBehaviour
         StartCoroutine(EnableAndDisablePlayerHealth());
     }
 
-
-  
-   
+    IEnumerator DamageCooldown()
+    {
+        canTakeDamage = false;
+        yield return new WaitForSeconds(damageCooldown);
+        canTakeDamage = true;
+    }
 
 }

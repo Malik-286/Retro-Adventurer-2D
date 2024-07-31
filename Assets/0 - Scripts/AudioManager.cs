@@ -5,7 +5,7 @@ using UnityEngine;
 public class AudioManager : Singelton<AudioManager>
 {
 
-   public static AudioManager Instance;
+    //public static AudioManager Instance;
 
     [SerializeField] AudioClip touchSound;
     [SerializeField] float touchVolume = 0.8f;
@@ -14,13 +14,16 @@ public class AudioManager : Singelton<AudioManager>
     public AudioSource audioSource;
     public bool bTouchSoundEnable = true;
 
-    private void Awake()
+    /* 
+      void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
         }
     }
+    */
+
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);

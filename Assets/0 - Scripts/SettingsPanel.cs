@@ -8,7 +8,6 @@ public class SettingsPanel : MonoBehaviour
 {
 
     [SerializeField] Slider musicSwitch;
-    [SerializeField] Slider soundSwitch;
     [SerializeField] AudioClip gamePlayAudio;
     [SerializeField] TextMeshProUGUI versionText;
 
@@ -31,21 +30,8 @@ public class SettingsPanel : MonoBehaviour
         }
     }
 
-    public void AdjustSoundSettings()
-    {
-        if (AudioManager.Instance)
-        {
-            if (musicSwitch.value > 0)
-            {
-                AudioManager.Instance.SoundAdjust(false);
-            }
-            else if (musicSwitch.value <= 0)
-            {
-                AudioManager.Instance.SoundAdjust(true);
-            }
-        }
-
-    }
+  
+    
 
 }
 
