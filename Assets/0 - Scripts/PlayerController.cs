@@ -33,10 +33,10 @@ public class PlayerController : MonoBehaviour
 
 
 
-    private bool moveLeftPressed = false;
-    private bool moveRightPressed = false;
-    private bool moveUpPressed = false;
-    private bool moveDownPressed = false;
+    public bool moveLeftPressed = false;
+    public bool moveRightPressed = false;
+    public bool moveUpPressed = false;
+    public bool moveDownPressed = false;
 
     public Vector2 movement;
     Rigidbody2D rb;

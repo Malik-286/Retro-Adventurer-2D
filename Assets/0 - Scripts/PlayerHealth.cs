@@ -20,10 +20,9 @@ public class PlayerHealth : MonoBehaviour
     private bool canTakeDamage = true; // Flag to control damage cooldown
 
     SpriteRenderer spriteRenderer;
-    GameManager gameManager;
-    TimerPanel timerPanel;
-    public GameObject deathPanel;
-    public GameObject detailsPanel;
+     TimerPanel timerPanel;
+  //  public GameObject deathPanel;
+  //  public GameObject detailsPanel;
     ScreenShake screenShake;
 
     public bool isDeathPanelActive;
@@ -31,14 +30,17 @@ public class PlayerHealth : MonoBehaviour
 
     bool isGamePaused = false;
 
+
+    GamePlayUI gamePlayUI;
+
     void Start()
     {
+        gamePlayUI = FindObjectOfType<GamePlayUI>();
         currentHealth = maxHealth;
         spriteRenderer = GetComponent<SpriteRenderer>();
         defaultColor = spriteRenderer.color;
-        gameManager = FindObjectOfType<GameManager>();
-        timerPanel = FindObjectOfType<TimerPanel>();
-        deathPanel.SetActive(false);
+         timerPanel = FindObjectOfType<TimerPanel>();
+    //   deathPanel.SetActive(false);
         screenShake = FindObjectOfType<ScreenShake>();
         isDeathPanelActive = false;
     }
@@ -94,25 +96,30 @@ public class PlayerHealth : MonoBehaviour
             isDeathPanelActive = true;
             gameObject.GetComponent<Animator>().SetBool("isDead", true);
 
-            deathPanel.GetComponent<Dialog>().ShowDialog();
+            gamePlayUI.deathPanel.GetComponent<Dialog>().ShowDialog();
 
-            if (deathPanel.activeInHierarchy)
+            if (gamePlayUI.deathPanel.activeInHierarchy)
             {
-                detailsPanel.SetActive(false);
+                gamePlayUI.detailsPanel.SetActive(false);
                 return;
             }
-            detailsPanel.SetActive(true);
+                gamePlayUI.detailsPanel.SetActive(true);
 
             Time.timeScale = 1;
 
-            gameManager.ReloadGame();
+            if(GameManager.GetInstance() != null)
+            {
+                GameManager.GetInstance().ReloadGame();
+            }
+            
             timerPanel.RestTime();
             Destroy(gameObject, 1f);
 
         }
-        else if (isAlive && isDeathPanelActive)
+        else if (isAlive && isDeathPanelActive == true)
         {
-            // Revive logic
+
+             // Revive logic
             isDeathPanelActive = false;
             gameObject.GetComponent<Animator>().SetBool("isDead", false);
 
@@ -124,6 +131,13 @@ public class PlayerHealth : MonoBehaviour
             gameObject.GetComponent<Animator>().SetBool("isIdeling", true);
 
             // Optionally, reset player position or other states
+
+            gameObject.GetComponent<PlayerController>().StopMoving();
+            gameObject.GetComponent<PlayerController>().MoveLeftPressed();
+            gameObject.GetComponent<PlayerController>().MoveRightPressed();
+            gameObject.GetComponent<PlayerController>().StopMoving();
+
+            gameObject.GetComponent<Animator>().SetBool("isIdeling", true);
         }
 
     }

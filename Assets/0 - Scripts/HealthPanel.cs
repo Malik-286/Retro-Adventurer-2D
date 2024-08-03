@@ -1,3 +1,4 @@
+using Platformer;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,7 @@ public class HealthPanel : MonoBehaviour
 
      void Start()
     {
-        playerHealth = FindObjectOfType<PlayerHealth>();
+        StartCoroutine(PassPlayerHealthRefrence());
     }
 
     void Update()
@@ -44,6 +45,16 @@ public class HealthPanel : MonoBehaviour
                     heartImages[i].SetActive(false);
                 }
             }
+        }
+    }
+
+    IEnumerator PassPlayerHealthRefrence()
+    {
+        yield return new WaitForSeconds(0.1f);
+        playerHealth = FindObjectOfType<PlayerHealth>();
+        if (playerHealth == null)
+        {
+            Debug.LogError("Player Controller not found in the scene.");
         }
     }
 

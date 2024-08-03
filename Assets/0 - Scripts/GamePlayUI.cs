@@ -8,22 +8,31 @@ public class GamePlayUI : MonoBehaviour
 
     public static GamePlayUI Instance;
 
+       
       [SerializeField] TextMeshProUGUI coinsText;
       [SerializeField] TextMeshProUGUI levelNoText;
       [SerializeField] TextMeshProUGUI killsCounterText;
       [SerializeField] GameObject uiControllsButtons;
       [SerializeField] Button pauseButton;
 
+     [Header("Player Prefebs")]
+     [SerializeField] Transform playerInstantiatePosition; 
+     [SerializeField] GameObject[] playerPrefebs;
+
 
     public GameObject Player;
     public GameObject pausePanel;
     public GameObject TutotialPanel;
     public GameObject deathPanel;
+    public GameObject detailsPanel;
     public GameObject timeEndPanel;
     TimerPanel timerPanel;
 
-     KillsCounter killsCounter;
-    private void Awake()
+
+    KillsCounter killsCounter;
+    PlayerController playerController;
+
+      void Awake()
     {
         if (PlayerPrefs.GetInt("OneTime") == 0)
         {
@@ -36,7 +45,11 @@ public class GamePlayUI : MonoBehaviour
     }
     void Start()
     {
+        Instantiate(playerPrefebs[0], playerInstantiatePosition.position, Quaternion.identity);
+
+
         killsCounter = FindObjectOfType<KillsCounter>();
+        playerController = FindObjectOfType<PlayerController>();
         pausePanel.SetActive(false);
         deathPanel.SetActive(false);
         timeEndPanel.SetActive(false);
@@ -123,5 +136,94 @@ public class GamePlayUI : MonoBehaviour
             AudioManager.GetInstance().PlayTouchSoundEffect();
         }            
     }
+
+
+    #region Player Movement Calling Methods for UI Buttons
+
+    public void Attack()
+    {
+        if(playerController != null)
+        {
+            playerController.Attack();
+        }
+    }
+
+    public void Jump()
+    {
+        if (playerController != null)
+        {
+            playerController.Jump();
+        }
+    }
+    public void MoveLeftPressed()
+    {
+        if (playerController != null)
+        {
+            playerController.MoveLeftPressed();
+        }
+    }
+
+    public void MoveLeftReleased()
+    {
+        if (playerController != null)
+        {
+            playerController.MoveLeftReleased();
+            playerController.StopMoving();
+        }
+    }
+
+    public void MoveRightPressed()
+    {
+        if (playerController != null)
+        {
+            playerController.MoveRightPressed();
+        }
+    }
+
+    public void MoveRightReleased()
+    {
+        if (playerController != null)
+        {
+            playerController.MoveRightReleased();
+            playerController.StopMoving();
+        } 
+    }
+
+    public void MoveUpPressed()
+    {
+        if (playerController != null)
+        {
+            playerController.MoveUpPressed();
+         }
+    }
+
+    public void MoveUpReleased()
+    {
+        if (playerController != null)
+        {
+            playerController.MoveUpReleased();
+             
+        }
+    }
+
+
+    public void MoveDownPressed()
+    {
+        if (playerController != null)
+        {
+            playerController.MoveDownPressed();
+         }
+    }
+
+    public void MoveDownReleased()
+    {
+        if (playerController != null)
+        {
+            playerController.MoveDownReleased();
+ 
+        }
+    }
+
+    #endregion
 
 }

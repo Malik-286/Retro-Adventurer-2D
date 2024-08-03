@@ -1,3 +1,4 @@
+using Platformer;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,8 +14,7 @@ public class HealthPickup : MonoBehaviour
 
     void Start()
     {
-        playerHealth = FindObjectOfType<PlayerHealth>();
- 
+        StartCoroutine(PassPlayerHealthRefrence());
     }
 
 
@@ -38,6 +38,14 @@ public class HealthPickup : MonoBehaviour
 
 
     }
+    IEnumerator PassPlayerHealthRefrence()
+    {
+        yield return new WaitForSeconds(0.1f);
+        playerHealth = FindObjectOfType<PlayerHealth>();
+        if (playerHealth == null)
+        {
+            Debug.LogError("Player health component not found in the scene.");
+        }
+    }
 
-    
 }

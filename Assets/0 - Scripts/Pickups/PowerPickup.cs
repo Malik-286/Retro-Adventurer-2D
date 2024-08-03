@@ -15,7 +15,7 @@ public class PowerPickup : MonoBehaviour
 
     void Start()
     {
-          playerController = FindObjectOfType<PlayerController>();
+        StartCoroutine(PassPlayerControllerRefrence());
     }
 
 
@@ -68,8 +68,18 @@ public class PowerPickup : MonoBehaviour
         }
     }
 
+    IEnumerator PassPlayerControllerRefrence()
+    {
+        yield return new WaitForSeconds(0.1f);
+        playerController = FindObjectOfType<PlayerController>();
+        if (playerController == null)
+        {
+            Debug.LogError("Player Controller not found in the scene.");
+        }
+    }
 
- 
+
+
 
 
 
