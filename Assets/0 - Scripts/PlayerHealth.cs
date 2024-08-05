@@ -88,6 +88,9 @@ public class PlayerHealth : MonoBehaviour
             gameObject.GetComponent<Animator>().SetBool("isIdeling", true);
         }
     }
+
+    bool breakss = true;
+
     void Update()
     {
 
@@ -96,24 +99,11 @@ public class PlayerHealth : MonoBehaviour
             isDeathPanelActive = true;
             gameObject.GetComponent<Animator>().SetBool("isDead", true);
 
-            gamePlayUI.deathPanel.GetComponent<Dialog>().ShowDialog();
-
-            if (gamePlayUI.deathPanel.activeInHierarchy)
+            if (breakss)
             {
-                gamePlayUI.detailsPanel.SetActive(false);
-                return;
+                Invoke(nameof(ShowDeathpanel), 3f);
+                breakss = false;
             }
-                gamePlayUI.detailsPanel.SetActive(true);
-
-            Time.timeScale = 1;
-
-            if(GameManager.GetInstance() != null)
-            {
-                GameManager.GetInstance().ReloadGame();
-            }
-            
-            timerPanel.RestTime();
-            Destroy(gameObject, 1f);
 
         }
         else if (isAlive && isDeathPanelActive == true)
@@ -142,8 +132,28 @@ public class PlayerHealth : MonoBehaviour
 
     }
 
+    public void ShowDeathpanel()
+    {
+        gamePlayUI.deathPanel.GetComponent<Dialog>().ShowDialog();
 
- 
+        if (gamePlayUI.deathPanel.activeInHierarchy)
+        {
+            gamePlayUI.detailsPanel.SetActive(false);
+            return;
+        }
+        gamePlayUI.detailsPanel.SetActive(true);
+
+        if (GameManager.GetInstance() != null)
+        {
+            GameManager.GetInstance().ReloadGame();
+        }
+        Time.timeScale = 1;
+
+        timerPanel.RestTime();
+        Destroy(gameObject, 1f);
+    }
+
+
 
     void OnCollisionEnter2D(Collision2D collision)
     {

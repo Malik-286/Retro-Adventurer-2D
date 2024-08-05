@@ -8,7 +8,6 @@ public class CurrencyManager : MonoBehaviour
     public static CurrencyManager instance;
 
     [SerializeField] int coins;
-    public int LevelCollectedcoins;
 
     void Awake()
     { 
