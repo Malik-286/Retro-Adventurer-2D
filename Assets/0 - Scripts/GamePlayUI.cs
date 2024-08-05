@@ -45,7 +45,7 @@ public class GamePlayUI : MonoBehaviour
     }
     void Start()
     {
-        Instantiate(playerPrefebs[0], playerInstantiatePosition.position, Quaternion.identity);
+        Instantiate(playerPrefebs[PlayerPrefs.GetInt("CurrentPlayer")], playerInstantiatePosition.position, Quaternion.identity);
 
 
         killsCounter = FindObjectOfType<KillsCounter>();
