@@ -6,7 +6,16 @@ using UnityEngine.Purchasing;
 
 public class StorePanel :MonoBehaviour
 {
- 
+
+
+    [SerializeField] GameObject skinsPanel;
+    [SerializeField] GameObject coinsPanel;
+
+
+
+
+
+
 
     [SerializeField] GameObject purchaseFailedPanel;
     [SerializeField] GameObject purchasedSucessPanel;
@@ -37,6 +46,7 @@ public class StorePanel :MonoBehaviour
         
         purchaseFailedPanel.SetActive(false);
         purchasedSucessPanel.SetActive(false);
+        coinsPanel.SetActive(true);
 
   
     }
