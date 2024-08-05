@@ -12,15 +12,14 @@ public class KeyPickup : MonoBehaviour
      public bool isKeyCollected = false;
 
      [SerializeField] GameObject exitCheckPoint;
-
+ 
     void Start()
     {
          exitCheckPoint.SetActive(false);
          isKeyCollected = false;
- 
     }
 
-
+ 
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -32,7 +31,7 @@ public class KeyPickup : MonoBehaviour
             {
                 AudioManager.GetInstance().PlaySingleShotAudio(keyCollectionSound, 1.0f);
               
-            }
+            } 
              Destroy(gameObject);
         }
     }

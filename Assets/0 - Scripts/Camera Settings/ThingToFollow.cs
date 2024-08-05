@@ -10,8 +10,7 @@ public class ThingToFollow : MonoBehaviour
  
     void Start()
     {
-        StartCoroutine(PassPlayerControllerRefrence());
-        
+        StartCoroutine(PassPlayerControllerRefrence());     
     }
 
     void Update()
