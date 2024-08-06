@@ -16,6 +16,10 @@ public class SkinsPanel : MonoBehaviour
     public GameObject SuccessPanel;
     public GameObject FailurePanel;
 
+    [SerializeField] Color defaultTextColour = Color.white;
+    [SerializeField] Color selectedTextColour = Color.blue;
+
+
     private void Awake()
     {
         if (PlayerPrefs.GetInt("SkinPurchased" + 0) == 1)
@@ -60,8 +64,10 @@ public class SkinsPanel : MonoBehaviour
         for (int i = 0; i < SkinPricesText.Length; i++)
         {
             SkinPricesText[i].text = "Select".ToString();
+            SkinPricesText[i].color = defaultTextColour;
         }
         SkinPricesText[SkinNumber].text = "Selected".ToString();
+        SkinPricesText[SkinNumber].color = selectedTextColour;
         print("Player Skin Selected");
     }
     void Update()
