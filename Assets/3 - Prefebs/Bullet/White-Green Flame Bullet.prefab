@@ -14537,11 +14537,11 @@ GameObject:
   - component: {fileID: 4378435534538936}
   - component: {fileID: 198198661817966188}
   - component: {fileID: 199569250843235242}
-  - component: {fileID: 1570120829544092496}
-  - component: {fileID: 3240143022505866060}
-  - component: {fileID: 3595803014140231413}
+  - component: {fileID: 6087183264329430410}
+  - component: {fileID: 1141658318024417887}
+  - component: {fileID: 30983449791825002}
   m_Layer: 0
-  m_Name: Magic fire pro green
+  m_Name: White-Green Flame Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19375,7 +19375,7 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &1570120829544092496
+--- !u!114 &6087183264329430410
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -19389,7 +19389,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 5
   bulletParticles: {fileID: 4794043405585894037, guid: 37138c0c33167b04fa1fb90b7f5a794f, type: 3}
---- !u!70 &3240143022505866060
+--- !u!70 &1141658318024417887
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -19424,15 +19424,22 @@ CapsuleCollider2D:
   m_Offset: {x: -0.037790325, y: 0.0076291086}
   m_Size: {x: 0.36897665, y: 0.37926084}
   m_Direction: 0
---- !u!70 &3595803014140231413
-CapsuleCollider2D:
+--- !u!50 &30983449791825002
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1518366863219760}
-  m_Enabled: 1
-  m_Density: 1
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -19440,25 +19447,10 @@ CapsuleCollider2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 2.614, y: 2.614}
-  m_Direction: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!1 &1943880830992744
 GameObject:
   m_ObjectHideFlags: 0

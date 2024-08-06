@@ -81,7 +81,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -427368065
-  m_SortingLayer: 11
+  m_SortingLayer: 16
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 3837e02845a092847b2567b758f7ca21, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -177,11 +177,19 @@ MonoBehaviour:
   safeZoneParticlesPrefeb: {fileID: 4341004557152352026}
   blueBulletPrefeb: {fileID: 5189622070181520308, guid: d6e3b41d5f05ae048b33a38c1a703226, type: 3}
   yellowBulletPrefeb: {fileID: 3221806722433718409, guid: 0ab5377bb55d1de4695349310d65fd76, type: 3}
+  FireBulletPrefeb: {fileID: 1725317912486240, guid: 00a98d959931b804d934a75a0a5897f7, type: 3}
+  PurpleFlameBulletPrefeb: {fileID: 1900756431413560, guid: fc2a408ff57ab86469687764600ace01, type: 3}
+  RedFlameeBulletPrefeb: {fileID: 1975959190090480, guid: 467d92a9d7f2a7042b261678cec129d8, type: 3}
+  GreenBulletPrefeb: {fileID: 1518366863219760, guid: a0c2bf54692cce942b19c8380d94c5e7, type: 3}
   bulletSpawnPoint: {fileID: 2948412851485060122}
   bulletShotAudio: {fileID: 8300000, guid: 45f31ca49fbf18f41a457f1fedde8656, type: 3}
   bulletShotVolume: 0.3
   isBlueBulletActive: 0
   isYellowBulletActive: 0
+  isFireBulletActive: 0
+  isPurpleBulletActive: 0
+  isRedBulletActive: 0
+  isGreenBulletActive: 0
   moveLeftPressed: 0
   moveRightPressed: 0
   moveUpPressed: 0
@@ -5172,7 +5180,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -427368065
-  m_SortingLayer: 11
+  m_SortingLayer: 16
   m_SortingOrder: 10
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -10045,7 +10053,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -427368065
-  m_SortingLayer: 11
+  m_SortingLayer: 16
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0

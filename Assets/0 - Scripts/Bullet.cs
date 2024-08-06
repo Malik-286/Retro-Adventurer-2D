@@ -36,12 +36,12 @@ public class Bullet : MonoBehaviour
         if (player.GetComponent<SpriteRenderer>().flipX == false)
         {
             bulletDirection = bulletDirection * bulletSpeed;
-            spriteRenderer.flipX = true;
+            //spriteRenderer.flipX = true;
         }
         else if (player.GetComponent<SpriteRenderer>().flipX == true)
         {
             bulletDirection = -bulletDirection * bulletSpeed;
-            spriteRenderer.flipX = false;
+            //spriteRenderer.flipX = false;
         }
     }
 

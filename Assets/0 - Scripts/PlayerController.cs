@@ -22,6 +22,11 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] GameObject blueBulletPrefeb;
     [SerializeField] GameObject yellowBulletPrefeb;
+    [SerializeField] GameObject FireBulletPrefeb;
+    [SerializeField] GameObject PurpleFlameBulletPrefeb;
+    [SerializeField] GameObject RedFlameeBulletPrefeb;
+    [SerializeField] GameObject GreenBulletPrefeb;
+
 
     [SerializeField] Transform bulletSpawnPoint;
     [SerializeField] AudioClip bulletShotAudio;
@@ -30,6 +35,11 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] public bool isBlueBulletActive;
     [SerializeField] public bool isYellowBulletActive;
+    [SerializeField] public bool isFireBulletActive;
+    [SerializeField] public bool isPurpleBulletActive;
+    [SerializeField] public bool isRedBulletActive;
+    [SerializeField] public bool isGreenBulletActive;
+
 
 
 
@@ -249,28 +259,28 @@ public class PlayerController : MonoBehaviour
     {
         if (isAlive)
         {
-            if(isBlueBulletActive == true || isYellowBulletActive == true)
-            {
-                if(AudioManager.GetInstance())
-                {
-                    AudioManager.GetInstance().PlaySingleShotAudio(bulletShotAudio, bulletShotVolume);
+            //if(isBlueBulletActive == true || isYellowBulletActive == true)
+            //{
+            //    if(AudioManager.GetInstance())
+            //    {
+            //        AudioManager.GetInstance().PlaySingleShotAudio(bulletShotAudio, bulletShotVolume);
 
-                }
-            }
-            else
-            {
-                return;
-            }
+            //    }
+            //}
+            //else
+            //{
+            //    //return;
+            //}
              
            
             // instantiate blue bullet
-            if(isBlueBulletActive == true)
+            if(isBlueBulletActive == true || PlayerPrefs.GetInt("PlayerBullet") == 0)
             {
                 GameObject blueBulletClone = Instantiate(blueBulletPrefeb, bulletSpawnPoint.position, Quaternion.identity);
                 Destroy(blueBulletClone, 5f);
                 return;
             }
-            else if (isYellowBulletActive == true)
+            else if (isYellowBulletActive == true || PlayerPrefs.GetInt("PlayerBullet") == 1)
             {
                 // instantiate yellow bullet
 
@@ -278,7 +288,38 @@ public class PlayerController : MonoBehaviour
                 Destroy(yellowBulletClone, 1f);
                 return;
             }
-                 
+            else if (isFireBulletActive == true || PlayerPrefs.GetInt("PlayerBullet") == 2)
+            {
+                // instantiate yellow bullet
+
+                GameObject yellowBulletClone = Instantiate(FireBulletPrefeb, bulletSpawnPoint.position, Quaternion.identity);
+                Destroy(yellowBulletClone, 1f);
+                return;
+            }
+            else if (isPurpleBulletActive == true || PlayerPrefs.GetInt("PlayerBullet") == 3)
+            {
+                // instantiate yellow bullet
+
+                GameObject yellowBulletClone = Instantiate(PurpleFlameBulletPrefeb, bulletSpawnPoint.position, Quaternion.identity);
+                Destroy(yellowBulletClone, 1f);
+                return;
+            }
+            else if (isGreenBulletActive == true || PlayerPrefs.GetInt("PlayerBullet") == 4) 
+            {
+                // instantiate yellow bullet
+
+                GameObject yellowBulletClone = Instantiate(GreenBulletPrefeb, bulletSpawnPoint.position, Quaternion.identity);
+                Destroy(yellowBulletClone, 1f);
+                return;
+            }
+            else if (isRedBulletActive == true || PlayerPrefs.GetInt("PlayerBullet") == 5)
+            {
+                // instantiate yellow bullet
+
+                GameObject yellowBulletClone = Instantiate(RedFlameeBulletPrefeb, bulletSpawnPoint.position, Quaternion.identity);
+                Destroy(yellowBulletClone, 1f);
+                return;
+            }
 
         }
     }
