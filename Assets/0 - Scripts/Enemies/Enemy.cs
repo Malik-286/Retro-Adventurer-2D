@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float bulletForce;
     public bool bigRoar;
 
+    public HealthFiller EnemyHealthFiller;
 
 
     SpriteRenderer enemySprite;
@@ -28,6 +29,7 @@ public class Enemy : MonoBehaviour
         enemySprite = GetComponent<SpriteRenderer>();
         audioManager = FindObjectOfType<AudioManager>();
         enemyHealth = Random.Range(3, 5);
+        EnemyHealthFiller.setMAXHealth(enemyHealth);
         killsCounter = FindObjectOfType<KillsCounter>();
     }
 
@@ -50,7 +52,9 @@ public class Enemy : MonoBehaviour
         {
             enemyHealth--;
             rb.AddForce(new Vector2(transform.position.x * bulletForce,0));
-             
+
+            EnemyHealthFiller.SetHealth(enemyHealth);
+
             if(audioManager != null)
             {
                 audioManager.PlaySingleShotAudio(enemyDeathSound, 0.5f);
