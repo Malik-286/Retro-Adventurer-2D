@@ -15,14 +15,9 @@ public class ExitBox : MonoBehaviour
   
 
 
-
-    AudioManager audioManager;
-    GameManager gameManager;
   
     void Start()
-    {
-        audioManager = FindObjectOfType<AudioManager>();
-        gameManager = FindObjectOfType<GameManager>();
+    {   
          levelCompletionPanel.SetActive(false);
     }
 
@@ -31,17 +26,24 @@ public class ExitBox : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (audioManager != null )
+            if(GameManager.GetInstance() != null)
             {
-                PlayerPrefs.SetInt("Level" + nextLevelToUnlock, 1);
+                int index = GameManager.GetInstance().GetCurrentSceneIndex();
+                PlayerPrefs.SetInt("Level" + index, 1);
                 PlayerPrefs.Save();
-
-                DestroyRemaningEnemies();
-                audioManager.PlaySingleShotAudio(levelCompletionSound, 0.7f);
-                levelCompletionPanel.SetActive(true);
-                collision.gameObject.SetActive(false);
-                Destroy(gameObject, 0.5f);
             }
+             
+            
+
+            DestroyRemaningEnemies();
+            if (AudioManager.GetInstance() != null)
+            {
+                AudioManager.GetInstance().PlaySingleShotAudio(levelCompletionSound, 0.7f);
+            }
+            levelCompletionPanel.SetActive(true);
+            collision.gameObject.SetActive(false);
+            Destroy(gameObject, 0.5f);
+          
         }
 
     }

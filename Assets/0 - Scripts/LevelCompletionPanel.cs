@@ -10,9 +10,7 @@ public class LevelCompletionPanel : MonoBehaviour
     [SerializeField] TextMeshProUGUI levelCompletedText;
     [SerializeField] TextMeshProUGUI totalKillsText;
     [SerializeField] TextMeshProUGUI CollectedCoinsText;
-    [SerializeField] string nextSceneToLoad;
-    CurrencyManager currencyManager;
-
+  
 
 
     KillsCounter killsCounter;
@@ -75,7 +73,9 @@ public class LevelCompletionPanel : MonoBehaviour
         }
         if (GameManager.GetInstance() != null)
         {
-             GameManager.GetInstance().LoadNextScene(nextSceneToLoad);
+            
+            int currentSceneIndex = GameManager.GetInstance().GetCurrentSceneIndex();
+            GameManager.GetInstance().LoadScene(currentSceneIndex+1);
         }
 
         PlayerPrefs.SetInt("SelectedLevel", PlayerPrefs.GetInt("SelectedLevel") + 1);

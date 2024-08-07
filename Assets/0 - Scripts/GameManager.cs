@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,11 +25,14 @@ public class GameManager : Singelton<GameManager>
 
    
 
- 
+    public void LoadScene(int index)
+    {
+        SceneManager.LoadScene(index);
+    }
 
     public int GetCurrentSceneIndex()
     {
-        return SceneManager.GetActiveScene().buildIndex;
+         return SceneManager.GetActiveScene().buildIndex;
     }
     public void ReloadGame()
     {
@@ -67,6 +71,8 @@ public class GameManager : Singelton<GameManager>
         SceneManager.LoadScene(sceneToLoad);
     }
 
-    
-
+    internal void LoadNextScene(int v)
+    {
+        throw new NotImplementedException();
+    }
 }
