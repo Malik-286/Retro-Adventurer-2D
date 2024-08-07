@@ -55,14 +55,17 @@ public class BulletPurchase : MonoBehaviour
     public void PurchaseBllet(int BulletNumber)
     {
         print("Bullet Number Selected" + BulletNumber + "And Price is" + BulletPrices[BulletNumber] + " but your coins " + CurrencyManager.instance.GetCurrentCoins());
-        if (BulletPrices[BulletNumber] < CurrencyManager.instance.GetCurrentCoins())
+        if (BulletNumber == 0)
         {
-            print("Purchasing");
-            CurrencyManager.instance.DecreaseCoins(BulletPrices[BulletNumber]);
-            BulletImage[BulletNumber].interactable = true;
-            BulletPurchaseButtons[BulletNumber].gameObject.SetActive(false);
-            SuccessPanel.SetActive(true);
-            PlayerPrefs.SetInt("BulletPurchased" + BulletNumber, 1);
+            if (BulletPrices[BulletNumber] < CurrencyManager.instance.GetCurrentCoins())
+            {
+                print("Purchasing");
+                CurrencyManager.instance.DecreaseCoins(BulletPrices[BulletNumber]);
+                BulletImage[BulletNumber].interactable = true;
+                BulletPurchaseButtons[BulletNumber].gameObject.SetActive(false);
+                SuccessPanel.SetActive(true);
+                PlayerPrefs.SetInt("BulletPurchased" + BulletNumber, 1);
+            }
         }
         else
         {
