@@ -259,67 +259,81 @@ public class PlayerController : MonoBehaviour
     {
         if (isAlive)
         {
-            //if(isBlueBulletActive == true || isYellowBulletActive == true)
-            //{
-            //    if(AudioManager.GetInstance())
-            //    {
-            //        AudioManager.GetInstance().PlaySingleShotAudio(bulletShotAudio, bulletShotVolume);
-
-            //    }
-            //}
-            //else
-            //{
-            //    //return;
-            //}
-             
-           
-            // instantiate blue bullet
-            if(isBlueBulletActive == true || PlayerPrefs.GetInt("PlayerBullet") == 0)
+            if(isBlueBulletActive == true || isYellowBulletActive == true)
             {
-                GameObject blueBulletClone = Instantiate(blueBulletPrefeb, bulletSpawnPoint.position, Quaternion.identity);
-                Destroy(blueBulletClone, 5f);
+                if (AudioManager.GetInstance())
+                {
+                    AudioManager.GetInstance().PlaySingleShotAudio(bulletShotAudio, bulletShotVolume);
+                }
+                if (isBlueBulletActive == true && isYellowBulletActive == false)
+                {
+                    GameObject blueBulletClone = Instantiate(blueBulletPrefeb, bulletSpawnPoint.position, Quaternion.identity);
+                    Destroy(blueBulletClone, 5f);
+                    return;
+                }
+                else if (isYellowBulletActive == true && isBlueBulletActive == false)
+                {
+                    GameObject yellowBulletClone = Instantiate(yellowBulletPrefeb, bulletSpawnPoint.position, Quaternion.identity);
+                    Destroy(yellowBulletClone, 5f);
+                    return;
+                }
+
+
+            }
+            else
+            {
                 return;
             }
-            else if (isYellowBulletActive == true || PlayerPrefs.GetInt("PlayerBullet") == 1)
-            {
-                // instantiate yellow bullet
+            /* 
 
-                GameObject yellowBulletClone = Instantiate(yellowBulletPrefeb, bulletSpawnPoint.position, Quaternion.identity);
-                Destroy(yellowBulletClone, 1f);
-                return;
-            }
-            else if (isFireBulletActive == true || PlayerPrefs.GetInt("PlayerBullet") == 2)
-            {
-                // instantiate yellow bullet
+           // instantiate blue bullet
+           if(isBlueBulletActive == true || PlayerPrefs.GetInt("PlayerBullet") == 0)
+           {
+               GameObject blueBulletClone = Instantiate(blueBulletPrefeb, bulletSpawnPoint.position, Quaternion.identity);
+               Destroy(blueBulletClone, 5f);
+               return;
+           }
+           else if (isYellowBulletActive == true || PlayerPrefs.GetInt("PlayerBullet") == 1)
+           {
+               // instantiate yellow bullet
 
-                GameObject yellowBulletClone = Instantiate(FireBulletPrefeb, bulletSpawnPoint.position, Quaternion.identity);
-                Destroy(yellowBulletClone, 1f);
-                return;
-            }
-            else if (isPurpleBulletActive == true || PlayerPrefs.GetInt("PlayerBullet") == 3)
-            {
-                // instantiate yellow bullet
+               GameObject yellowBulletClone = Instantiate(yellowBulletPrefeb, bulletSpawnPoint.position, Quaternion.identity);
+               Destroy(yellowBulletClone, 1f);
+               return;
+           }
+           else if (isFireBulletActive == true || PlayerPrefs.GetInt("PlayerBullet") == 2)
+           {
+               // instantiate yellow bullet
 
-                GameObject yellowBulletClone = Instantiate(PurpleFlameBulletPrefeb, bulletSpawnPoint.position, Quaternion.identity);
-                Destroy(yellowBulletClone, 1f);
-                return;
-            }
-            else if (isGreenBulletActive == true || PlayerPrefs.GetInt("PlayerBullet") == 4) 
-            {
-                // instantiate yellow bullet
+               GameObject yellowBulletClone = Instantiate(FireBulletPrefeb, bulletSpawnPoint.position, Quaternion.identity);
+               Destroy(yellowBulletClone, 1f);
+               return;
+           }
+           else if (isPurpleBulletActive == true || PlayerPrefs.GetInt("PlayerBullet") == 3)
+           {
+               // instantiate yellow bullet
 
-                GameObject yellowBulletClone = Instantiate(GreenBulletPrefeb, bulletSpawnPoint.position, Quaternion.identity);
-                Destroy(yellowBulletClone, 1f);
-                return;
-            }
-            else if (isRedBulletActive == true || PlayerPrefs.GetInt("PlayerBullet") == 5)
-            {
-                // instantiate yellow bullet
+               GameObject yellowBulletClone = Instantiate(PurpleFlameBulletPrefeb, bulletSpawnPoint.position, Quaternion.identity);
+               Destroy(yellowBulletClone, 1f);
+               return;
+           }
+           else if (isGreenBulletActive == true || PlayerPrefs.GetInt("PlayerBullet") == 4) 
+           {
+               // instantiate yellow bullet
 
-                GameObject yellowBulletClone = Instantiate(RedFlameeBulletPrefeb, bulletSpawnPoint.position, Quaternion.identity);
-                Destroy(yellowBulletClone, 1f);
-                return;
-            }
+               GameObject yellowBulletClone = Instantiate(GreenBulletPrefeb, bulletSpawnPoint.position, Quaternion.identity);
+               Destroy(yellowBulletClone, 1f);
+               return;
+           }
+           else if (isRedBulletActive == true || PlayerPrefs.GetInt("PlayerBullet") == 5)
+           {
+               // instantiate yellow bullet
+
+               GameObject yellowBulletClone = Instantiate(RedFlameeBulletPrefeb, bulletSpawnPoint.position, Quaternion.identity);
+               Destroy(yellowBulletClone, 1f);
+               return;
+           }
+            */
 
         }
     }

@@ -13,6 +13,8 @@ public class SkinsPanel : MonoBehaviour
     public Button[] SkinButtons;
     public Button[] SkinImagesButtons;
 
+    [SerializeField] AudioClip selectedSoundEffect;
+
     public GameObject SuccessPanel;
     public GameObject FailurePanel;
 
@@ -20,18 +22,22 @@ public class SkinsPanel : MonoBehaviour
     [SerializeField] Color selectedTextColour = Color.blue;
 
 
-    private void Awake()
+    void Awake()
     {
-        if (PlayerPrefs.GetInt("SkinPurchased" + 0) == 1)
+   
+
+        for (int i = 0; i < SkinButtons.Length; i++)
         {
-            SkinImagesButtons[0].interactable = true;
-            SkinButtons[0].gameObject.SetActive(false);
+            if (PlayerPrefs.GetInt("SkinPurchased" + i) == 1)
+            {
+                SkinImagesButtons[i].interactable = true;
+                SkinButtons[i].gameObject.SetActive(false);
+            }
         }
-        if (PlayerPrefs.GetInt("SkinPurchased" + 1) == 1)
-        {
-            SkinImagesButtons[1].interactable = true;
-            SkinButtons[1].gameObject.SetActive(false);
-        }
+
+        // Set the selected skin on panel open
+        int currentSkin = PlayerPrefs.GetInt("CurrentPlayer", 0); // Default to skin 0 if not set
+        SelectSkin(currentSkin);
     }
 
      void Start()
@@ -60,6 +66,11 @@ public class SkinsPanel : MonoBehaviour
 
     public void SelectSkin(int SkinNumber)
     {
+
+        if(AudioManager.GetInstance() != null)
+        {
+            AudioManager.GetInstance().PlaySingleShotAudio(selectedSoundEffect, 1.0f);
+        }
         PlayerPrefs.SetInt("CurrentPlayer", SkinNumber);
         for (int i = 0; i < SkinPricesText.Length; i++)
         {

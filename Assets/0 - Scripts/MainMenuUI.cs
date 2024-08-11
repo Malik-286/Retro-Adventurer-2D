@@ -9,7 +9,8 @@ public class MainMenuUI : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI gameText;
     [SerializeField] TextMeshProUGUI coinsText;
- 
+
+    [SerializeField] AudioClip playButtonSoundEffect;
 
 
     [Header("MainMenu Panels")]
@@ -61,6 +62,10 @@ public class MainMenuUI : MonoBehaviour
  
     public void StartGame()
     {
+        if (AudioManager.GetInstance() != null)
+        {
+            AudioManager.GetInstance().PlaySingleShotAudio(playButtonSoundEffect, 1.0f);
+        }
         levelsPanel.SetActive(true);
         PlayerPrefs.SetInt("CurrencybeforePlay", currencyManager.GetCurrentCoins());
     }
