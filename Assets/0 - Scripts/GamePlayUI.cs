@@ -1,3 +1,4 @@
+using hardartcore.CasualGUI;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -17,7 +18,7 @@ public class GamePlayUI : MonoBehaviour
 
      [Header("Player Prefebs")]
      [SerializeField] Transform playerInstantiatePosition; 
-     [SerializeField] GameObject[] playerPrefebs;
+     public GameObject[] playerPrefebs;
 
 
     public GameObject Player;
@@ -31,8 +32,9 @@ public class GamePlayUI : MonoBehaviour
 
     KillsCounter killsCounter;
     PlayerController playerController;
+    PlayerHealth playerHealth;
 
-      void Awake()
+    void Awake()
     {
         if (PlayerPrefs.GetInt("OneTime") == 0)
         {
@@ -45,8 +47,8 @@ public class GamePlayUI : MonoBehaviour
     }
     void Start()
     {
-        Instantiate(playerPrefebs[PlayerPrefs.GetInt("CurrentPlayer")], playerInstantiatePosition.position, Quaternion.identity);
 
+        InstantiateSelectedPlayer();
 
         killsCounter = FindObjectOfType<KillsCounter>();
         playerController = FindObjectOfType<PlayerController>();
@@ -54,12 +56,12 @@ public class GamePlayUI : MonoBehaviour
         deathPanel.SetActive(false);
         timeEndPanel.SetActive(false);
         timerPanel = FindObjectOfType<TimerPanel>();
-      
+        playerHealth = FindObjectOfType<PlayerHealth>();
     }
 
     void Update()
     {
-
+        
         UpdateCurrencyText();
         UpdateLevelNoText(); 
         UpdateKillsCountText();
@@ -91,6 +93,11 @@ public class GamePlayUI : MonoBehaviour
 
     }
 
+    public void InstantiateSelectedPlayer()
+    {
+        int currentPlayerIndex = PlayerPrefs.GetInt("CurrentPlayer", 0); // Default to skin 0 if not set
+        Instantiate(playerPrefebs[currentPlayerIndex], playerInstantiatePosition.position, Quaternion.identity);
+    }
 
 
 

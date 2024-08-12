@@ -62,10 +62,7 @@ public class MainMenuUI : MonoBehaviour
  
     public void StartGame()
     {
-        if (AudioManager.GetInstance() != null)
-        {
-            AudioManager.GetInstance().PlaySingleShotAudio(playButtonSoundEffect, 1.0f);
-        }
+        PlayClickSoundEffect();
         levelsPanel.SetActive(true);
         PlayerPrefs.SetInt("CurrencybeforePlay", currencyManager.GetCurrentCoins());
     }
@@ -80,6 +77,14 @@ public class MainMenuUI : MonoBehaviour
         if (AudioManager.GetInstance() != null)
         {
             AudioManager.GetInstance().PlayTouchSoundEffect();  
+        }
+    }
+
+    public void PlayClickSoundEffect()
+    {
+        if (AudioManager.GetInstance() != null)
+        {
+            AudioManager.GetInstance().PlaySingleShotAudio(playButtonSoundEffect, 1.0f);
         }
     }
 

@@ -82,10 +82,7 @@ public class PlayerHealth : MonoBehaviour
         {
             currentHealth = 0;
             isAlive = false;
-
-            gameObject.GetComponent<Animator>().SetBool("isRunning", false);
-            gameObject.GetComponent<Animator>().SetBool("isJumping", false);
-            gameObject.GetComponent<Animator>().SetBool("isIdeling", true);
+                       
         }
     }
 
@@ -94,7 +91,7 @@ public class PlayerHealth : MonoBehaviour
     void Update()
     {
 
-        if (!isAlive && !isDeathPanelActive)
+        if (isAlive == false && !isDeathPanelActive)
         {
             isDeathPanelActive = true;
             gameObject.GetComponent<Animator>().SetBool("isDead", true);
@@ -104,7 +101,6 @@ public class PlayerHealth : MonoBehaviour
                 Invoke(nameof(ShowDeathpanel), 3f);
                 breakss = false;
             }
-
         }
         else if (isAlive && isDeathPanelActive == true)
         {

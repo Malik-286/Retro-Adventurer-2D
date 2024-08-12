@@ -20,6 +20,8 @@ public class DeathPanel : MonoBehaviour
     [SerializeField] GameObject detailsPanel;
 
 
+ 
+
     void Start()
     {
         
@@ -27,6 +29,7 @@ public class DeathPanel : MonoBehaviour
         playerHealth = FindObjectOfType<PlayerHealth>();
         healthPanel = FindObjectOfType<HealthPanel>();
         playerController = FindObjectOfType<PlayerController>();
+    
 
 
         playerController.GetComponent<Animator>().SetBool("isRunning", false);
@@ -52,28 +55,29 @@ public class DeathPanel : MonoBehaviour
 
     public void PressContinueButton()
     {
-         Time.timeScale = 1.0f;
 
-        if (AudioManager.GetInstance() != null)
-        {
-            AudioManager.GetInstance().PlayTouchSoundEffect();
-        }
-        if (CurrencyManager.instance)
-        {
-            playerHealth.IncreaseHealth(25);
-            
-            playerHealth.GetComponent<Animator>().SetBool("isDead", false);
-            playerHealth.GetComponent<Animator>().SetBool("isRunning", false);
-            playerHealth.GetComponent<Animator>().SetBool("isIdeling", true);
+        Time.timeScale = 1.0f;
 
-            playerHealth.isAlive = true;
-            UpdateHealthIcon();
-            this.gameObject.SetActive(false);
-            UiControlls.SetActive(true);
-            detailsPanel.SetActive(true);
-            playerHealth.EnableAndDisablePlayerHealthComponent();
-        }
- 
+        playerHealth.IncreaseHealth(25);
+
+        // Ensure all other animations are reset before reviving the player
+        Animator playerAnimator = playerHealth.GetComponent<Animator>();
+        playerAnimator.SetBool("isDead", false);
+        playerAnimator.SetBool("isRunning", false);
+        playerAnimator.SetBool("isClimbing", false);
+        playerAnimator.SetBool("isJumping", false);
+
+        // Set idle animation as default
+        playerAnimator.SetBool("isIdeling", true);
+
+        // Revive the player
+        playerHealth.isAlive = true;
+
+        UpdateHealthIcon();
+        UiControlls.SetActive(true);
+        detailsPanel.SetActive(true);
+        playerHealth.EnableAndDisablePlayerHealthComponent();
+        this.gameObject.SetActive(false);
     }
 
 

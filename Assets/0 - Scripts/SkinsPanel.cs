@@ -71,7 +71,7 @@ public class SkinsPanel : MonoBehaviour
         {
             AudioManager.GetInstance().PlaySingleShotAudio(selectedSoundEffect, 1.0f);
         }
-        PlayerPrefs.SetInt("CurrentPlayer", SkinNumber);
+     //   PlayerPrefs.SetInt("CurrentPlayer", SkinNumber);
         for (int i = 0; i < SkinPricesText.Length; i++)
         {
             SkinPricesText[i].text = "Select".ToString();
@@ -79,6 +79,9 @@ public class SkinsPanel : MonoBehaviour
         }
         SkinPricesText[SkinNumber].text = "Selected".ToString();
         SkinPricesText[SkinNumber].color = selectedTextColour;
+
+        PlayerPrefs.SetInt("CurrentPlayer", SkinNumber);
+
         print("Player Skin Selected");
     }
     void Update()

@@ -5,15 +5,10 @@ using UnityEngine;
 public class TimeEndPanel : MonoBehaviour
 {
  
-    Interstitial interstitial;
-
+ 
 
     [SerializeField] GameObject UiControlls;
-    void Start()
-    {
  
-        interstitial = FindObjectOfType<Interstitial>();
-    }
 
       void Update()
     {

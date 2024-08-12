@@ -58,7 +58,7 @@ public class AdmobRewardedVideo : MonoBehaviour
                 SpinWheelController.Instance.TurnWheel();
                 print("Spinner Wheel Admob Reward Generated");
                 this.gameObject.GetComponent<Button>().interactable = false;
-                Invoke(nameof(EnableAgaino), 10f);
+                Invoke(nameof(EnableAgain), 10f);
             }
         }
         if (Index == 3)
@@ -68,7 +68,7 @@ public class AdmobRewardedVideo : MonoBehaviour
                 deathPanel.PressContinueButton();
                 print("Death Panel Admob Reward Generated");
                 this.gameObject.GetComponent<Button>().interactable = false;
-                Invoke(nameof(EnableAgaino), 5f);
+                Invoke(nameof(EnableAgain), 5f);
             }
         }
         if (Index == 4)
@@ -83,7 +83,7 @@ public class AdmobRewardedVideo : MonoBehaviour
     }
     #endregion
 
-    public void EnableAgaino()
+    public void EnableAgain()
     {
         this.gameObject.GetComponent<Button>().interactable = true;
     }
