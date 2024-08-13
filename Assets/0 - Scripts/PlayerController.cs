@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
- 
+
 public class PlayerController : MonoBehaviour
 {
 
@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float jumpForce = 5f;
     [SerializeField] float climbForce = 5f;
     [SerializeField] AudioClip jumpSoundEffect;
- 
+
 
     [Header("Player Particle Effects Variables")]
 
@@ -54,11 +54,11 @@ public class PlayerController : MonoBehaviour
     SpriteRenderer spriteRenderer;
     public Animator animator;
     float startingGravity;
- 
+
     bool isAlive = true;
 
 
-     void Start()
+    void Start()
     {
         isBlueBulletActive = false;
         isYellowBulletActive = false;
@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         playerFeetCollider = GetComponent<BoxCollider2D>();
-  
+
         safeZoneParticlesPrefeb.SetActive(false);
 
         startingGravity = rb.gravityScale;
@@ -89,6 +89,8 @@ public class PlayerController : MonoBehaviour
         PlayerMovingUpward();
         PlayerMovingDownward();
     }
+
+
 
 
     #region Player Movement Methods
@@ -170,28 +172,28 @@ public class PlayerController : MonoBehaviour
             StopMoving();
             animator.SetBool("isRunning", false);
             animator.SetBool("isJumping", false);
- 
+
             animator.SetBool("isIdeling", true);
 
         }
         else if (moveLeftPressed)
         {
             MoveLeft();
- 
+
         }
         else if (moveRightPressed)
         {
             MoveRight();
- 
+
         }
 
         rb.velocity = new Vector2(movement.x * moveSpeed, rb.velocity.y);
 
         bool isMoving = Mathf.Abs(rb.velocity.x) > Mathf.Epsilon;
 
- 
-        animator.SetBool("isRunning", isMoving);      
-         
+
+        animator.SetBool("isRunning", isMoving);
+
     }
 
 
@@ -203,7 +205,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, climbForce);
             animator.SetBool("isIdeling", false);
             animator.SetBool("isJumping", false);
- 
+
 
             animator.SetBool("isClimbing", true);
         }
@@ -222,11 +224,11 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, -climbForce);
             animator.SetBool("isIdeling", false);
             animator.SetBool("isJumping", false);
- 
+
 
             animator.SetBool("isClimbing", true);
         }
-       
+
     }
     public void Jump()
     {
@@ -237,7 +239,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isIdeling", false);
             animator.SetBool("isRunning", false);
 
-            
+
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             animator.SetBool("isJumping", true);
             CreateDustParticles();
@@ -259,7 +261,7 @@ public class PlayerController : MonoBehaviour
     {
         if (isAlive)
         {
-            if(isBlueBulletActive == true || isYellowBulletActive == true)
+            if (isBlueBulletActive == true || isYellowBulletActive == true)
             {
                 if (AudioManager.GetInstance())
                 {
@@ -353,7 +355,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-    
+
             rb.gravityScale = startingGravity;
             playerFeetCollider.isTrigger = false;
 
@@ -362,7 +364,7 @@ public class PlayerController : MonoBehaviour
 
     bool CheckIfGrounded()
     {
-        if (playerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        if (playerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) || playerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Hazards")))
         {
              return true;
         } 

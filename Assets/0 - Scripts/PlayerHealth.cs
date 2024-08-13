@@ -24,12 +24,13 @@ public class PlayerHealth : MonoBehaviour
   //  public GameObject deathPanel;
   //  public GameObject detailsPanel;
     ScreenShake screenShake;
-
+ 
     public bool isDeathPanelActive;
+ 
 
-
-    bool isGamePaused = false;
-
+    [SerializeField] bool isGamePaused = false;
+    [SerializeField] bool isCollidedWithHazard = false;
+    [SerializeField] float hazardReEnableTime = 3.5f;
 
     GamePlayUI gamePlayUI;
 
@@ -43,9 +44,10 @@ public class PlayerHealth : MonoBehaviour
     //   deathPanel.SetActive(false);
         screenShake = FindObjectOfType<ScreenShake>();
         isDeathPanelActive = false;
-    }
+      }
 
-
+   
+     
     public int GetCurrentHealth()
     {
         return currentHealth;
@@ -90,6 +92,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Update()
     {
+        PlayerColliderWithHazard();
 
         if (isAlive == false && !isDeathPanelActive)
         {
@@ -149,12 +152,42 @@ public class PlayerHealth : MonoBehaviour
         Destroy(gameObject, 1f);
     }
 
+    public void PlayerColliderWithHazard()
+    {
+        if (isCollidedWithHazard == true)
+        {
+            return;
+        }
+        if (gameObject.GetComponent<BoxCollider2D>().IsTouchingLayers(LayerMask.GetMask("Hazards")) && !isCollidedWithHazard)
+        {
+            print("Collided With Hazard");
 
+            isCollidedWithHazard = true;
+            DecreaseHealth(25);
+            spriteRenderer.color = Color.red;
+            StartCoroutine(ResetPlayerColor());
+            StartCoroutine(HazardReEnableLogic());
+            if (isAlive)
+            {
+                AudioManager.GetInstance().PlaySingleShotAudio(losehealthSound, 0.6f);
+            }
+
+            // Start cooldown
+            StartCoroutine(DamageCooldown());
+        }
+    }
+
+    IEnumerator HazardReEnableLogic()
+    {
+        yield return new WaitForSeconds(hazardReEnableTime);
+        isCollidedWithHazard = false;
+    }
 
     void OnCollisionEnter2D(Collision2D collision)
-    {
-
-        if (collision.gameObject.CompareTag("Enemy") && GetComponent<PlayerHealth>().enabled && canTakeDamage)
+    {    
+     
+ 
+        if (collision.gameObject.CompareTag("Enemy")  && GetComponent<PlayerHealth>().enabled && canTakeDamage)
         {
             DecreaseHealth(25);
             spriteRenderer.color = Color.red;
