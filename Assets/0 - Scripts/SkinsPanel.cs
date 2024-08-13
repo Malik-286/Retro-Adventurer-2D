@@ -84,8 +84,5 @@ public class SkinsPanel : MonoBehaviour
 
         print("Player Skin Selected");
     }
-    void Update()
-    {
-        
-    }
+  
 }
