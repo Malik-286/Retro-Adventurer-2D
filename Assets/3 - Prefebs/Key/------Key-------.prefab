@@ -41,7 +41,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3976192203904850977}
   serializedVersion: 8
-  lengthInSec: 2
+  lengthInSec: 5
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 3
@@ -251,7 +251,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.5
+      scalar: 3
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4745,7 +4745,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 87055931
-  m_SortingLayer: 12
+  m_SortingLayer: 19
   m_SortingOrder: -1
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -4807,7 +4807,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5281070400024097804}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -64.78, y: -21.66, z: 0}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4854,7 +4854,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 87055931
-  m_SortingLayer: 12
+  m_SortingLayer: 19
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e9958a692226a90499bb7001427a427d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -4917,6 +4917,7 @@ MonoBehaviour:
   keyCollectionSound: {fileID: 8300000, guid: 4d74dbd2d23af924798cd5c680f0c13f, type: 3}
   isKeyCollected: 0
   exitCheckPoint: {fileID: 0}
+  particles: {fileID: 3976192203904850977}
 --- !u!95 &6628418232994610217
 Animator:
   serializedVersion: 5

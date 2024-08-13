@@ -16,7 +16,10 @@ public class TimerPanel : MonoBehaviour
 
     PlayerHealth playerHealth;
     public bool isTimeCompleted = false;
- 
+    KeyPickup keyPickUp;
+    [SerializeField] TextMeshProUGUI keyPickUpText;
+
+
     private void Awake()
     {
         if (Instance==null)
@@ -28,10 +31,12 @@ public class TimerPanel : MonoBehaviour
     {
         levelStartupTime = levelCompletionTime;
         playerHealth = FindObjectOfType<PlayerHealth>();
+         keyPickUp = FindObjectOfType<KeyPickup>();
   
     }
     void Update()
     {
+        UpdateKeyStatus();
         levelCompletionTime -= Time.smoothDeltaTime;
         timeText.text = levelCompletionTime.ToString("00:00");
        
@@ -44,7 +49,6 @@ public class TimerPanel : MonoBehaviour
             PlayerHealth playerHealth = FindObjectOfType<PlayerHealth>();
             playerHealth.enabled = false;
          }
-
 
     }
 
@@ -63,5 +67,22 @@ public class TimerPanel : MonoBehaviour
         Time.timeScale = 1.0f;
         PlayerHealth playerHealth = FindObjectOfType<PlayerHealth>();
         playerHealth.enabled = true;
+    }
+
+
+    void UpdateKeyStatus()
+    {
+       
+        if(keyPickUp != null)
+        {
+            if(keyPickUp.isKeyCollected == false)
+            {
+                keyPickUpText.text = "0";
+            }else if (keyPickUp.isKeyCollected == true)
+            {
+                keyPickUpText.text = "1";
+             }
+             
+        }
     }
 }
