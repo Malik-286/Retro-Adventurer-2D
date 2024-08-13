@@ -73,7 +73,14 @@ public class Enemy : MonoBehaviour
     void OnTriggerExit2D(Collider2D collision)
     {
         FlipEnemiesSprite();
-        transform.localScale = new Vector3(-0.6f,0.6f,0);
+        if (bigRoar)
+        {
+            return;
+        }
+        else
+        {
+            transform.localScale = new Vector3(-0.6f,0.6f,0);
+        }
     }
 
 
