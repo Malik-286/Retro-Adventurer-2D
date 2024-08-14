@@ -12,9 +12,8 @@ public class Rewarded : MonoBehaviour
 
 
     RewardedAd _rewardedAd;
-    CurrencyManager currencyManager;
-
-    private void Awake()
+ 
+      void Awake()
     {
         if(Instance == null)
         {
@@ -24,17 +23,16 @@ public class Rewarded : MonoBehaviour
     void Start()
     {
          MobileAds.Initialize((InitializationStatus initStatus) =>  {});
-         currencyManager = FindObjectOfType<CurrencyManager>();
-         LoadRewardedAd();
+          LoadRewardedAd();
      }
 
 
  #if UNITY_ANDROID
-    private string _adUnitId = "ca-app-pub-1387627577986386/4685752798";
+      string _adUnitId = "ca-app-pub-1387627577986386/4685752798";
 #elif UNITY_IPHONE
-  private string _adUnitId = "ca-app-pub-3940256099942544/1712485313";
+    string _adUnitId = "ca-app-pub-3940256099942544/1712485313";
 #else
-  private string _adUnitId = "unused";
+    string _adUnitId = "unused";
 #endif
      
 
