@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class KillsCounter : MonoBehaviour
 {
-     
 
 
-   [SerializeField] int killsCount;
+
+    [SerializeField] int killsCount;
     void Start()
     {
         killsCount = 0;

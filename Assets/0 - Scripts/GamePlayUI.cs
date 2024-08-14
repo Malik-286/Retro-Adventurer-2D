@@ -120,7 +120,12 @@ public class GamePlayUI : MonoBehaviour
 
     void UpdateKillsCountText()
     {
-        killsCounterText.text = killsCounter.GetCurrentSceneKills().ToString();
+        if(killsCounterText != null || killsCounter != null)
+        {
+            killsCounterText.text = killsCounter.GetCurrentSceneKills().ToString();
+        }
+     
+         
     }
 
 

@@ -9,6 +9,10 @@ public class Arrow : MonoBehaviour
     [SerializeField] float arrowMoveSpeed = -10f;
     [SerializeField] float destroyTime = 1.5f;
 
+    [SerializeField] bool isthisRightArrow;
+    [SerializeField] bool isthisLeftArrow;
+
+
     void Start()
     {
         Destroy(gameObject,destroyTime);
@@ -16,7 +20,14 @@ public class Arrow : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(arrowMoveSpeed * Time.deltaTime, 0, 0);
+        if (isthisLeftArrow)
+        {
+            transform.Translate(arrowMoveSpeed * Time.deltaTime, 0, 0);
+        }else if (isthisRightArrow)
+        {
+            transform.Translate(-arrowMoveSpeed * Time.deltaTime, 0, 0);
+        }
+        
     }
 
     void OnCollisionEnter2D(Collision2D collision)
