@@ -9,7 +9,6 @@ public class Coin : MonoBehaviour
     [SerializeField] AudioClip coinCollectionSound;
     [SerializeField] int amountToIncrease;
   
-     CurrencyManager currencyManager;
     CurrencyPanelAnimation currencyPanelAnimation;
 
     [Header("Coin Move Animation")]
@@ -20,7 +19,6 @@ public class Coin : MonoBehaviour
       void Start()
     {
         moveCoin = false;
-         currencyManager = FindObjectOfType<CurrencyManager>();
         currencyPanelAnimation = FindObjectOfType<CurrencyPanelAnimation>();
       }
    
@@ -36,11 +34,10 @@ public class Coin : MonoBehaviour
              if(AudioManager.GetInstance() != null)
             {
                 AudioManager.GetInstance().PlaySingleShotAudio(coinCollectionSound, 0.8f);
-                if(currencyManager != null)
+                if(CurrencyManager.instance)
                 {
-                     
-                    currencyManager.IncreaseCoins(amountToIncrease);
-                    currencyManager.SaveCurrencyData();
+                    CurrencyManager.instance.IncreaseCoins(amountToIncrease);
+                    CurrencyManager.instance.SaveCurrencyData();
                 }           
             }
                  Destroy(gameObject, 0.5f);

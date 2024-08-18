@@ -27017,7 +27017,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1206873149
-  m_SortingLayer: 10
+  m_SortingLayer: 11
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 4.37, y: 4.205, z: 0}
@@ -34010,7 +34010,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinsText: {fileID: 4491163}
   levelNoText: {fileID: 7796838130635815361}
-  killsCounterText: {fileID: 6644698438906620299}
+  killsCounterText: {fileID: 0}
   uiControllsButtons: {fileID: 5335710573389140000}
   pauseButton: {fileID: 6165961069780094143}
   playerInstantiatePosition: {fileID: 1549619114}
@@ -41006,7 +41006,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1808658853
-  m_SortingLayer: 11
+  m_SortingLayer: 10
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 34983a20e58f2de42acfc5c7e9214dbf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -42198,7 +42198,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1808658853
-  m_SortingLayer: 11
+  m_SortingLayer: 10
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 34983a20e58f2de42acfc5c7e9214dbf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -42749,17 +42749,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4504705732774557175}
   m_CullTransparentMesh: 0
---- !u!114 &6644698438906620299 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6474721723354630998, guid: 98ae7c270fdf4914e9f79d5f4e620f8d, type: 3}
-  m_PrefabInstance: {fileID: 4840667364569602855}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &6646349045925989636
 RectTransform:
   m_ObjectHideFlags: 0
@@ -43312,6 +43301,10 @@ PrefabInstance:
     - target: {fileID: 2438885065645024400, guid: 133e3a891c1841b47a117e67c78daa50, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4318042720102574180, guid: 133e3a891c1841b47a117e67c78daa50, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6058726072278354475, guid: 133e3a891c1841b47a117e67c78daa50, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target

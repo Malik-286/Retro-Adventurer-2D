@@ -37,8 +37,8 @@ public class AdmobRewardedVideo : MonoBehaviour
         {
             if (CurrencyManager.instance)
             {
-                CurrencyManager.instance.IncreaseCoins(PlayerPrefs.GetInt("CollectedCurrency") * 2);
-                print(PlayerPrefs.GetInt("CollectedCurrency") + " Collected coins Value");
+                CurrencyManager.instance.IncreaseCoins(PlayerPrefs.GetInt("CollectedCurrency"));
+                print(PlayerPrefs.GetInt("CollectedCurrency") + "Collected coins Value");
                  CurrencyManager.instance.SaveCurrencyData();
             }
 
