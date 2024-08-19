@@ -7,24 +7,52 @@ public class ArrowMachine : MonoBehaviour
 {
 
     [SerializeField] GameObject arrowPrefeb;
+    [SerializeField] Transform arrowShootPosition;
+    [SerializeField] AudioClip arrowShootSoundEfect;
+    [SerializeField] AudioClip machineDestroySoundeffect;
+
+
+    public bool isDestroyed = false;
+    Animator animator;
 
     void Start()
     {
-        InvokeRepeating(nameof(ThrowArrow), 2, 4); ;
+
+        animator = GetComponent<Animator>();
+         InvokeRepeating(nameof(ThrowArrow), 2, 4); ;
     }
 
     public void ThrowArrow()
     {
-        GameObject arrowClone = Instantiate(arrowPrefeb, transform.position, quaternion.identity);
-       
+        if (isDestroyed == true)
+        {
+            return;
+        }
+
+        GameObject arrowClone = Instantiate(arrowPrefeb, arrowShootPosition.position, quaternion.identity);
+        if (AudioManager.GetInstance() != null)
+        {
+            AudioManager.GetInstance().PlaySingleShotAudio(arrowShootSoundEfect, 1.5f);
+        }
+
 
     }
 
-      void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Bullet"))
         {
-            Destroy(gameObject);
+            isDestroyed = true;
+            if (isDestroyed == true)
+            {
+                if(AudioManager.GetInstance() != null)
+                {
+                    AudioManager.GetInstance().PlaySingleShotAudio(machineDestroySoundeffect, 1.0f);
+                }
+                animator.SetBool("isDestroyed", true);
+                Destroy(gameObject, 3f);
+            }
+
         }
     }
 
