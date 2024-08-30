@@ -81,7 +81,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -427368065
-  m_SortingLayer: 16
+  m_SortingLayer: 18
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 70b937853f5a1e342b43a03d4ea74d23, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -237,6 +237,9 @@ MonoBehaviour:
   defaultColor: {r: 0, g: 0, b: 0, a: 0}
   damageCooldown: 3
   isDeathPanelActive: 0
+  isGamePaused: 0
+  isCollidedWithHazard: 0
+  hazardReEnableTime: 3.5
 --- !u!61 &7207056913325965925
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -269,7 +272,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 1
   m_UsedByComposite: 0
-  m_Offset: {x: -0.034389436, y: -0.85}
+  m_Offset: {x: -0.024595141, y: -0.84216666}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -280,7 +283,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.67292523, y: 0.013325989}
+  m_Size: {x: 0.52998143, y: 0.028992593}
   m_EdgeRadius: 0
 --- !u!1 &4113643643559209920
 GameObject:
@@ -5180,7 +5183,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -427368065
-  m_SortingLayer: 16
+  m_SortingLayer: 18
   m_SortingOrder: 10
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -10053,7 +10056,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -427368065
-  m_SortingLayer: 16
+  m_SortingLayer: 18
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
