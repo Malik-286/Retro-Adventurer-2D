@@ -1,45 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using GoogleMobileAds;
 using GoogleMobileAds.Api;
 using System;
+using UnityEngine;
 
-public class Rewarded : MonoBehaviour
+public class Rewarded : Singelton<Rewarded>
 {
-
-    public static Rewarded Instance;
-
-
-    RewardedAd _rewardedAd;
- 
-      void Awake()
+    protected override void Awake()
     {
-        if(Instance == null)
-        {
-            Instance = this;
-        }
+        base.Awake();
     }
-    void Start()
+
+   
+    public void Start()
     {
-         MobileAds.Initialize((InitializationStatus initStatus) =>  {});
-          LoadRewardedAd();
-     }
+         MobileAds.Initialize((InitializationStatus initStatus) =>  { });
+    }
 
 
  #if UNITY_ANDROID
-      string _adUnitId = "ca-app-pub-1387627577986386/4685752798";
+    private string _adUnitId = "ca-app-pub-1387627577986386/4685752798";
 #elif UNITY_IPHONE
-    string _adUnitId = "ca-app-pub-3940256099942544/1712485313";
+  private string _adUnitId = "ca-app-pub-3940256099942544/1712485313";
 #else
-    string _adUnitId = "unused";
+  private string _adUnitId = "unused";
 #endif
-     
 
-   
+
+    RewardedAd _rewardedAd;
+
     public void LoadRewardedAd()
     {
-         if (_rewardedAd != null)
+        // Clean up the old ad before loading a new one.
+        if (_rewardedAd != null)
         {
             _rewardedAd.Destroy();
             _rewardedAd = null;
@@ -47,12 +38,15 @@ public class Rewarded : MonoBehaviour
 
         Debug.Log("Loading the rewarded ad.");
 
-         var adRequest = new AdRequest();
+        // create our request used to load the ad.
+        var adRequest = new AdRequest();
 
-         RewardedAd.Load(_adUnitId, adRequest,
+        // send the request to load the ad.
+        RewardedAd.Load(_adUnitId, adRequest,
             (RewardedAd ad, LoadAdError error) =>
             {
-                 if (error != null || ad == null)
+                // if error is not null, the load request failed.
+                if (error != null || ad == null)
                 {
                     Debug.LogError("Rewarded ad failed to load an ad " +
                                    "with error : " + error);
@@ -63,56 +57,61 @@ public class Rewarded : MonoBehaviour
                           + ad.GetResponseInfo());
 
                 _rewardedAd = ad;
-             });
+                ShowRewardedAd();
+            });
     }
 
     public void ShowRewardedAd()
-    {         
+    {  
         if (_rewardedAd != null && _rewardedAd.CanShowAd())
         {
             _rewardedAd.Show((Reward reward) =>
             {
-                //currencyManager.GetInstance().IncreaseCoins(200);
-                //currencyManager.SaveCurrencyData();
+                // TODO: Reward the user.
+              //  RegisterEventHandlers(_rewardedAd);
+             //   RegisterReloadHandler(_rewardedAd);
 
-                //Add Up reward.
+                //Assigning Reward After Ad
                 if (AdmobRewardedVideo.Instance)
                 {
                     AdmobRewardedVideo.Instance.RewardAfterAd();
                 }
-
-                RegisterEventHandlers(_rewardedAd);
-                RegisterReloadHandler(_rewardedAd);
-
+                               
             });
         }
     }
 
-      void RegisterEventHandlers(RewardedAd ad)
+    void RegisterEventHandlers(RewardedAd ad)
     {
-         ad.OnAdPaid += (AdValue adValue) =>
+        // Raised when the ad is estimated to have earned money.
+        ad.OnAdPaid += (AdValue adValue) =>
         {
             Debug.Log(String.Format("Rewarded ad paid {0} {1}.",
                 adValue.Value,
                 adValue.CurrencyCode));
         };
-         ad.OnAdImpressionRecorded += () =>
+        // Raised when an impression is recorded for an ad.
+        ad.OnAdImpressionRecorded += () =>
         {
             Debug.Log("Rewarded ad recorded an impression.");
         };
-         ad.OnAdClicked += () =>
+        // Raised when a click is recorded for an ad.
+        ad.OnAdClicked += () =>
         {
             Debug.Log("Rewarded ad was clicked.");
         };
-         ad.OnAdFullScreenContentOpened += () =>
+        // Raised when an ad opened full screen content.
+        ad.OnAdFullScreenContentOpened += () =>
         {
             Debug.Log("Rewarded ad full screen content opened.");
         };
-         ad.OnAdFullScreenContentClosed += () =>
+        // Raised when the ad closed full screen content.
+        ad.OnAdFullScreenContentClosed += () =>
         {
             Debug.Log("Rewarded ad full screen content closed.");
         };
-         ad.OnAdFullScreenContentFailed += (AdError error) =>
+        // Raised when the ad failed to open full screen content.
+        ad.OnAdFullScreenContentFailed += (AdError error) =>
         {
             Debug.LogError("Rewarded ad failed to open full screen content " +
                            "with error : " + error);
@@ -121,20 +120,22 @@ public class Rewarded : MonoBehaviour
 
       void RegisterReloadHandler(RewardedAd ad)
     {
-         ad.OnAdFullScreenContentClosed += () =>
-    {
+        // Raised when the ad closed full screen content.
+        ad.OnAdFullScreenContentClosed += () =>
+        {
             Debug.Log("Rewarded Ad full screen content closed.");
 
-             LoadRewardedAd();
+            // Reload the ad so that we can show another as soon as possible.
+            LoadRewardedAd();
         };
-         ad.OnAdFullScreenContentFailed += (AdError error) =>
+        // Raised when the ad failed to open full screen content.
+        ad.OnAdFullScreenContentFailed += (AdError error) =>
         {
             Debug.LogError("Rewarded ad failed to open full screen content " +
                            "with error : " + error);
 
-             LoadRewardedAd();
+            // Reload the ad so that we can show another as soon as possible.
+            LoadRewardedAd();
         };
     }
-
-
 }
