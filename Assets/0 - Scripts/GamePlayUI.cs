@@ -13,7 +13,7 @@ public class GamePlayUI : MonoBehaviour
       [SerializeField] TextMeshProUGUI coinsText;
       [SerializeField] TextMeshProUGUI levelNoText;
       [SerializeField] TextMeshProUGUI killsCounterText;
-      [SerializeField] GameObject uiControllsButtons;
+      public GameObject uiControllsButtons;
       [SerializeField] Button pauseButton;
 
      [Header("Player Prefebs")]
@@ -84,8 +84,11 @@ public class GamePlayUI : MonoBehaviour
         }
         else  
         {
-            pauseButton.interactable = true;
-            uiControllsButtons.SetActive(true);
+            if (playerHealth.isAlive == true)
+            {
+                pauseButton.interactable = true;
+                uiControllsButtons.SetActive(true);
+            }
         }
 
 

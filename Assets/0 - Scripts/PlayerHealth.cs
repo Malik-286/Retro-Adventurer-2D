@@ -98,9 +98,10 @@ public class PlayerHealth : MonoBehaviour
         {
             isDeathPanelActive = true;
             gameObject.GetComponent<Animator>().SetBool("isDead", true);
-
+            gamePlayUI.uiControllsButtons.SetActive(false);
             if (breakss)
             {
+                print("why he didn't");
                 Invoke(nameof(ShowDeathpanel), 3f);
                 breakss = false;
             }
@@ -133,6 +134,8 @@ public class PlayerHealth : MonoBehaviour
 
     public void ShowDeathpanel()
     {
+       gamePlayUI.uiControllsButtons.SetActive(true);
+
         gamePlayUI.deathPanel.GetComponent<Dialog>().ShowDialog();
 
         if (gamePlayUI.deathPanel.activeInHierarchy)
