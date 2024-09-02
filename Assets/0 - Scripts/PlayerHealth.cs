@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
 
+    public static PlayerHealth Instance;
+
     [SerializeField] int currentHealth;
     [SerializeField] int maxHealth = 100;
     [SerializeField] AudioClip losehealthSound;
@@ -33,7 +35,13 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] float hazardReEnableTime = 3.5f;
 
     GamePlayUI gamePlayUI;
-
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
     void Start()
     {
         gamePlayUI = FindObjectOfType<GamePlayUI>();

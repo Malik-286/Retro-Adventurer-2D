@@ -10139,7 +10139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Banner: {fileID: 2737321488214031208}
   Interstitial: {fileID: 3890948375954406804}
-  Rewarded: {fileID: 8989017959052784465}
+  Rewarded: {fileID: 6625182530092203599}
 --- !u!1 &332702102
 GameObject:
   m_ObjectHideFlags: 0
@@ -76010,7 +76010,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5194432726243313608}
-  - component: {fileID: 8989017959052784465}
+  - component: {fileID: 6625182530092203599}
   m_Layer: 0
   m_Name: Rewarded Ad (Admob)
   m_TagString: Untagged
@@ -76018,6 +76018,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6625182530092203599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6625182530092203598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 007a7690b67de584494ab4bd9eb32551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AdLoadedStatus: {fileID: 6625182530092203598}
+  _adUnitId: ca-app-pub-1387627577986386/4685752798
 --- !u!1 &6626688201854143980
 GameObject:
   m_ObjectHideFlags: 0
@@ -86757,18 +86771,6 @@ MonoBehaviour:
   titleText: {fileID: 0}
   descriptionText: {fileID: 0}
   priceText: {fileID: 0}
---- !u!114 &8989017959052784465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6625182530092203598}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d68c86e2148dff541ad402ed4e5154cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8990619653876645665
 GameObject:
   m_ObjectHideFlags: 0

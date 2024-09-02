@@ -31,8 +31,6 @@ public class AdmobRewardedVideo : MonoBehaviour
     {
         print("Reward Adding up");
 
-
-
         if (Index == 0)
         {
             if (CurrencyManager.instance)

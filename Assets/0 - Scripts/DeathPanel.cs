@@ -57,26 +57,27 @@ public class DeathPanel : MonoBehaviour
     {
 
         Time.timeScale = 1.0f;
+        if (PlayerHealth.Instance)
+        {
+            PlayerHealth.Instance.IncreaseHealth(25);
+            PlayerHealth.Instance.EnableAndDisablePlayerHealthComponent();
 
-        playerHealth.IncreaseHealth(25);
+            // Ensure all other animations are reset before reviving the player
+            Animator playerAnimator = PlayerHealth.Instance.GetComponent<Animator>();
+            playerAnimator.SetBool("isDead", false);
+            playerAnimator.SetBool("isRunning", false);
+            playerAnimator.SetBool("isClimbing", false);
+            playerAnimator.SetBool("isJumping", false);
 
-        // Ensure all other animations are reset before reviving the player
-        Animator playerAnimator = playerHealth.GetComponent<Animator>();
-        playerAnimator.SetBool("isDead", false);
-        playerAnimator.SetBool("isRunning", false);
-        playerAnimator.SetBool("isClimbing", false);
-        playerAnimator.SetBool("isJumping", false);
+            // Set idle animation as default
+            playerAnimator.SetBool("isIdeling", true);
 
-        // Set idle animation as default
-        playerAnimator.SetBool("isIdeling", true);
-
-        // Revive the player
-        playerHealth.isAlive = true;
-
+            // Revive the player
+            PlayerHealth.Instance.isAlive = true;
+        }
         UpdateHealthIcon();
         UiControlls.SetActive(true);
         detailsPanel.SetActive(true);
-        playerHealth.EnableAndDisablePlayerHealthComponent();
         this.gameObject.SetActive(false);
     }
 
