@@ -10,7 +10,7 @@ public class Banner : MonoBehaviour
 #if UNITY_ANDROID
     private string _adUnitId = "ca-app-pub-1387627577986386/3938588814";
 #elif UNITY_IPHONE
-  private string _adUnitId = "ca-app-pub-1387627577986386/3938588814";
+  private string _adUnitId = "ca-app-pub-1387627577986386/3060472360";
 #else
   private string _adUnitId = "unused";
 #endif
@@ -28,7 +28,7 @@ public class Banner : MonoBehaviour
         else
         {
             MobileAds.Initialize((InitializationStatus initStatus) => { });
-            //CreateBannerView();
+            CreateBannerView();
             //LoadAd();  Created in Adsmanager Already
         } 
          
@@ -57,9 +57,7 @@ public class Banner : MonoBehaviour
         LoadAd();
     }
 
-    /// <summary>
-    /// Creates the banner view and loads a banner ad.
-    /// </summary>
+  
     public void LoadAd()
     {
         // create an instance of a banner view first.

@@ -22,21 +22,21 @@ public class Rewarded : MonoBehaviour
     }
     void Start()
     {
-         MobileAds.Initialize((InitializationStatus initStatus) =>  {});
-          LoadRewardedAd();
-     }
+        MobileAds.Initialize((InitializationStatus initStatus) => { });
+        LoadRewardedAd();
+    }
 
 
  #if UNITY_ANDROID
       string _adUnitId = "ca-app-pub-1387627577986386/4685752798";
 #elif UNITY_IPHONE
-    string _adUnitId = "ca-app-pub-3940256099942544/1712485313";
+    string _adUnitId = "ca-app-pub-1387627577986386/8121227358";
 #else
     string _adUnitId = "unused";
 #endif
-     
 
-   
+
+
     public void LoadRewardedAd()
     {
          if (_rewardedAd != null)

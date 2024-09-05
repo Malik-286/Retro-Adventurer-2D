@@ -20,10 +20,10 @@ public class Adsmanager : MonoBehaviour
             Instance = this;
         }
     }
-    // Start is called before the first frame update
     void Start()
     {
-       DontDestroyOnLoad(this);
+        DontDestroyOnLoad(this);
+
 
         ShowBanner();
 
@@ -34,12 +34,30 @@ public class Adsmanager : MonoBehaviour
 
     public void ShowBanner()
     {
-        Banner.LoadAd();
-        Banner.CreateBannerView();
+        if (PlayerPrefs.GetString("AdsStatusKey") == "disabled")
+        {
+            return;
+
+        }
+        else
+        {
+            Banner.LoadAd();
+            Banner.CreateBannerView();
+        }
+        
     }
     public void ShowIntersitial()
     {
-        Interstitial.ShowInterstitialAd();
+        if (PlayerPrefs.GetString("AdsStatusKey") == "disabled")
+        {
+            return;
+
+        }
+        else
+        {
+             Interstitial.ShowInterstitialAd();
+
+        }
     }
     public void ShowRewardedVideoAd()
     {
@@ -48,9 +66,5 @@ public class Adsmanager : MonoBehaviour
     #endregion
 
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+  
 }
