@@ -20,7 +20,7 @@ public class TimerPanel : MonoBehaviour
     [SerializeField] TextMeshProUGUI keyPickUpText;
 
 
-    private void Awake()
+      void Awake()
     {
         if (Instance==null)
         {
@@ -85,4 +85,7 @@ public class TimerPanel : MonoBehaviour
              
         }
     }
+
+
+
 }
