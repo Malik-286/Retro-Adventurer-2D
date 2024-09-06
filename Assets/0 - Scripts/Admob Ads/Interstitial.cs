@@ -93,6 +93,8 @@ public class Interstitial : MonoBehaviour
         }
         else
         {
+            LoadInterstitialAd();
+
             Debug.LogError("Interstitial ad is not ready yet.");
         }
     }
