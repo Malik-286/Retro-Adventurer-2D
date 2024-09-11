@@ -20,9 +20,14 @@ public class LevelCompletionPanel : MonoBehaviour
     {
         killsCounter = FindObjectOfType<KillsCounter>();
 
-       // PlayerPrefs.SetInt("CollectedCurrency", PlayerPrefs.GetInt("UpdatedCurrency") - PlayerPrefs.GetInt("CurrencyeBeforeLevel"));
-       // print("Collected Coins aa:  " + PlayerPrefs.GetInt("CollectedCurrency"));
-     }
+        // PlayerPrefs.SetInt("CollectedCurrency", PlayerPrefs.GetInt("UpdatedCurrency") - PlayerPrefs.GetInt("CurrencyeBeforeLevel"));
+        // print("Collected Coins aa:  " + PlayerPrefs.GetInt("CollectedCurrency"));
+
+        if (Adsmanager.Instance != null)
+        {
+            Adsmanager.Instance.Interstitial.LoadInterstitialAd();
+        }
+    }
     void Update()
     {
         UpdateTexts();
@@ -45,6 +50,11 @@ public class LevelCompletionPanel : MonoBehaviour
 
     public void PressHomeButton()
     {
+        if(Adsmanager.Instance != null)
+        {
+            Adsmanager.Instance.Interstitial.ShowInterstitialAd();
+        }
+
 
         if (AudioManager.GetInstance() != null)
         {
@@ -59,6 +69,11 @@ public class LevelCompletionPanel : MonoBehaviour
 
     public void PressNextLevelButton()
     {
+        if (Adsmanager.Instance != null)
+        {
+            Adsmanager.Instance.Interstitial.ShowInterstitialAd();
+        }
+
         if (PlayerPrefs.GetInt("SelectedLevel") % 2 == 0)
         {
             if (Adsmanager.Instance)
