@@ -66,6 +66,13 @@ public class PausePanel : MonoBehaviour
         }
     }
 
+    public void ReloadLevel()
+    {
+        if (GameManager.instance)
+        {
+            GameManager.instance.ReloadGame();
+        }
+    }
    
 
 }
