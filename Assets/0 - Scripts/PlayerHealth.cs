@@ -96,7 +96,7 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    bool breakss = true;
+    public bool breakss = true;
 
     void Update()
     {
@@ -104,6 +104,7 @@ public class PlayerHealth : MonoBehaviour
 
         if (isAlive == false && !isDeathPanelActive)
         {
+            print("why heaa didn't");
             isDeathPanelActive = true;
             gameObject.GetComponent<Animator>().SetBool("isDead", true);
             gamePlayUI.uiControllsButtons.SetActive(false);

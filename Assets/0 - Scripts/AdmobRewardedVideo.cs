@@ -67,6 +67,11 @@ public class AdmobRewardedVideo : MonoBehaviour
                 print("Death Panel Admob Reward Generated");
                 this.gameObject.GetComponent<Button>().interactable = false;
                 Invoke(nameof(EnableAgain), 5f);
+                if (PlayerHealth.Instance)
+                {
+                PlayerHealth.Instance.isDeathPanelActive = false;
+                PlayerHealth.Instance.breakss = true;
+                }
             }
         }
         if (Index == 4)
