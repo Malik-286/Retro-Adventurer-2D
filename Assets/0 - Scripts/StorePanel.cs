@@ -12,11 +12,6 @@ public class StorePanel :MonoBehaviour
     [SerializeField] GameObject coinsPanel;
 
 
-
-
-
-
-
     [SerializeField] GameObject purchaseFailedPanel;
     [SerializeField] GameObject purchasedSucessPanel;
     [SerializeField] AudioClip coinsPurchaseSFX;

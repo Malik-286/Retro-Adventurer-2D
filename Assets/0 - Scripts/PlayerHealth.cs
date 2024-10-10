@@ -168,6 +168,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (isCollidedWithHazard == true)
         {
+           
             return;
         }
         if (gameObject.GetComponent<BoxCollider2D>().IsTouchingLayers(LayerMask.GetMask("Hazards")) && !isCollidedWithHazard)
