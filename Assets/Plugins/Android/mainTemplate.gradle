@@ -23,12 +23,12 @@ dependencies {
     implementation 'com.google.firebase:firebase-messaging-unity:11.6.0' // Assets/Firebase/Editor/MessagingDependencies.xml:24
     implementation 'com.google.flatbuffers:flatbuffers-java:1.12.0' // Assets/Firebase/Editor/MessagingDependencies.xml:19
     implementation 'com.ironsource.sdk:mediationsdk:7.2.5' // Assets/IronSource/Editor/IronSourceSDKDependencies.xml:9
+    implementation 'com.unity3d.ads:unity-ads:[4.12.0,4.13[' // Packages/com.unity.ads/Editor/Source/Dependencies.xml:7
 // Android Resolver Dependencies End
 **DEPS**}
 
 // Android Resolver Exclusions Start
 android {
-	namespace "com.unity3d.player"
   packagingOptions {
       exclude ('/lib/armeabi/*' + '*')
       exclude ('/lib/mips/*' + '*')
