@@ -626,7 +626,7 @@ public static class UnityBuildSettingsUtility
 
 		settings.AndroidBuildSubtarget = EditorUserBuildSettings.androidBuildSubtarget.ToString();
 
-		settings.AndroidUseAPKExpansionFiles = PlayerSettings.Android.useAPKExpansionFiles;
+		settings.AndroidUseAPKExpansionFiles = PlayerSettings.Android.splitApplicationBinary;
 		
 #if !UNITY_4
 		settings.AndroidAsAndroidProject = EditorUserBuildSettings.exportAsGoogleAndroidProject;

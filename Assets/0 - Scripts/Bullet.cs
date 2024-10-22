@@ -26,7 +26,7 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
-        rb.velocity = new Vector2(bulletDirection * bulletSpeed, 0);
+        rb.linearVelocity = new Vector2(bulletDirection * bulletSpeed, 0);
 
 
     }

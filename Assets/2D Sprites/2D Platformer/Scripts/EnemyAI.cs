@@ -20,7 +20,7 @@ namespace Platformer
 
         void Update()
         {
-            rigidbody.velocity = new Vector2(moveSpeed, rigidbody.velocity.y);
+            rigidbody.linearVelocity = new Vector2(moveSpeed, rigidbody.linearVelocity.y);
         }
 
         void FixedUpdate()

@@ -187,9 +187,9 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        rb.velocity = new Vector2(movement.x * moveSpeed, rb.velocity.y);
+        rb.linearVelocity = new Vector2(movement.x * moveSpeed, rb.linearVelocity.y);
 
-        bool isMoving = Mathf.Abs(rb.velocity.x) > Mathf.Epsilon;
+        bool isMoving = Mathf.Abs(rb.linearVelocity.x) > Mathf.Epsilon;
 
 
         animator.SetBool("isRunning", isMoving);
@@ -202,7 +202,7 @@ public class PlayerController : MonoBehaviour
         if (playerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ladder")) && moveUpPressed)
         {
 
-            rb.velocity = new Vector2(rb.velocity.x, climbForce);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, climbForce);
             animator.SetBool("isIdeling", false);
             animator.SetBool("isJumping", false);
 
@@ -221,7 +221,7 @@ public class PlayerController : MonoBehaviour
             // Climb down the ladder
 
             playerFeetCollider.isTrigger = false;
-            rb.velocity = new Vector2(rb.velocity.x, -climbForce);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, -climbForce);
             animator.SetBool("isIdeling", false);
             animator.SetBool("isJumping", false);
 
@@ -240,7 +240,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isRunning", false);
 
 
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             animator.SetBool("isJumping", true);
             CreateDustParticles();
             if (AudioManager.GetInstance())
@@ -346,9 +346,9 @@ public class PlayerController : MonoBehaviour
 
             playerFeetCollider.isTrigger = false;
 
-            Vector2 climbVelocity = new Vector2(rb.velocity.x, movement.y * climbForce);
-            rb.velocity = climbVelocity;
-            bool onLadder = Mathf.Abs(rb.velocity.y) > Mathf.Epsilon;
+            Vector2 climbVelocity = new Vector2(rb.linearVelocity.x, movement.y * climbForce);
+            rb.linearVelocity = climbVelocity;
+            bool onLadder = Mathf.Abs(rb.linearVelocity.y) > Mathf.Epsilon;
             animator.SetBool("isClimbing", onLadder);
             rb.gravityScale = 0;
 

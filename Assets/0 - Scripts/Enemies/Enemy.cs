@@ -86,7 +86,7 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject, 0.4f);
         }
        
-         rb.velocity = new Vector2(moveSpeed, 0.0f);
+         rb.linearVelocity = new Vector2(moveSpeed, 0.0f);
     }
 
 
