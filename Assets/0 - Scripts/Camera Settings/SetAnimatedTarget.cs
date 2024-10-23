@@ -28,7 +28,8 @@ public class SetAnimatedTarget : MonoBehaviour
             // Set the follow target to the player controller's transform
             if (cinemachineStateDrivenCamera != null)
             {
-                cinemachineStateDrivenCamera.m_Follow = playerController.transform;
+              //  cinemachineStateDrivenCamera.m_Follow = playerController.transform;
+                cinemachineStateDrivenCamera.Follow = playerController.transform;
             }
             else
             {
@@ -40,7 +41,8 @@ public class SetAnimatedTarget : MonoBehaviour
             if (animatedTargetAnimator != null)
             {
                 // Set the animated target of the Cinemachine camera
-                cinemachineStateDrivenCamera.m_AnimatedTarget = animatedTargetAnimator;
+              //  cinemachineStateDrivenCamera.m_AnimatedTarget = animatedTargetAnimator;
+                cinemachineStateDrivenCamera.AnimatedTarget = animatedTargetAnimator;
             }
             else
             {
