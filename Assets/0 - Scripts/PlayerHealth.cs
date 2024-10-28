@@ -208,7 +208,10 @@ public class PlayerHealth : MonoBehaviour
 
             if (isAlive)
             {
-                AudioManager.GetInstance().PlaySingleShotAudio(losehealthSound, 0.6f);
+                if(AudioManager.GetInstance())
+                {
+                    AudioManager.GetInstance().PlaySingleShotAudio(losehealthSound, 0.6f);
+                }            
             }
 
             // Start cooldown

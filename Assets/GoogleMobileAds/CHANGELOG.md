@@ -1,4 +1,62 @@
 Google Mobile Ads Unity Plugin Change Log
+**************
+Version 9.1.0
+**************
+
+- Removed the app measurement feature as Android/iOS SDKs [no longer](https://support.google.com/admob/answer/13973847) initialize App measurement.
+- Fixed [#3290] by calling static putPublisherFirstPartyIdEnabled with boolean return type.
+- Fixed [#3042] by explicitly adding gradle.projectsEvaluated for executing validate_dependencies gradle script.
+- Fixed [#2801] incorrect value for `AdapterResponseInfo.LatencyMillis` on iOS.
+- Added `GetAdUnitID` API that allows reading the ad unit id for all ad formats.
+- Enabled passing AdManagerAdRequest as part of Load API for Rewarded, Rewarded Interstitial and AppOpen formats.
+- Updated Google Mobile Ads SDK dependency to use v11.3.0 on iOS.
+
+Built and tested with:
+- Google Mobile Ads Android SDK 23.0.0
+- Google Mobile Ads iOS SDK 11.3.0
+- Google User Messaging Platform 2.2.0
+- External Dependency Manager for Unity 1.2.179
+
+**************
+Version 9.0.0
+**************
+
+- Removed `SameAppKeyEnabled` in `RequestConfiguration`. Use `PublisherFirstPartyIdEnabled` instead.
+- Removed `ServerSideVerificationOptions.Builder`. Use `ServerSideVerificationOptions` directly.
+- Removed `RequestConfiguration.Builder`. Use `RequestConfiguration` directly.
+- Removed `AdRequest.Builder`. Use `AdRequest` directly.
+- Removed `AdErrorEventArgs`. Use `AdError` directly.
+- Removed `AppOpenAd.Load` API that takes a `ScreenOrientation` parameter.
+- Made `AdValueEventArgs` Obsolete. Use `AdValue` directly.
+- Made `AdFailedToLoadEventArgs` Obsolete. Use `LoadAdError` directly.
+- Updated Google Mobile Ads SDK dependency to use v11.2.0 on iOS.
+- Updated the Android User Messaging Platform dependency version to 2.2.0.
+- Added the `NativeOverlayAd` class to fetch and display native ads using templates.
+- Using `CFPreferences` APIs for `ApplicationPreferences` instead of `NSUserDefaults` on iOS.
+
+Built and tested with:
+- Google Mobile Ads Android SDK 23.0.0
+- Google Mobile Ads iOS SDK 11.2.0
+- Google User Messaging Platform 2.2.0
+- External Dependency Manager for Unity 1.2.179
+
+**************
+Version 8.7.0
+**************
+
+- Added PublisherPrivacyPersonalizationState property accessible via RequestConfiguration.
+- Added PublisherFirstPartyIdEnabled property in RequestConfiguration.
+- Deprecated SameAppKeyEnabled in RequestConfiguration. Use PublisherFirstPartyIdEnabled instead.
+- Added ApplicationPreferences GetString and GetInt APIs.
+- Fixed [#3048] by applying accurate path for gradle scripts on Windows.
+- Updated Google Mobile Ads SDK dependency to use v22.6.0 on Android.
+- Updated Google Mobile Ads SDK dependency to use v10.14 on iOS.
+
+Built and tested with:
+- Google Mobile Ads Android SDK 22.6.0
+- Google Mobile Ads iOS SDK 10.14
+- Google User Messaging Platform 2.1.0
+- External Dependency Manager for Unity 1.2.177
 
 **************
 Version 8.6.0

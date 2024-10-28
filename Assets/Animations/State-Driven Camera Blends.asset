@@ -12,48 +12,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36baaa8bdcb9d8b49b9199833965d2c3, type: 3}
   m_Name: State-Driven Camera Blends
   m_EditorClassIdentifier: 
-  m_CustomBlends:
-  - m_From: 'Idle Camera '
-    m_To: Run Camera
-    m_Blend:
-      m_Style: 1
-      m_Time: 1
-      m_CustomCurve:
+  CustomBlends:
+  - From: 'Idle Camera '
+    To: Run Camera
+    Blend:
+      Style: 1
+      Time: 1
+      CustomCurve:
         serializedVersion: 2
         m_Curve: []
         m_PreInfinity: 0
         m_PostInfinity: 0
-        m_RotationOrder: 0
-  - m_From: Run Camera
-    m_To: 'Idle Camera '
-    m_Blend:
-      m_Style: 1
-      m_Time: 5
-      m_CustomCurve:
+        m_RotationOrder: 4
+  - From: Run Camera
+    To: 'Idle Camera '
+    Blend:
+      Style: 1
+      Time: 5
+      CustomCurve:
         serializedVersion: 2
         m_Curve: []
         m_PreInfinity: 0
         m_PostInfinity: 0
-        m_RotationOrder: 0
-  - m_From: '**ANY CAMERA**'
-    m_To: Ladder Camera
-    m_Blend:
-      m_Style: 1
-      m_Time: 0.5
-      m_CustomCurve:
+        m_RotationOrder: 4
+  - From: Ladder Camera
+    To: 'Idle Camera '
+    Blend:
+      Style: 1
+      Time: 1.5
+      CustomCurve:
         serializedVersion: 2
         m_Curve: []
         m_PreInfinity: 0
         m_PostInfinity: 0
-        m_RotationOrder: 0
-  - m_From: Ladder Camera
-    m_To: 'Idle Camera '
-    m_Blend:
-      m_Style: 1
-      m_Time: 1.5
-      m_CustomCurve:
+        m_RotationOrder: 4
+  - From: '**ANY CAMERA**'
+    To: Ladder Camera
+    Blend:
+      Style: 1
+      Time: 0.5
+      CustomCurve:
         serializedVersion: 2
         m_Curve: []
         m_PreInfinity: 0
         m_PostInfinity: 0
-        m_RotationOrder: 0
+        m_RotationOrder: 4

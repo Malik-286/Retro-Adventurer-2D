@@ -52,7 +52,7 @@ public class HealthPanel : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         playerHealth = FindObjectOfType<PlayerHealth>();
-        if (playerHealth == null)
+          if (playerHealth == null)
         {
             Debug.LogError("Player Controller not found in the scene.");
         }

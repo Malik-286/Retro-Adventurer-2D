@@ -10,8 +10,7 @@ public class SettingsPanel : MonoBehaviour
     [SerializeField] Slider musicSwitch;
     [SerializeField] AudioClip gamePlayAudio;
     [SerializeField] TextMeshProUGUI versionText;
-    [SerializeField] GameObject updateButton;
- 
+  
     string fbURL = "https://www.facebook.com/profile.php?viewas=100000686899395&id=61556956161259";
     string instaURL = "https://www.instagram.com/aspire_games_studio/?igsh=dGZhemd3bGpiNHh0";
     string discoedURL = "https://discord.gg/bMmsU8k8";
@@ -85,18 +84,6 @@ public class SettingsPanel : MonoBehaviour
             // Open Apple App Store URL
             Application.OpenURL(appstoreMoreGamesUrl);
         }
-    }
-
-    public void ActivateGameUpdateButton()
-    {
-        updateButton.SetActive(true);
-        Debug.Log("Game Update Button is Enabled");
-    }
-
-    public void DeActivateGameUpdateButton()
-    {
-        updateButton.SetActive(false);
-        Debug.Log("Game Update Button is Disabled");
     }
 
     public void UpdateGame()
