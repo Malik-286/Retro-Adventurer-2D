@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -196,6 +197,22 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.GetMask("Ladder"))
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, climbForce);
+            animator.SetBool("isIdeling", false);
+            animator.SetBool("isJumping", false);
+
+
+            animator.SetBool("isClimbing", true);
+        }
+        else
+        {
+            animator.SetBool("isClimbing", false);
+        }
+    }
 
     void PlayerMovingUpward()
     {

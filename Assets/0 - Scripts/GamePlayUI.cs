@@ -98,8 +98,9 @@ public class GamePlayUI : MonoBehaviour
 
     public void InstantiateSelectedPlayer()
     {
-        int currentPlayerIndex = PlayerPrefs.GetInt("CurrentPlayer", 0); // Default to skin 0 if not set
+        int currentPlayerIndex = PlayerPrefs.GetInt("CurrentPlayer"); // Default to skin 0 if not set
         Instantiate(playerPrefebs[currentPlayerIndex], playerInstantiatePosition.position, Quaternion.identity);
+        print(currentPlayerIndex + "CurrentPlayer Index");
     }
 
 
