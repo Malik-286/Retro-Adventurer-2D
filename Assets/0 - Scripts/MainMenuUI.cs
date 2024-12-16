@@ -7,8 +7,7 @@ public class MainMenuUI : MonoBehaviour
 {
     [Header("Texts")]
 
-    [SerializeField] TextMeshProUGUI gameText;
-    [SerializeField] TextMeshProUGUI coinsText;
+     [SerializeField] TextMeshProUGUI coinsText;
 
     [SerializeField] AudioClip playButtonSoundEffect;
 
