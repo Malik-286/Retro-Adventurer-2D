@@ -105798,7 +105798,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinsText: {fileID: 4491163}
   levelNoText: {fileID: 7796838130635815361}
-  killsCounterText: {fileID: 0}
+  killsCounterText: {fileID: 2082058625}
   uiControllsButtons: {fileID: 5335710573389140000}
   pauseButton: {fileID: 6165961069780094143}
   playerInstantiatePosition: {fileID: 1400516991}
@@ -107153,6 +107153,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 054305eac4926784983e66be36332843, type: 3}
+--- !u!114 &2082058625 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 123206753135220567, guid: 98ae7c270fdf4914e9f79d5f4e620f8d, type: 3}
+  m_PrefabInstance: {fileID: 4840667364569602855}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2084429788
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -113587,18 +113598,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Priority:
-    Enabled: 0
-    m_Value: 0
+    Enabled: 1
+    m_Value: 10
   OutputChannel: 1
   StandbyUpdate: 2
-  m_StreamingVersion: 20170927
-  m_LegacyPriority: 10
+  m_StreamingVersion: 20241001
+  m_LegacyPriority: 0
   DefaultTarget:
-    Enabled: 0
+    Enabled: 1
     Target:
-      TrackingTarget: {fileID: 0}
+      TrackingTarget: {fileID: 7591936168814619629}
       LookAtTarget: {fileID: 0}
-      CustomLookAtTarget: 0
+      CustomLookAtTarget: 1
   DefaultBlend:
     Style: 1
     Time: 0.5
@@ -113626,7 +113637,7 @@ MonoBehaviour:
     MinDuration: 0
   HashOfParent: []
   m_LegacyLookAt: {fileID: 0}
-  m_LegacyFollow: {fileID: 7591936168814619629}
+  m_LegacyFollow: {fileID: 0}
 --- !u!95 &3100958120366144165
 Animator:
   serializedVersion: 7
@@ -114922,12 +114933,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Priority:
-    Enabled: 0
-    m_Value: 0
+    Enabled: 1
+    m_Value: 10
   OutputChannel: 1
   StandbyUpdate: 2
-  m_StreamingVersion: 20170927
-  m_LegacyPriority: 10
+  m_StreamingVersion: 20241001
+  m_LegacyPriority: 0
   Target:
     TrackingTarget: {fileID: 7591936168814619629}
     LookAtTarget: {fileID: 0}
@@ -116369,7 +116380,7 @@ Transform:
   m_GameObject: {fileID: 6239359418246127478}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -39.88938, y: -2.2232277, z: -5.7595396}
+  m_LocalPosition: {x: -40.237717, y: -2.22321, z: -5.7595396}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -116543,12 +116554,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Priority:
-    Enabled: 0
-    m_Value: 0
+    Enabled: 1
+    m_Value: 10
   OutputChannel: 1
   StandbyUpdate: 2
-  m_StreamingVersion: 20170927
-  m_LegacyPriority: 10
+  m_StreamingVersion: 20241001
+  m_LegacyPriority: 0
   Target:
     TrackingTarget: {fileID: 7591936168814619629}
     LookAtTarget: {fileID: 0}
@@ -116664,12 +116675,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Priority:
-    Enabled: 0
-    m_Value: 0
+    Enabled: 1
+    m_Value: 10
   OutputChannel: 1
   StandbyUpdate: 2
-  m_StreamingVersion: 20170927
-  m_LegacyPriority: 10
+  m_StreamingVersion: 20241001
+  m_LegacyPriority: 0
   Target:
     TrackingTarget: {fileID: 7591936168814619629}
     LookAtTarget: {fileID: 0}
