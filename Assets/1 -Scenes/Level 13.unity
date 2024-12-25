@@ -59355,12 +59355,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 652009418}
-  - {fileID: 1081281202014142549}
   - {fileID: 4819071660371563820}
   - {fileID: 1205720218}
   - {fileID: 965578722531753512}
   - {fileID: 4491162}
   - {fileID: 3496080131279310593}
+  - {fileID: 1081281202014142549}
   - {fileID: 5929788058853030101}
   - {fileID: 8718253429868563023}
   - {fileID: 1335012848}
@@ -66089,7 +66089,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1064127893836398860, guid: fd9684d572bd48144ab671f09a822572, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 171.6018
+      value: 193.9325
       objectReference: {fileID: 0}
     - target: {fileID: 1064127893836398860, guid: fd9684d572bd48144ab671f09a822572, type: 3}
       propertyPath: m_SizeDelta.y
@@ -66190,7 +66190,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4140564248282167848, guid: 586eb04ef9cec804cb7764b47dbf3b5d, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 99.1006
+      value: 151.9298
       objectReference: {fileID: 0}
     - target: {fileID: 4140564248282167848, guid: 586eb04ef9cec804cb7764b47dbf3b5d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -66226,7 +66226,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4140564248282167848, guid: 586eb04ef9cec804cb7764b47dbf3b5d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 336.3
+      value: 337.7
       objectReference: {fileID: 0}
     - target: {fileID: 4140564248282167848, guid: 586eb04ef9cec804cb7764b47dbf3b5d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -66243,6 +66243,10 @@ PrefabInstance:
     - target: {fileID: 8120379366937877934, guid: 586eb04ef9cec804cb7764b47dbf3b5d, type: 3}
       propertyPath: m_Name
       value: Health Panel
+      objectReference: {fileID: 0}
+    - target: {fileID: 8120379366937877934, guid: 586eb04ef9cec804cb7764b47dbf3b5d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -66275,18 +66279,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Priority:
-    Enabled: 0
-    m_Value: 0
+    Enabled: 1
+    m_Value: 10
   OutputChannel: 1
   StandbyUpdate: 2
-  m_StreamingVersion: 20170927
-  m_LegacyPriority: 10
+  m_StreamingVersion: 20241001
+  m_LegacyPriority: 0
   DefaultTarget:
-    Enabled: 0
+    Enabled: 1
     Target:
-      TrackingTarget: {fileID: 0}
+      TrackingTarget: {fileID: 7591936168814619629}
       LookAtTarget: {fileID: 0}
-      CustomLookAtTarget: 0
+      CustomLookAtTarget: 1
   DefaultBlend:
     Style: 1
     Time: 0.5
@@ -66314,7 +66318,7 @@ MonoBehaviour:
     MinDuration: 0
   HashOfParent: []
   m_LegacyLookAt: {fileID: 0}
-  m_LegacyFollow: {fileID: 7591936168814619629}
+  m_LegacyFollow: {fileID: 0}
 --- !u!95 &3100958120366144165
 Animator:
   serializedVersion: 7
@@ -66635,6 +66639,18 @@ PrefabInstance:
       propertyPath: UiControlls
       value: 
       objectReference: {fileID: 5335710573389140000}
+    - target: {fileID: 4752261342618347718, guid: cef5c7937b48ac84880c5eeb130710e2, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4752261342618347718, guid: cef5c7937b48ac84880c5eeb130710e2, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4752261342618347718, guid: cef5c7937b48ac84880c5eeb130710e2, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5048857877164742851, guid: cef5c7937b48ac84880c5eeb130710e2, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -66642,26 +66658,6 @@ PrefabInstance:
     - target: {fileID: 5048857877164742851, guid: cef5c7937b48ac84880c5eeb130710e2, type: 3}
       propertyPath: m_LocalScale.y
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5101392003294637824, guid: cef5c7937b48ac84880c5eeb130710e2, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5101392003294637824, guid: cef5c7937b48ac84880c5eeb130710e2, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5101392003294637824, guid: cef5c7937b48ac84880c5eeb130710e2, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 543.7593
-      objectReference: {fileID: 0}
-    - target: {fileID: 5101392003294637824, guid: cef5c7937b48ac84880c5eeb130710e2, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.000014781952
-      objectReference: {fileID: 0}
-    - target: {fileID: 5101392003294637824, guid: cef5c7937b48ac84880c5eeb130710e2, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -190.8
       objectReference: {fileID: 0}
     - target: {fileID: 5132963903459898981, guid: cef5c7937b48ac84880c5eeb130710e2, type: 3}
       propertyPath: m_Pivot.x
@@ -67339,6 +67335,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI Details Panel
       objectReference: {fileID: 0}
+    - target: {fileID: 5084992703984760231, guid: 98ae7c270fdf4914e9f79d5f4e620f8d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -67458,7 +67458,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
-  m_ActiveFontFeatures: 00000000
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -67621,12 +67621,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Priority:
-    Enabled: 0
-    m_Value: 0
+    Enabled: 1
+    m_Value: 10
   OutputChannel: 1
   StandbyUpdate: 2
-  m_StreamingVersion: 20170927
-  m_LegacyPriority: 10
+  m_StreamingVersion: 20241001
+  m_LegacyPriority: 0
   Target:
     TrackingTarget: {fileID: 7591936168814619629}
     LookAtTarget: {fileID: 0}
@@ -67847,7 +67847,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
-  m_ActiveFontFeatures: 00000000
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -68921,6 +68921,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1943860597}
     m_Modifications:
+    - target: {fileID: 895757127802899523, guid: 133e3a891c1841b47a117e67c78daa50, type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 7948854251430965114}
     - target: {fileID: 1588302060223829067, guid: 133e3a891c1841b47a117e67c78daa50, type: 3}
       propertyPath: 'otherPanels.Array.data[0]'
       value: 
@@ -69037,6 +69041,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3329390661234738091, guid: 133e3a891c1841b47a117e67c78daa50, type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 7948854251430965113}
+    - target: {fileID: 5643097855440906507, guid: 133e3a891c1841b47a117e67c78daa50, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.77017
+      objectReference: {fileID: 0}
+    - target: {fileID: 5643097855440906507, guid: 133e3a891c1841b47a117e67c78daa50, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.77017
+      objectReference: {fileID: 0}
+    - target: {fileID: 5643097855440906507, guid: 133e3a891c1841b47a117e67c78daa50, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.77017
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889419091423336701, guid: 133e3a891c1841b47a117e67c78daa50, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6058726072278354475, guid: 133e3a891c1841b47a117e67c78daa50, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -69059,6 +69083,28 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6428664755294076588, guid: 133e3a891c1841b47a117e67c78daa50, type: 3}
   m_PrefabInstance: {fileID: 7948854251430965111}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7948854251430965113 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2123762404626419540, guid: 133e3a891c1841b47a117e67c78daa50, type: 3}
+  m_PrefabInstance: {fileID: 7948854251430965111}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7948854251430965114 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5264876689837526538, guid: 133e3a891c1841b47a117e67c78daa50, type: 3}
+  m_PrefabInstance: {fileID: 7948854251430965111}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8105571842749589522
 Transform:
   m_ObjectHideFlags: 0
@@ -69068,7 +69114,7 @@ Transform:
   m_GameObject: {fileID: 6239359418246127478}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -39.849277, y: -2.2212064, z: -5.7595396}
+  m_LocalPosition: {x: -39.843548, y: -2.221201, z: -5.7595396}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -69242,12 +69288,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Priority:
-    Enabled: 0
-    m_Value: 0
+    Enabled: 1
+    m_Value: 10
   OutputChannel: 1
   StandbyUpdate: 2
-  m_StreamingVersion: 20170927
-  m_LegacyPriority: 10
+  m_StreamingVersion: 20241001
+  m_LegacyPriority: 0
   Target:
     TrackingTarget: {fileID: 7591936168814619629}
     LookAtTarget: {fileID: 0}
@@ -69363,12 +69409,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Priority:
-    Enabled: 0
-    m_Value: 0
+    Enabled: 1
+    m_Value: 10
   OutputChannel: 1
   StandbyUpdate: 2
-  m_StreamingVersion: 20170927
-  m_LegacyPriority: 10
+  m_StreamingVersion: 20241001
+  m_LegacyPriority: 0
   Target:
     TrackingTarget: {fileID: 7591936168814619629}
     LookAtTarget: {fileID: 0}

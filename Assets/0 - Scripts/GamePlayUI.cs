@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class GamePlayUI : MonoBehaviour
 {
@@ -158,6 +159,11 @@ public class GamePlayUI : MonoBehaviour
 
     public void Attack()
     {
+        if (UIControls.Instance)
+        {
+            UIControls.Instance.AttackDescription.SetActive(false);
+        }
+
         if(playerController != null)
         {
             playerController.Attack();
@@ -166,6 +172,11 @@ public class GamePlayUI : MonoBehaviour
 
     public void Jump()
     {
+        if (UIControls.Instance)
+        {
+            UIControls.Instance.JumpDescription.SetActive(false);
+        }
+
         if (playerController != null)
         {
             playerController.Jump();
