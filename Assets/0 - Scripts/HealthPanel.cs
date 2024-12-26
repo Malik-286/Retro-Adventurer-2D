@@ -6,12 +6,19 @@ using UnityEngine.UI;
 
 public class HealthPanel : MonoBehaviour
 {
+    public static HealthPanel instance;
 
     public  GameObject[] heartImages;
     PlayerHealth playerHealth;
 
-
-     void Start()
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+    }
+    void Start()
     {
         StartCoroutine(PassPlayerHealthRefrence());
     }

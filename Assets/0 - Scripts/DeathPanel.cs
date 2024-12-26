@@ -28,17 +28,20 @@ public class DeathPanel : MonoBehaviour
             Adsmanager.Instance.Interstitial.LoadInterstitialAd();
         }
 
-        playerHealth = FindObjectOfType<PlayerHealth>();
-        healthPanel = FindObjectOfType<HealthPanel>();
-        playerController = FindObjectOfType<PlayerController>();
-    
 
-
-        playerController.GetComponent<Animator>().SetBool("isRunning", false);
-        playerController.GetComponent<Animator>().SetBool("isClimbing", false); 
-        playerController.GetComponent<Animator>().SetBool("isJumping", false);
-
-        playerController.GetComponent<Animator>().SetBool("isIdeling", true);
+        if (HealthPanel.instance)
+        {
+            healthPanel = HealthPanel.instance;
+        }
+        if (PlayerHealth.Instance)
+        {
+            playerHealth = PlayerHealth.Instance;
+            playerController = PlayerHealth.Instance.gameObject.GetComponent<PlayerController>();
+            PlayerHealth.Instance.gameObject.GetComponent<Animator>().SetBool("isRunning", false);
+            PlayerHealth.Instance.gameObject.GetComponent<Animator>().SetBool("isClimbing", false);
+            PlayerHealth.Instance.gameObject.GetComponent<Animator>().SetBool("isJumping", false);
+            PlayerHealth.Instance.gameObject.GetComponent<Animator>().SetBool("isIdeling", true);
+        }
 
     }
 
@@ -106,9 +109,12 @@ public class DeathPanel : MonoBehaviour
 
     void UpdateHealthIcon()
     {
-        if(healthPanel != null)
+        if (healthPanel != null)
         {
-            healthPanel.heartImages[0].SetActive(true);
+            if (HealthPanel.instance)
+            {
+                HealthPanel.instance.heartImages[0].SetActive(true);
+            }
         }
 
     }

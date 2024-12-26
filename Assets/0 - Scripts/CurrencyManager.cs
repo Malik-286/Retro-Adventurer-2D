@@ -10,8 +10,13 @@ public class CurrencyManager : MonoBehaviour
     [SerializeField] int coins;
 
     void Awake()
-    { 
-        RunSingelton();      
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+
+        DontDestroyOnLoad(gameObject);
         LoadCurrencyData();
     }
     private void Start()

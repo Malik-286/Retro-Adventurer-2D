@@ -109,10 +109,8 @@ public class GamePlayUI : MonoBehaviour
 
     void UpdateCurrencyText()
     {
-        if (CurrencyManager.instance)
-        {
-            coinsText.text = CurrencyManager.instance.GetCurrentCoins().ToString();
-        }
+        if(CurrencyManager.instance)
+        coinsText.text = CurrencyManager.instance.GetCurrentCoins().ToString();        
     }
 
     void UpdateLevelNoText()
