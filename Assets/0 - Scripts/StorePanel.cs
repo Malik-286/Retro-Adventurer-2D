@@ -18,10 +18,10 @@ public class StorePanel :MonoBehaviour
  
   
 
-     const string removeAds_ProductID = "com.aspiregamesstudio.retroadventurer.removeads";
-     const string coinsPack1000_ProductID = "com.aspiregamesstudio.retroadventurer.coins1000";
-     const string coinsPack5000_ProductID = "com.aspiregamesstudio.retroadventurer.coins5000";
-     const string coinsPack10000_ProductID = "com.aspiregamesstudio.retroadventurer.coins10000";
+     const string removeAds_ProductID = "com.agsventures.retroadventurerepicquest.removeads";
+     const string coinsPack1000_ProductID = "com.agsventures.retroadventurerepicquest.coins1000";
+     const string coinsPack5000_ProductID = "com.agsventures.retroadventurerepicquest.coins5000";
+     const string coinsPack10000_ProductID = "com.agsventures.retroadventurerepicquest.coins10000";
 
     [Header("Ads Status")]
 
