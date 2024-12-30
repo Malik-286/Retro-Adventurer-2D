@@ -6,21 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singelton<GameManager> 
 {
-   
-
 
     [SerializeField] float waitTime = 3f;
  
     KillsCounter killsCounter;
 
-     
-
 
 
     void Start()
     {
-       killsCounter = FindObjectOfType<KillsCounter>();
-         
+        killsCounter = FindObjectOfType<KillsCounter>();         
     }
 
    

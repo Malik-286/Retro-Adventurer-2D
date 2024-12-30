@@ -5,9 +5,13 @@ using UnityEngine;
 
 public class MainMenuUI : MonoBehaviour
 {
+    public static MainMenuUI instance;
+
     [Header("Texts")]
 
-     [SerializeField] TextMeshProUGUI coinsText;
+    [SerializeField] TextMeshProUGUI coinsText;
+
+    [Header("Audio")]
 
     [SerializeField] AudioClip playButtonSoundEffect;
 
@@ -18,20 +22,34 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField] GameObject settingsPanel;
     [SerializeField] GameObject storePanel;
     [SerializeField] GameObject spinPanel;
-
-
+    public GameObject TapToContinuePanel;
+    public GameObject MainMenuPanel;
 
     [Header("Default Unlock Level No ")]
 
     [SerializeField] int defaultUnLockLevelNo = 0;
+    [SerializeField] CurrencyManager currencyManager;
+    [SerializeField] LevelUnLocker levelUnLocker;
 
 
-
-
-
-    CurrencyManager currencyManager;
-    LevelUnLocker levelUnLocker;
-  
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        if(PlayerPrefs.GetInt("GameplayStarted") == 0)
+        {
+           MainMenuPanel.SetActive(false);
+           TapToContinuePanel.SetActive(true);
+            PlayerPrefs.SetInt("GameplayStarted", 1);
+        }
+        else
+        {
+            MainMenuPanel.SetActive(true);
+            TapToContinuePanel.SetActive(false);
+        }
+    }
     void Start()
     {
         storePanel.SetActive(false);
@@ -49,7 +67,10 @@ public class MainMenuUI : MonoBehaviour
         UpdateCurrencyText();
     }
 
-
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.SetInt("GameplayStarted", 0);
+    }
     void UpdateCurrencyText()
     {
         if (currencyManager.GetInstance() != null)
