@@ -39574,7 +39574,11 @@ MonoBehaviour:
   settingsPanel: {fileID: 368950181}
   storePanel: {fileID: 1990700024340694699}
   spinPanel: {fileID: 1285537207}
+  TapToContinuePanel: {fileID: 1160931408}
+  MainMenuPanel: {fileID: 1226738725}
   defaultUnLockLevelNo: 0
+  currencyManager: {fileID: 0}
+  levelUnLocker: {fileID: 0}
 --- !u!1 &1160617011
 GameObject:
   m_ObjectHideFlags: 0
@@ -41304,7 +41308,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1226738726
 RectTransform:
   m_ObjectHideFlags: 0
@@ -58326,7 +58330,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 1.4285525, y: 163.01553}
+  m_AnchoredPosition: {x: 1.4285525, y: 120.78}
   m_SizeDelta: {x: 939.8484, y: 212.307}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1729926631
@@ -58382,7 +58386,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 500
-  m_fontStyle: 0
+  m_fontStyle: 16
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
