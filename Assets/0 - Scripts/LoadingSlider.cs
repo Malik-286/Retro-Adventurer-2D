@@ -17,9 +17,12 @@ public class LoadingSlider : MonoBehaviour
     void Start()
     {
          loadingTime = Random.Range(1.2f, 3.2f);
-        
     }
-
+    private void OnEnable()
+    {
+        currentValue = 0;
+        StartCoroutine(StartLoading());
+    }
     public void SetLevelToLoad(string settingLevelName)
     {
         levelToLoad = settingLevelName;
@@ -27,30 +30,20 @@ public class LoadingSlider : MonoBehaviour
     }
     void Update()
     {
-
- 
-        if (GameManager.GetInstance() != null)
-        {
-            currentValue += Time.deltaTime / loadingTime;
-            loadingSlider.value = Mathf.Clamp01(currentValue);
-            loadingText.text = "Loading..." + (int)(loadingSlider.value * 100) + "%";
-
-            if (loadingSlider.value >= 1)
-            {
-
-                StartCoroutine(HideLoadingSlider());
-
-                GameManager.GetInstance().LoadNextScene(levelToLoad);
-            }
-        }
-       
-    
+         int value = (int)loadingSlider.value;
+         loadingText.text = "Loading..." + value + "%";   
     }
 
-    IEnumerator HideLoadingSlider()
+    IEnumerator StartLoading()
     {
-        yield return new WaitForSeconds(1.5f);
-        this.gameObject.SetActive(false);
+        yield return new WaitForSeconds(3.2f);
+        if (GameManager.GetInstance() != null)
+        {
+            if (loadingSlider.value == 100)
+            {
+                GameManager.GetInstance().LoadNextScene(levelToLoad);
+            }        
+        }
     }
 
 
