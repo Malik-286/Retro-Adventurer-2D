@@ -211,8 +211,25 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("isClimbing", false);
         }
+        if(collision.gameObject.tag == "GoldChestBox")
+        {
+            if (UIControls.Instance)
+            {
+                UIControls.Instance.PrizeCollectionPanel.SetActive(true);
+                UIControls.Instance.CurrentPrizeBox = collision.gameObject;
+            }
+        }
     }
-
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "GoldChestBox")
+        {
+            if (UIControls.Instance)
+            {
+                UIControls.Instance.PrizeCollectionPanel.SetActive(false);
+            }
+        }
+    }
     void PlayerMovingUpward()
     {
         if (playerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ladder")) && moveUpPressed)

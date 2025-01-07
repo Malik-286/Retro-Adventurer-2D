@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class UIControls : MonoBehaviour
@@ -5,7 +6,7 @@ public class UIControls : MonoBehaviour
 
     public static UIControls Instance;
 
-    public GameObject JumpDescription, AttackDescription;
+    public GameObject JumpDescription, AttackDescription,PrizeCollectionPanel, CurrentPrizeBox;
 
     private void Awake()
     {
@@ -21,6 +22,32 @@ public class UIControls : MonoBehaviour
         
     }
 
+    #region PrizeCollection
+
+    int RandomPrize;
+    public void ClaimPrize()
+    {
+        RandomPrize = Random.Range(50, 100);
+        PrizeCollectionPanel.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = "+" + RandomPrize.ToString();
+        PrizeCollectionPanel.transform.GetChild(1).gameObject.SetActive(false);
+        PrizeCollectionPanel.transform.GetChild(0).gameObject.SetActive(true);
+        Invoke(nameof(RemovePrizePanel), 1.5f);
+        if(CurrentPrizeBox != null)
+        CurrentPrizeBox.GetComponent<Animator>().enabled = true;
+    }
+    public void RemovePrizePanel()
+    {
+        PrizeCollectionPanel.SetActive(false);
+        PrizeCollectionPanel.transform.GetChild(1).gameObject.SetActive(true);
+        PrizeCollectionPanel.transform.GetChild(0).gameObject.SetActive(false);
+        if (CurrencyManager.instance)
+        {
+            CurrencyManager.instance.IncreaseCoins(RandomPrize);
+        }
+        if (CurrentPrizeBox != null)
+        CurrentPrizeBox.GetComponent<BoxCollider2D>().enabled = false;
+    }
+    #endregion
     // Update is called once per frame
     void Update()
     {
