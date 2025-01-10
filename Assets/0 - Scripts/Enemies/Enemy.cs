@@ -129,6 +129,10 @@ public class Enemy : MonoBehaviour
         GameObject deathParticlesClone = Instantiate(enemyDeathParticles, transform.position, Quaternion.identity);
         killsCounter.IncreaseKillsCount();
         isParticlesCreated = true;
+        if (PlayerLevelManager.instance)
+        {
+            PlayerLevelManager.instance.IncreasePlayerXp(5);
+        }
         Destroy(deathParticlesClone, 0.3f);
     }
 

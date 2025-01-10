@@ -31,10 +31,7 @@ public class ExitBox : MonoBehaviour
                 int index = GameManager.GetInstance().GetCurrentSceneIndex();
                 PlayerPrefs.SetInt("Level" + index, 1);
                 PlayerPrefs.Save();
-            }
-             
-            
-
+            }            
             DestroyRemaningEnemies();
             if (AudioManager.GetInstance() != null)
             {
@@ -43,7 +40,11 @@ public class ExitBox : MonoBehaviour
             levelCompletionPanel.SetActive(true);
             collision.gameObject.SetActive(false);
             Destroy(gameObject, 0.5f);
-          
+
+            if (PlayerLevelManager.instance)
+            {
+                PlayerLevelManager.instance.IncreasePlayerXp(10);
+            }
         }
 
     }

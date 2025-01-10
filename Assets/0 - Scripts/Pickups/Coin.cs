@@ -40,7 +40,11 @@ public class Coin : MonoBehaviour
                     CurrencyManager.instance.SaveCurrencyData();
                 }           
             }
-                 Destroy(gameObject, 0.5f);
+            if (PlayerLevelManager.instance)
+            {
+                PlayerLevelManager.instance.IncreasePlayerXp(1);
+            }
+            Destroy(gameObject, 0.5f);
         }
     }
 

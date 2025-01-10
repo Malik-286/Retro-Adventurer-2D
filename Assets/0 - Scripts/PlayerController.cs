@@ -218,6 +218,10 @@ public class PlayerController : MonoBehaviour
                 UIControls.Instance.PrizeCollectionPanel.SetActive(true);
                 UIControls.Instance.CurrentPrizeBox = collision.gameObject;
             }
+            if (PlayerLevelManager.instance)
+            {
+                PlayerLevelManager.instance.IncreasePlayerXp(20);
+            }
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
