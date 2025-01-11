@@ -35,6 +35,8 @@ public class GamePlayUI : MonoBehaviour
     PlayerController playerController;
     PlayerHealth playerHealth;
 
+    string chapterKey;
+    int chapterProgress;
     void Awake()
     {
         if (PlayerPrefs.GetInt("OneTime") == 0)
@@ -45,6 +47,8 @@ public class GamePlayUI : MonoBehaviour
         {
             TutotialPanel.SetActive(false);
         }
+
+
     }
     void Start()
     {
@@ -58,6 +62,17 @@ public class GamePlayUI : MonoBehaviour
         timeEndPanel.SetActive(false);
         timerPanel = FindObjectOfType<TimerPanel>();
         playerHealth = FindObjectOfType<PlayerHealth>();
+
+        print("ActualLoaded Scene Count " + SceneManager.loadedSceneCount);
+        PlayerPrefs.SetInt("CurrentLevel", SceneManager.loadedSceneCount);
+
+        CheckChaperterLocks();
+
+        int currentLevel = PlayerPrefs.GetInt("CurrentLevel");
+        int chapterIndex = currentLevel / 10; // Determine the chapter index (0 for first chapter, 1 for second, etc.)
+        chapterProgress = (currentLevel % 10 + 1) * 10; // Calculate the progress within the chapter
+
+        ChapterProgressManager.SetChapterProgress(chapterIndex, chapterProgress);
     }
 
     void Update()
@@ -104,7 +119,15 @@ public class GamePlayUI : MonoBehaviour
         print(currentPlayerIndex + "CurrentPlayer Index");
     }
 
-
+    public void CheckChaperterLocks()
+    {
+        int currentLevel = PlayerPrefs.GetInt("CurrentLevel");
+        if (currentLevel % 10 == 9 && currentLevel <= 89)
+        {
+            int chapterUnlocked = (currentLevel / 10) + 1;
+            PlayerPrefs.SetInt("ChapterUnlocked", chapterUnlocked);
+        }
+    }
 
 
     void UpdateCurrencyText()
