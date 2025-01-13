@@ -46409,6 +46409,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3690180380521948636, guid: e5e4702075d54454bb23276f2f69d0e4, type: 3}
   m_PrefabInstance: {fileID: 660515633}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &662686752
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6385362800511965509, guid: ab0918d484586e249a8bc7194e452418, type: 3}
+      propertyPath: m_Name
+      value: DiamondChestBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 7627977638129029249, guid: ab0918d484586e249a8bc7194e452418, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 33.241123
+      objectReference: {fileID: 0}
+    - target: {fileID: 7627977638129029249, guid: ab0918d484586e249a8bc7194e452418, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -23.099874
+      objectReference: {fileID: 0}
+    - target: {fileID: 7627977638129029249, guid: ab0918d484586e249a8bc7194e452418, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7627977638129029249, guid: ab0918d484586e249a8bc7194e452418, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7627977638129029249, guid: ab0918d484586e249a8bc7194e452418, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7627977638129029249, guid: ab0918d484586e249a8bc7194e452418, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7627977638129029249, guid: ab0918d484586e249a8bc7194e452418, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7627977638129029249, guid: ab0918d484586e249a8bc7194e452418, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7627977638129029249, guid: ab0918d484586e249a8bc7194e452418, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7627977638129029249, guid: ab0918d484586e249a8bc7194e452418, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ab0918d484586e249a8bc7194e452418, type: 3}
 --- !u!4 &665006823 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6098478392655574972, guid: ad48610d9a968e44abe1f54c664aefc9, type: 3}
@@ -63887,18 +63944,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Priority:
-    Enabled: 0
-    m_Value: 0
+    Enabled: 1
+    m_Value: 10
   OutputChannel: 1
   StandbyUpdate: 2
-  m_StreamingVersion: 20170927
-  m_LegacyPriority: 10
+  m_StreamingVersion: 20241001
+  m_LegacyPriority: 0
   DefaultTarget:
-    Enabled: 0
+    Enabled: 1
     Target:
-      TrackingTarget: {fileID: 0}
+      TrackingTarget: {fileID: 7591936168814619629}
       LookAtTarget: {fileID: 0}
-      CustomLookAtTarget: 0
+      CustomLookAtTarget: 1
   DefaultBlend:
     Style: 1
     Time: 0.5
@@ -63926,7 +63983,7 @@ MonoBehaviour:
     MinDuration: 0
   HashOfParent: []
   m_LegacyLookAt: {fileID: 0}
-  m_LegacyFollow: {fileID: 7591936168814619629}
+  m_LegacyFollow: {fileID: 0}
 --- !u!95 &3100958120366144165
 Animator:
   serializedVersion: 7
@@ -65233,12 +65290,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Priority:
-    Enabled: 0
-    m_Value: 0
+    Enabled: 1
+    m_Value: 10
   OutputChannel: 1
   StandbyUpdate: 2
-  m_StreamingVersion: 20170927
-  m_LegacyPriority: 10
+  m_StreamingVersion: 20241001
+  m_LegacyPriority: 0
   Target:
     TrackingTarget: {fileID: 7591936168814619629}
     LookAtTarget: {fileID: 0}
@@ -66704,7 +66761,7 @@ Transform:
   m_GameObject: {fileID: 6239359418246127478}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -39.849277, y: -2.2212064, z: -5.7595396}
+  m_LocalPosition: {x: -40.610516, y: -2.2231815, z: -5.7595396}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -66878,12 +66935,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Priority:
-    Enabled: 0
-    m_Value: 0
+    Enabled: 1
+    m_Value: 10
   OutputChannel: 1
   StandbyUpdate: 2
-  m_StreamingVersion: 20170927
-  m_LegacyPriority: 10
+  m_StreamingVersion: 20241001
+  m_LegacyPriority: 0
   Target:
     TrackingTarget: {fileID: 7591936168814619629}
     LookAtTarget: {fileID: 0}
@@ -66999,12 +67056,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Priority:
-    Enabled: 0
-    m_Value: 0
+    Enabled: 1
+    m_Value: 10
   OutputChannel: 1
   StandbyUpdate: 2
-  m_StreamingVersion: 20170927
-  m_LegacyPriority: 10
+  m_StreamingVersion: 20241001
+  m_LegacyPriority: 0
   Target:
     TrackingTarget: {fileID: 7591936168814619629}
     LookAtTarget: {fileID: 0}
@@ -67058,3 +67115,4 @@ SceneRoots:
   - {fileID: 2120356055}
   - {fileID: 83384028}
   - {fileID: 2116867902}
+  - {fileID: 662686752}
