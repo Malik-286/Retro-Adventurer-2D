@@ -18,12 +18,10 @@ public class ChapterSelection : MonoBehaviour
         {
             if (i <= PlayerPrefs.GetInt("ChapterUnlocked"))
             {
-                print("Chapter pass is " + i);
                 ChaptersProgressTexts[i].text = "Progress: " + ChapterProgressManager.GetChapterProgress(i) + "%".ToString();
             }
             else
             {
-                print("Chapter not pass is " + i);
                 ChaptersProgressTexts[i].gameObject.SetActive(false);
             }
         }

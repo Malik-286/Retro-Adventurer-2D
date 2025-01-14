@@ -63,8 +63,8 @@ public class GamePlayUI : MonoBehaviour
         timerPanel = FindObjectOfType<TimerPanel>();
         playerHealth = FindObjectOfType<PlayerHealth>();
 
-        print("ActualLoaded Scene Count " + SceneManager.loadedSceneCount);
-        PlayerPrefs.SetInt("CurrentLevel", SceneManager.loadedSceneCount);
+        print("ActualLoaded Scene Count " + SceneManager.GetActiveScene().buildIndex);
+        PlayerPrefs.SetInt("CurrentLevel", SceneManager.GetActiveScene().buildIndex);
 
         CheckChaperterLocks();
 
