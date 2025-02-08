@@ -23,9 +23,9 @@ public class DeathPanel : MonoBehaviour
 
     void Start()
     {
-        if (UnityAdsManager.instance != null)
+        //if (//UnityAdsManager.instance != null)
         {
-            UnityAdsManager.instance.ShowIntersitial();
+            //UnityAdsManager.instance.ShowIntersitial();
         }
 
 
@@ -47,9 +47,9 @@ public class DeathPanel : MonoBehaviour
 
     public void PressHomeButton()
     {
-        if (UnityAdsManager.instance != null)
+        //if (//UnityAdsManager.instance != null)
         {
-            UnityAdsManager.instance.ShowIntersitial();
+            //UnityAdsManager.instance.ShowIntersitial();
         }
         Time.timeScale = 1.0f;  
         if (AudioManager.GetInstance() != null)
@@ -64,9 +64,9 @@ public class DeathPanel : MonoBehaviour
 
     public void PressContinueButton()
     {
-        if (UnityAdsManager.instance != null)
+        //if (//UnityAdsManager.instance != null)
         {
-            UnityAdsManager.instance.ShowIntersitial();
+            //UnityAdsManager.instance.ShowIntersitial();
         }
         Time.timeScale = 1.0f;
         if (PlayerHealth.Instance)
@@ -96,9 +96,9 @@ public class DeathPanel : MonoBehaviour
 
     public void PressReloadButton()
     {
-        if (UnityAdsManager.instance != null)
+       // if (//UnityAdsManager.instance != null)
         {
-            UnityAdsManager.instance.ShowIntersitial();
+            //UnityAdsManager.instance.ShowIntersitial();
         }
         Time.timeScale = 1.0f;
         if (GameManager.GetInstance() != null)

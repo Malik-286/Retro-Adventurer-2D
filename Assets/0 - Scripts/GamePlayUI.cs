@@ -157,9 +157,9 @@ public class GamePlayUI : MonoBehaviour
 
     public void PlayAD()
     {
-        if (UnityAdsManager.instance)
+        //if (//UnityAdsManager.instance)
         {
-            UnityAdsManager.instance.ShowIntersitial();
+            //UnityAdsManager.instance.ShowIntersitial();
         }
     }
     public void PauseGame()

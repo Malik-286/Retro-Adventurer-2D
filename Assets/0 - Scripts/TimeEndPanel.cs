@@ -35,9 +35,9 @@ public class TimeEndPanel : MonoBehaviour
         Time.timeScale = 1.0f;
         if (GameManager.GetInstance() != null)
         {
-            if (UnityAdsManager.instance)
+            //if (//UnityAdsManager.instance)
             {
-                UnityAdsManager.instance.ShowIntersitial();
+                //UnityAdsManager.instance.ShowIntersitial();
             }
                 GameManager.GetInstance().ReloadGame();
         }

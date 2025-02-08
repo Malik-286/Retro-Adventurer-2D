@@ -93,9 +93,9 @@ public class AdmobRewardedVideo : MonoBehaviour
 
     public void ShowRewardedVideo()
     {
-        if(UnityAdsManager.instance)
+        //if(//UnityAdsManager.instance)
         {
-             UnityAdsManager.instance.ShowRewardedVideoAd();
+             //UnityAdsManager.instance.ShowRewardedVideoAd();
         }
         
     }

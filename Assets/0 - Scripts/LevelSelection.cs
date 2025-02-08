@@ -49,9 +49,9 @@ public class LevelSelection : MonoBehaviour
 
     public void LevelSelected(string levelSelected)
     {
-        if (UnityAdsManager.instance)
+        //if (//UnityAdsManager.instance)
         {
-            UnityAdsManager.instance.ShowIntersitial();
+            //UnityAdsManager.instance.ShowIntersitial();
         }
 
         if (loadingSlider != null)
