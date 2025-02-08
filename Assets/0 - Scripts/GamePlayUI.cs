@@ -81,13 +81,13 @@ public class GamePlayUI : MonoBehaviour
         UpdateCurrencyText();
         UpdateLevelNoText(); 
         UpdateKillsCountText();
+        PlayerMovementwithKeyboard();
 
-
-        if(timerPanel != null )
+        if (timerPanel != null )
         {
             if(timerPanel.isTimeCompleted == true)
             {
-                uiControllsButtons.SetActive(false);
+                //uiControllsButtons.SetActive(false);
                 timeEndPanel.SetActive(true);
             }
         }
@@ -96,20 +96,66 @@ public class GamePlayUI : MonoBehaviour
 
         {
             pauseButton.interactable = false;
-            uiControllsButtons.SetActive(false);
+            //uiControllsButtons.SetActive(false);
         }
         else  
         {
             if (playerHealth.isAlive == true)
             {
                 pauseButton.interactable = true;
-                uiControllsButtons.SetActive(true);
+                //uiControllsButtons.SetActive(true);
             }
         }
 
 
 
 
+    }
+
+    public void PlayerMovementwithKeyboard()
+    {
+        //Key Down
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            MoveRightPressed();
+        }
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            MoveLeftPressed();
+        }
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            MoveDownPressed();
+        }
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            MoveUpPressed();
+        }
+        if (Input.GetKeyDown(KeyCode.Space) == true)
+        {
+            Jump();
+        }
+        if (Input.GetKeyDown(KeyCode.Mouse0) == true)
+        {
+            Attack();
+        }
+        //Key Up
+        if (Input.GetKeyUp(KeyCode.RightArrow))
+        {
+            MoveRightReleased();
+        }
+        if (Input.GetKeyUp(KeyCode.LeftArrow))
+        {
+            MoveLeftReleased();
+        }
+        if (Input.GetKeyUp(KeyCode.UpArrow))
+        {
+            MoveDownReleased();
+        }
+        if (Input.GetKeyUp(KeyCode.DownArrow))
+        {
+            MoveUpReleased();
+        }
     }
 
     public void InstantiateSelectedPlayer()

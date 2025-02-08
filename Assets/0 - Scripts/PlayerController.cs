@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -57,7 +58,23 @@ public class PlayerController : MonoBehaviour
 
     bool isAlive = true;
 
+    JoystickMovement JoystickControls;
+    private void Awake()
+    {
+        JoystickControls = new JoystickMovement();
 
+        JoystickControls.Gameplay.RightMove.performed += ctx => MoveRightPressed();
+        JoystickControls.Gameplay.LeftMove.performed += ctx => MoveLeftPressed();
+        JoystickControls.Gameplay.UpMove.performed += ctx => MoveUpPressed();
+        JoystickControls.Gameplay.DownMove.performed += ctx => MoveDownPressed();
+        JoystickControls.Gameplay.Jump.performed += ctx => Jump();
+        JoystickControls.Gameplay.Attack.performed += ctx => Attack();
+
+        JoystickControls.Gameplay.RightMove.canceled += ctx => MoveRightReleased();
+        JoystickControls.Gameplay.LeftMove.canceled += ctx => MoveLeftReleased();
+        JoystickControls.Gameplay.UpMove.canceled += ctx => MoveUpReleased();
+        JoystickControls.Gameplay.DownMove.canceled += ctx => MoveDownReleased();
+    }
     void Start()
     {
         isBlueBulletActive = false;
@@ -460,5 +477,15 @@ public class PlayerController : MonoBehaviour
     public GameObject  GetSafeZoneParticlesPrefeb()
     {
         return safeZoneParticlesPrefeb;
+    }
+
+
+    private void OnEnable()
+    {
+        JoystickControls.Gameplay.Enable();
+    }
+    private void OnDisable()
+    {
+        JoystickControls.Gameplay.Disable();
     }
 }
