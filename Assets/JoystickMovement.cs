@@ -172,7 +172,7 @@ public partial class @JoystickMovement: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""43495bf4-f124-4538-8370-a79b419013d7"",
-                    ""path"": ""<HID::DragonRise Inc.   Generic   USB  Joystick  >/hat/up"",
+                    ""path"": ""<Gamepad>/dpad/up"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -183,7 +183,7 @@ public partial class @JoystickMovement: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""e83ef8b7-e294-4a09-9312-2b2e5c0de10b"",
-                    ""path"": ""<HID::DragonRise Inc.   Generic   USB  Joystick  >/hat/down"",
+                    ""path"": ""<Gamepad>/dpad/down"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -194,7 +194,18 @@ public partial class @JoystickMovement: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""4d30c2e1-512c-4544-9b2d-59a93fd0ecac"",
-                    ""path"": ""<Joystick>/trigger"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dd1b48a0-bd32-48e8-ab07-67912744e425"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -205,7 +216,18 @@ public partial class @JoystickMovement: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""03a5eb2e-0117-4b14-a468-eb9e7bea0ad9"",
-                    ""path"": ""<HID::DragonRise Inc.   Generic   USB  Joystick  >/button4"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9b3c0bec-f137-4727-ac7e-c9ad192f52e8"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
