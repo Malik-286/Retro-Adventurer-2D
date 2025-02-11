@@ -111,7 +111,6 @@ namespace CoppraGames
             ShowResult(_randomRewardIndex);
         }
 
-
         public void ApplyValues()
         {
             int index = 0;

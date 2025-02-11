@@ -51,28 +51,28 @@ public class AdmobRewardedVideo : MonoBehaviour
         }
         if (Index == 2)
         {
-            if (CurrencyManager.instance)
-            {
-                SpinWheelController.Instance.TurnWheel();
-                print("Spinner Wheel Admob Reward Generated");
-                this.gameObject.GetComponent<Button>().interactable = false;
-                Invoke(nameof(EnableAgain), 10f);
-            }
+            //if (CurrencyManager.instance)
+            //{
+            //    SpinWheelController.Instance.TurnWheel();
+            //    print("Spinner Wheel Admob Reward Generated");
+            //    this.gameObject.GetComponent<Button>().interactable = false;
+            //    Invoke(nameof(EnableAgain), 10f);
+            //}
         }
         if (Index == 3)
         {
-            if (deathPanel != null)
-            {
-                deathPanel.PressContinueButton();
-                print("Death Panel Admob Reward Generated");
-                this.gameObject.GetComponent<Button>().interactable = false;
-                Invoke(nameof(EnableAgain), 5f);
-                if (PlayerHealth.Instance)
-                {
-                PlayerHealth.Instance.isDeathPanelActive = false;
-                PlayerHealth.Instance.breakss = true;
-                }
-            }
+            //if (deathPanel != null)
+            //{
+            //    deathPanel.PressContinueButton();
+            //    print("Death Panel Admob Reward Generated");
+            //    this.gameObject.GetComponent<Button>().interactable = false;
+            //    Invoke(nameof(EnableAgain), 5f);
+            //    if (PlayerHealth.Instance)
+            //    {
+            //    PlayerHealth.Instance.isDeathPanelActive = false;
+            //    PlayerHealth.Instance.breakss = true;
+            //    }
+            //}
         }
         if (Index == 4)
         {
@@ -91,6 +91,45 @@ public class AdmobRewardedVideo : MonoBehaviour
         this.gameObject.GetComponent<Button>().interactable = true;
     }
 
+    public void SpinWheelPrice()
+    {
+        if (CurrencyManager.instance)
+        {
+            if(CurrencyManager.instance.GetCurrentCoins() >= 50)
+            {
+                CurrencyManager.instance.DecreaseCoins(50);
+                SpinWheelController.Instance.TurnWheel();
+                print("Spinner Wheel Admob Reward Generated");
+                this.gameObject.GetComponent<Button>().interactable = false;
+                Invoke(nameof(EnableAgain), 10f);
+            }
+            else
+            {
+                this.gameObject.GetComponent<Button>().interactable = false;
+                Invoke(nameof(EnableAgain), 10f);
+            }
+        }
+    }
+
+    public void RevivewithCoins()
+    {
+        if (deathPanel != null)
+        {
+            if (CurrencyManager.instance.GetCurrentCoins() >= 100)
+            {
+                CurrencyManager.instance.DecreaseCoins(100);
+                deathPanel.PressContinueButton();
+                print("Death Panel Admob Reward Generated");
+                this.gameObject.GetComponent<Button>().interactable = false;
+                Invoke(nameof(EnableAgain), 5f);
+                if (PlayerHealth.Instance)
+                {
+                    PlayerHealth.Instance.isDeathPanelActive = false;
+                    PlayerHealth.Instance.breakss = true;
+                }
+            }
+        }
+    }
     public void ShowRewardedVideo()
     {
         //if(//UnityAdsManager.instance)

@@ -928,7 +928,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.6039216}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.9490196}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1585,8 +1585,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.8, y: -164.7}
-  m_SizeDelta: {x: 318.5643, y: 118.8905}
+  m_AnchoredPosition: {x: 3.9, y: -167.8}
+  m_SizeDelta: {x: 318.5643, y: 98.0703}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4915188637876756798
 CanvasRenderer:
@@ -1685,7 +1685,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4830233852725350328}
         m_TargetAssemblyTypeName: AdmobRewardedVideo, Assembly-CSharp
-        m_MethodName: ShowRewardedVideo
+        m_MethodName: RevivewithCoins
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1757,14 +1757,14 @@ RectTransform:
   m_GameObject: {fileID: 3431077453521745673}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2698735, y: 1.2204566, z: 1}
+  m_LocalScale: {x: 1.0790496, y: 1.0370586, z: 0.84973}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5586670871441607934}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 78.6, y: 3.5}
+  m_AnchoredPosition: {x: 65.1, y: 3.5}
   m_SizeDelta: {x: 76.9491, y: 76.9491}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5684586418599999568
@@ -1795,7 +1795,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ccd48c0d548ac4356882629cf132e8d0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c7f11ee7470184d7da5f8adff250dc2b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1970,7 +1970,7 @@ RectTransform:
   m_GameObject: {fileID: 4290990716836003256}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.4508, y: 1.4508, z: 1.4508}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6983639136664242437}
@@ -2177,15 +2177,15 @@ RectTransform:
   m_GameObject: {fileID: 6398033564991018649}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.0795, y: 1.0795, z: 1.0795}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5586670871441607934}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 46.8376, y: -3.9052}
-  m_SizeDelta: {x: -134.3069, y: 7.8105}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 43.6, y: 0}
+  m_SizeDelta: {x: 172.6394, y: 78.718704}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5314486352990714513
 CanvasRenderer:
@@ -2215,7 +2215,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ' Continue'
+  m_text: ' Continue with 100 coins'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 36de43f64c2f0f44188ed2ce070385bc, type: 2}
   m_sharedMaterial: {fileID: 903804157609115575, guid: 36de43f64c2f0f44188ed2ce070385bc, type: 2}
@@ -2242,8 +2242,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35
-  m_fontSizeBase: 35
+  m_fontSize: 22.5
+  m_fontSizeBase: 22.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 6

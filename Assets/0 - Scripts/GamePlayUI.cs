@@ -48,7 +48,7 @@ public class GamePlayUI : MonoBehaviour
             TutotialPanel.SetActive(false);
         }
 
-
+        GetComponent<CanvasScaler>().referenceResolution = new Vector2(1920, 1080);
     }
     void Start()
     {
@@ -138,6 +138,10 @@ public class GamePlayUI : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0) == true)
         {
             Attack();
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseGame();
         }
         //Key Up
         if (Input.GetKeyUp(KeyCode.RightArrow))
