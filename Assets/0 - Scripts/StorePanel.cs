@@ -41,8 +41,8 @@ public class StorePanel :MonoBehaviour
         
         purchaseFailedPanel.SetActive(false);
         purchasedSucessPanel.SetActive(false);
-        coinsPanel.SetActive(true);
-
+        coinsPanel.SetActive(false);
+        skinsPanel.SetActive(true);
   
     }
 

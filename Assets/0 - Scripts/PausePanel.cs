@@ -73,6 +73,12 @@ public class PausePanel : MonoBehaviour
             GameManager.instance.ReloadGame();
         }
     }
-   
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            ResumeGame();
+        }
+    }
 }

@@ -1,12 +1,12 @@
 using TMPro;
 using UnityEngine;
 
-public class UIControls : MonoBehaviour
+public class ChestPrize : MonoBehaviour
 {
 
-    public static UIControls Instance;
+    public static ChestPrize Instance;
 
-    public GameObject JumpDescription, AttackDescription,PrizeCollectionPanel, CurrentPrizeBox;
+    public GameObject PrizeCollectionPanel, CurrentPrizeBox;
 
     private void Awake()
     {
@@ -14,7 +14,6 @@ public class UIControls : MonoBehaviour
         {
             Instance = this;
         }
-        this.gameObject.SetActive(false);
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -22,7 +21,6 @@ public class UIControls : MonoBehaviour
     {
         
     }
-
     #region PrizeCollection
 
     int RandomPrize;
@@ -32,9 +30,10 @@ public class UIControls : MonoBehaviour
         PrizeCollectionPanel.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = "+" + RandomPrize.ToString();
         PrizeCollectionPanel.transform.GetChild(1).gameObject.SetActive(false);
         PrizeCollectionPanel.transform.GetChild(0).gameObject.SetActive(true);
+        PrizeCollectionPanel.SetActive(true);
         Invoke(nameof(RemovePrizePanel), 1.5f);
-        if(CurrentPrizeBox != null)
-        CurrentPrizeBox.GetComponent<Animator>().enabled = true;
+        if (CurrentPrizeBox != null)
+            CurrentPrizeBox.GetComponent<Animator>().enabled = true;
     }
     public void RemovePrizePanel()
     {
@@ -46,7 +45,7 @@ public class UIControls : MonoBehaviour
             CurrencyManager.instance.IncreaseCoins(RandomPrize);
         }
         if (CurrentPrizeBox != null)
-        CurrentPrizeBox.GetComponent<BoxCollider2D>().enabled = false;
+            CurrentPrizeBox.GetComponent<BoxCollider2D>().enabled = false;
     }
     #endregion
     // Update is called once per frame

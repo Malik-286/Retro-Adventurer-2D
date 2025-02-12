@@ -47,8 +47,6 @@ public class GamePlayUI : MonoBehaviour
         {
             TutotialPanel.SetActive(false);
         }
-
-        GetComponent<CanvasScaler>().referenceResolution = new Vector2(1920, 1080);
     }
     void Start()
     {
@@ -115,19 +113,19 @@ public class GamePlayUI : MonoBehaviour
     public void PlayerMovementwithKeyboard()
     {
         //Key Down
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
         {
             MoveRightPressed();
         }
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
         {
             MoveLeftPressed();
         }
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
         {
             MoveDownPressed();
         }
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
         {
             MoveUpPressed();
         }
@@ -144,24 +142,23 @@ public class GamePlayUI : MonoBehaviour
             PauseGame();
         }
         //Key Up
-        if (Input.GetKeyUp(KeyCode.RightArrow))
+        if (Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.D))
         {
             MoveRightReleased();
         }
-        if (Input.GetKeyUp(KeyCode.LeftArrow))
+        if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.A))
         {
             MoveLeftReleased();
         }
-        if (Input.GetKeyUp(KeyCode.UpArrow))
+        if (Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.W))
         {
             MoveDownReleased();
         }
-        if (Input.GetKeyUp(KeyCode.DownArrow))
+        if (Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.S))
         {
             MoveUpReleased();
         }
     }
-
     public void InstantiateSelectedPlayer()
     {
         int currentPlayerIndex = PlayerPrefs.GetInt("CurrentPlayer"); // Default to skin 0 if not set
@@ -230,11 +227,6 @@ public class GamePlayUI : MonoBehaviour
 
     public void Attack()
     {
-        if (UIControls.Instance)
-        {
-            UIControls.Instance.AttackDescription.SetActive(false);
-        }
-
         if(playerController != null)
         {
             playerController.Attack();
@@ -243,11 +235,6 @@ public class GamePlayUI : MonoBehaviour
 
     public void Jump()
     {
-        if (UIControls.Instance)
-        {
-            UIControls.Instance.JumpDescription.SetActive(false);
-        }
-
         if (playerController != null)
         {
             playerController.Jump();

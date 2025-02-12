@@ -230,24 +230,14 @@ public class PlayerController : MonoBehaviour
         }
         if(collision.gameObject.tag == "GoldChestBox")
         {
-            if (UIControls.Instance)
+            if (ChestPrize.Instance)
             {
-                UIControls.Instance.PrizeCollectionPanel.SetActive(true);
-                UIControls.Instance.CurrentPrizeBox = collision.gameObject;
+                ChestPrize.Instance.ClaimPrize();
+                ChestPrize.Instance.CurrentPrizeBox = collision.gameObject;
             }
             if (PlayerLevelManager.instance)
             {
                 PlayerLevelManager.instance.IncreasePlayerXp(20);
-            }
-        }
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "GoldChestBox")
-        {
-            if (UIControls.Instance)
-            {
-                UIControls.Instance.PrizeCollectionPanel.SetActive(false);
             }
         }
     }
@@ -340,66 +330,13 @@ public class PlayerController : MonoBehaviour
             {
                 return;
             }
-            /* 
-
-           // instantiate blue bullet
-           if(isBlueBulletActive == true || PlayerPrefs.GetInt("PlayerBullet") == 0)
-           {
-               GameObject blueBulletClone = Instantiate(blueBulletPrefeb, bulletSpawnPoint.position, Quaternion.identity);
-               Destroy(blueBulletClone, 5f);
-               return;
-           }
-           else if (isYellowBulletActive == true || PlayerPrefs.GetInt("PlayerBullet") == 1)
-           {
-               // instantiate yellow bullet
-
-               GameObject yellowBulletClone = Instantiate(yellowBulletPrefeb, bulletSpawnPoint.position, Quaternion.identity);
-               Destroy(yellowBulletClone, 1f);
-               return;
-           }
-           else if (isFireBulletActive == true || PlayerPrefs.GetInt("PlayerBullet") == 2)
-           {
-               // instantiate yellow bullet
-
-               GameObject yellowBulletClone = Instantiate(FireBulletPrefeb, bulletSpawnPoint.position, Quaternion.identity);
-               Destroy(yellowBulletClone, 1f);
-               return;
-           }
-           else if (isPurpleBulletActive == true || PlayerPrefs.GetInt("PlayerBullet") == 3)
-           {
-               // instantiate yellow bullet
-
-               GameObject yellowBulletClone = Instantiate(PurpleFlameBulletPrefeb, bulletSpawnPoint.position, Quaternion.identity);
-               Destroy(yellowBulletClone, 1f);
-               return;
-           }
-           else if (isGreenBulletActive == true || PlayerPrefs.GetInt("PlayerBullet") == 4) 
-           {
-               // instantiate yellow bullet
-
-               GameObject yellowBulletClone = Instantiate(GreenBulletPrefeb, bulletSpawnPoint.position, Quaternion.identity);
-               Destroy(yellowBulletClone, 1f);
-               return;
-           }
-           else if (isRedBulletActive == true || PlayerPrefs.GetInt("PlayerBullet") == 5)
-           {
-               // instantiate yellow bullet
-
-               GameObject yellowBulletClone = Instantiate(RedFlameeBulletPrefeb, bulletSpawnPoint.position, Quaternion.identity);
-               Destroy(yellowBulletClone, 1f);
-               return;
-           }
-            */
-
         }
     }
     void ClimbLadder()
     {
-        if (playerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ladder")))
+        if (playerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ladder")) && moveUpPressed)
         {
-
             playerFeetCollider.isTrigger = false;
-
             Vector2 climbVelocity = new Vector2(rb.linearVelocity.x, movement.y * climbForce);
             rb.linearVelocity = climbVelocity;
             bool onLadder = Mathf.Abs(rb.linearVelocity.y) > Mathf.Epsilon;
@@ -409,10 +346,8 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-
             rb.gravityScale = startingGravity;
             playerFeetCollider.isTrigger = false;
-
         }
     }
 
