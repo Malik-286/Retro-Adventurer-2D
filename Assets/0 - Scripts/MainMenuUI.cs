@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Animations;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MainMenuUI : MonoBehaviour
 {
@@ -24,6 +26,11 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField] GameObject spinPanel;
     public GameObject TapToContinuePanel;
     public GameObject MainMenuPanel;
+
+    [Header("Main Menu Skin Updater ")]
+    public GameObject MainMenuPlayer;
+    public Sprite[] PlayerSkin;
+    public AnimatorController[] PlayerMovingAnimatorControllers;
 
     [Header("Default Unlock Level No ")]
 
@@ -49,6 +56,10 @@ public class MainMenuUI : MonoBehaviour
             MainMenuPanel.SetActive(true);
             TapToContinuePanel.SetActive(false);
         }
+
+        //MainMenuPlayer.GetComponent<Image>().sprite = PlayerSkin[PlayerPrefs.GetInt("CurrentPlayer")];
+        //MainMenuPlayer.GetComponent<Animator>().runtimeAnimatorController = PlayerMovingAnimatorControllers[PlayerPrefs.GetInt("CurrentPlayer")];
+
     }
     void Start()
     {
@@ -65,6 +76,9 @@ public class MainMenuUI : MonoBehaviour
     void Update()
     {
         UpdateCurrencyText();
+
+        MainMenuPlayer.GetComponent<Image>().sprite = PlayerSkin[PlayerPrefs.GetInt("CurrentPlayer")];
+        MainMenuPlayer.GetComponent<Animator>().runtimeAnimatorController = PlayerMovingAnimatorControllers[PlayerPrefs.GetInt("CurrentPlayer")];
     }
 
     private void OnApplicationQuit()

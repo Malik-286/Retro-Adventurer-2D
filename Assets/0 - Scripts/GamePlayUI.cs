@@ -75,7 +75,6 @@ public class GamePlayUI : MonoBehaviour
 
     void Update()
     {
-        
         UpdateCurrencyText();
         UpdateLevelNoText(); 
         UpdateKillsCountText();
@@ -123,11 +122,11 @@ public class GamePlayUI : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
         {
-            MoveDownPressed();
+            MoveUpPressed();
         }
         if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
         {
-            MoveUpPressed();
+            MoveDownPressed();
         }
         if (Input.GetKeyDown(KeyCode.Space) == true)
         {
@@ -152,11 +151,11 @@ public class GamePlayUI : MonoBehaviour
         }
         if (Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.W))
         {
-            MoveDownReleased();
+            MoveUpReleased();
         }
         if (Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.S))
         {
-            MoveUpReleased();
+            MoveDownReleased();
         }
     }
     public void InstantiateSelectedPlayer()
@@ -200,18 +199,8 @@ public class GamePlayUI : MonoBehaviour
      
          
     }
-
-
-    public void PlayAD()
-    {
-        //if (//UnityAdsManager.instance)
-        {
-            //UnityAdsManager.instance.ShowIntersitial();
-        }
-    }
     public void PauseGame()
     {
-         
         uiControllsButtons.SetActive(false);
         pausePanel.SetActive(true);
         Time.timeScale = 0f;

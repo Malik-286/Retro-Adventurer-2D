@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class DeathPanel : MonoBehaviour
 {
-   
+   public static DeathPanel instance;
 
     PlayerHealth playerHealth;
     HealthPanel healthPanel;
@@ -23,11 +23,10 @@ public class DeathPanel : MonoBehaviour
 
     void Start()
     {
-        //if (//UnityAdsManager.instance != null)
+if(instance == null)
         {
-            //UnityAdsManager.instance.ShowIntersitial();
+            instance = this;
         }
-
 
         if (HealthPanel.instance)
         {
@@ -64,10 +63,6 @@ public class DeathPanel : MonoBehaviour
 
     public void PressContinueButton()
     {
-        //if (//UnityAdsManager.instance != null)
-        {
-            //UnityAdsManager.instance.ShowIntersitial();
-        }
         Time.timeScale = 1.0f;
         if (PlayerHealth.Instance)
         {

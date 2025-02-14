@@ -47,7 +47,7 @@ public class ChapterSelection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        print("chapeterlocks = " + PlayerPrefs.GetInt("ChapterUnlocked"));
     }
 }
 public static class ChapterProgressManager

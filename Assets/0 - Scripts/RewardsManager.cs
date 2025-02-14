@@ -2,9 +2,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using CoppraGames;
-public class AdmobRewardedVideo : MonoBehaviour
+public class RewardsManager : MonoBehaviour
 {
-    public static AdmobRewardedVideo Instance;
+    public static RewardsManager Instance;
     public int Index = 0;
 
     DeathPanel deathPanel;
@@ -51,28 +51,11 @@ public class AdmobRewardedVideo : MonoBehaviour
         }
         if (Index == 2)
         {
-            //if (CurrencyManager.instance)
-            //{
-            //    SpinWheelController.Instance.TurnWheel();
-            //    print("Spinner Wheel Admob Reward Generated");
-            //    this.gameObject.GetComponent<Button>().interactable = false;
-            //    Invoke(nameof(EnableAgain), 10f);
-            //}
+
         }
         if (Index == 3)
         {
-            //if (deathPanel != null)
-            //{
-            //    deathPanel.PressContinueButton();
-            //    print("Death Panel Admob Reward Generated");
-            //    this.gameObject.GetComponent<Button>().interactable = false;
-            //    Invoke(nameof(EnableAgain), 5f);
-            //    if (PlayerHealth.Instance)
-            //    {
-            //    PlayerHealth.Instance.isDeathPanelActive = false;
-            //    PlayerHealth.Instance.breakss = true;
-            //    }
-            //}
+
         }
         if (Index == 4)
         {
@@ -113,20 +96,27 @@ public class AdmobRewardedVideo : MonoBehaviour
 
     public void RevivewithCoins()
     {
-        if (deathPanel != null)
+        if (CurrencyManager.instance)
         {
             if (CurrencyManager.instance.GetCurrentCoins() >= 100)
             {
                 CurrencyManager.instance.DecreaseCoins(100);
-                deathPanel.PressContinueButton();
-                print("Death Panel Admob Reward Generated");
-                this.gameObject.GetComponent<Button>().interactable = false;
-                Invoke(nameof(EnableAgain), 5f);
-                if (PlayerHealth.Instance)
+                Time.timeScale = 1.0f;
+
+                // Ensure all other animations are reset before reviving the player
+                Animator playerAnimator = PlayerHealth.Instance.GetComponent<Animator>();
+                playerAnimator.SetBool("isDead", false);
+                playerAnimator.SetBool("isRunning", false);
+                playerAnimator.SetBool("isClimbing", false);
+                playerAnimator.SetBool("isJumping", false);
+
+                // Set idle animation as default
+                playerAnimator.SetBool("isIdeling", true);
+                if (TimerPanel.Instance)
                 {
-                    PlayerHealth.Instance.isDeathPanelActive = false;
-                    PlayerHealth.Instance.breakss = true;
+                    TimerPanel.Instance.ResetTime();
                 }
+                transform.parent.gameObject.SetActive(false);
             }
         }
     }

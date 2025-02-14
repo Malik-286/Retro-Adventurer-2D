@@ -102,9 +102,13 @@ public class PlayerController : MonoBehaviour
 
         PlayerMoving();
         FlipPlayerSprite();
-        ClimbLadder();
         PlayerMovingUpward();
         PlayerMovingDownward();
+
+        print("Playermovement Up +" + moveUpPressed);
+        print("Playermovement down +" + moveDownPressed);
+
+        print("isfeet grounded = " + CheckIfGrounded());
     }
 
 
@@ -201,7 +205,6 @@ public class PlayerController : MonoBehaviour
         else if (moveRightPressed)
         {
             MoveRight();
-
         }
 
         rb.linearVelocity = new Vector2(movement.x * moveSpeed, rb.linearVelocity.y);
@@ -215,19 +218,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.GetMask("Ladder"))
-        {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, climbForce);
-            animator.SetBool("isIdeling", false);
-            animator.SetBool("isJumping", false);
-
-
-            animator.SetBool("isClimbing", true);
-        }
-        else
-        {
-            animator.SetBool("isClimbing", false);
-        }
         if(collision.gameObject.tag == "GoldChestBox")
         {
             if (ChestPrize.Instance)
@@ -241,12 +231,18 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    void PlayerMovingUpward()
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (playerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ladder")) && moveUpPressed)
+        if (collision.gameObject.layer == LayerMask.GetMask("Ladder"))
         {
-
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, climbForce);
+            if (moveUpPressed)
+            {
+                PlayerMovingUpward();
+            }
+            if (moveDownPressed)
+            {
+                PlayerMovingDownward();
+            }
             animator.SetBool("isIdeling", false);
             animator.SetBool("isJumping", false);
 
@@ -258,19 +254,40 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isClimbing", false);
         }
     }
+    void PlayerMovingUpward()
+    {
+        if (playerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ladder")) && moveUpPressed)
+        {
+
+            animator.SetBool("isClimbing", true);
+            //rb.linearVelocity = new Vector2(rb.linearVelocity.x, climbForce);
+            ClimbLadder();
+            animator.SetBool("isIdeling", false);
+            animator.SetBool("isJumping", false);
+        }
+        else
+        {
+            animator.SetBool("isIdeling", true);
+            animator.SetBool("isClimbing", false);
+        }
+    }
     void PlayerMovingDownward()
     {
         if (playerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ladder")) && moveDownPressed)
         {
             // Climb down the ladder
 
+            animator.SetBool("isClimbing", true);
             playerFeetCollider.isTrigger = false;
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, -climbForce);
+            //rb.linearVelocity = new Vector2(rb.linearVelocity.x, -climbForce);
+            ClimbLadder();
             animator.SetBool("isIdeling", false);
             animator.SetBool("isJumping", false);
-
-
-            animator.SetBool("isClimbing", true);
+        }
+        else
+        {
+            animator.SetBool("isIdeling", true);
+            animator.SetBool("isClimbing", false);
         }
 
     }
@@ -334,7 +351,7 @@ public class PlayerController : MonoBehaviour
     }
     void ClimbLadder()
     {
-        if (playerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ladder")) && moveUpPressed)
+        if (playerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ladder")))
         {
             playerFeetCollider.isTrigger = false;
             Vector2 climbVelocity = new Vector2(rb.linearVelocity.x, movement.y * climbForce);

@@ -39,17 +39,17 @@ public class TimerPanel : MonoBehaviour
         UpdateKeyStatus();
         levelCompletionTime -= Time.smoothDeltaTime;
         timeText.text = levelCompletionTime.ToString("00:00");
-       
-         if (levelCompletionTime <= 0.0f)
+
+        if (levelCompletionTime <= 0.0f)
         {
             isTimeCompleted = true;
-            Debug.Log("You Run Out of Time");
             timeText.text = ("00:00");
             Time.timeScale = 0.0f;
-            PlayerHealth playerHealth = FindObjectOfType<PlayerHealth>();
-            playerHealth.enabled = false;
-         }
-
+            if (PlayerHealth.Instance)
+            {
+                PlayerHealth.Instance.enabled = false;
+            }
+        }
     }
 
 
@@ -65,8 +65,10 @@ public class TimerPanel : MonoBehaviour
         levelCompletionTime += 30;
         isTimeCompleted = false;
         Time.timeScale = 1.0f;
-        PlayerHealth playerHealth = FindObjectOfType<PlayerHealth>();
-        playerHealth.enabled = true;
+        if (PlayerHealth.Instance)
+        {
+            PlayerHealth.Instance.enabled = true;
+        }
     }
 
 
