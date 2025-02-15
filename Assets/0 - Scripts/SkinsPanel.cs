@@ -83,12 +83,6 @@ public class SkinsPanel : MonoBehaviour
         PlayerPrefs.SetInt("CurrentPlayer", SkinNumber);
 
         print("Player Skin Selected");
-
-        //Update the main Menu Player Skin
-        if (MainMenuUI.instance)
-        {
-        MainMenuUI.instance.UpdatePlayerSkin();
-        }
     }
   
 }

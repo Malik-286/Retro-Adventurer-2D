@@ -65,19 +65,25 @@ namespace Helios.GUI {
             _stScenes.Push(item);
         }
 
-        private void TweenFading(GameObject obj) {
-            if(obj.TryGetComponent(out CanvasGroup _cgFadeComponent)) {
-                _cgFadeComponent.blocksRaycasts = false;
-                void HIdeAndDestroy() {
-                    obj.SetActive(false);
-                    Destroy(obj, 3f);
-                }
+        private void TweenFading(GameObject obj)
+        {
+            if (obj != null)
+            {
+                if (obj.TryGetComponent(out CanvasGroup _cgFadeComponent))
+                {
+                    _cgFadeComponent.blocksRaycasts = false;
+                    void HIdeAndDestroy()
+                    {
+                        obj.SetActive(false);
+                        Destroy(obj, 3f);
+                    }
 #if DOTWEEN
-                _cgFadeComponent.DOFade(0, 0.3f).OnComplete(HIdeAndDestroy);
+                    _cgFadeComponent.DOFade(0, 0.3f).OnComplete(HIdeAndDestroy);
 #else
                 _cgFadeComponent.alpha = 0;
                 HIdeAndDestroy();
 #endif
+                }
             }
         }
 

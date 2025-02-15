@@ -27,11 +27,6 @@ public class MainMenuUI : MonoBehaviour
     public GameObject TapToContinuePanel;
     public GameObject MainMenuPanel;
 
-    [Header("Main Menu Skin Updater ")]
-    public GameObject MainMenuPlayer;
-    public Sprite[] PlayerSkin;
-    public AnimatorController[] PlayerMovingAnimatorControllers;
-
     [Header("Default Unlock Level No ")]
 
     [SerializeField] int defaultUnLockLevelNo = 0;
@@ -73,13 +68,6 @@ public class MainMenuUI : MonoBehaviour
     void Update()
     {
         UpdateCurrencyText();
-        UpdatePlayerSkin();
-    }
-    public void UpdatePlayerSkin()
-    {
-        MainMenuPlayer.GetComponent<Image>().sprite = PlayerSkin[PlayerPrefs.GetInt("CurrentPlayer")];
-        MainMenuPlayer.GetComponent<Animator>().runtimeAnimatorController = PlayerMovingAnimatorControllers[PlayerPrefs.GetInt("CurrentPlayer")];
-        MainMenuPlayer.GetComponent<Image>().SetNativeSize();
     }
     private void OnApplicationQuit()
     {
