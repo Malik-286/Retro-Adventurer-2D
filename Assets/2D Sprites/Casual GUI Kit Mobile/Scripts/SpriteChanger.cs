@@ -9,11 +9,10 @@ namespace hardartcore.CasualGUI
         public Sprite enabledSprite;
         public Sprite disabledSprite;
 
-        private Image m_Image;
+        public Image m_Image;
 
         public void Awake()
         {
-            m_Image = GetComponent<Image>();
             slider.wholeNumbers = true;
         }
 

@@ -218,6 +218,18 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.layer == LayerMask.GetMask("Ladder"))
+        { 
+            animator.SetBool("isIdeling", false);
+            animator.SetBool("isJumping", false);
+
+
+            animator.SetBool("isClimbing", true);
+        }
+        else
+        {
+            animator.SetBool("isClimbing", false);
+        }
         if(collision.gameObject.tag == "GoldChestBox")
         {
             if (ChestPrize.Instance)
@@ -231,37 +243,14 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.layer == LayerMask.GetMask("Ladder"))
-        {
-            if (moveUpPressed)
-            {
-                PlayerMovingUpward();
-            }
-            if (moveDownPressed)
-            {
-                PlayerMovingDownward();
-            }
-            animator.SetBool("isIdeling", false);
-            animator.SetBool("isJumping", false);
-
-
-            animator.SetBool("isClimbing", true);
-        }
-        else
-        {
-            animator.SetBool("isClimbing", false);
-        }
-    }
     void PlayerMovingUpward()
     {
         if (playerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ladder")) && moveUpPressed)
         {
 
             animator.SetBool("isClimbing", true);
-            //rb.linearVelocity = new Vector2(rb.linearVelocity.x, climbForce);
-            ClimbLadder();
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, climbForce);
+            //ClimbLadder();
             animator.SetBool("isIdeling", false);
             animator.SetBool("isJumping", false);
         }
@@ -279,8 +268,8 @@ public class PlayerController : MonoBehaviour
 
             animator.SetBool("isClimbing", true);
             playerFeetCollider.isTrigger = false;
-            //rb.linearVelocity = new Vector2(rb.linearVelocity.x, -climbForce);
-            ClimbLadder();
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, -climbForce);
+            //ClimbLadder();
             animator.SetBool("isIdeling", false);
             animator.SetBool("isJumping", false);
         }

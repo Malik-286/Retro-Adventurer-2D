@@ -14,6 +14,8 @@ public class ChapterSelection : MonoBehaviour
 
     private void OnEnable()
     {
+        PlayerPrefs.SetInt("ChapterUnlocked", 1);
+
         for (int i = 0; i < 5; i++)
         {
             if (i <= PlayerPrefs.GetInt("ChapterUnlocked"))

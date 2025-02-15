@@ -57,9 +57,6 @@ public class MainMenuUI : MonoBehaviour
             TapToContinuePanel.SetActive(false);
         }
 
-        //MainMenuPlayer.GetComponent<Image>().sprite = PlayerSkin[PlayerPrefs.GetInt("CurrentPlayer")];
-        //MainMenuPlayer.GetComponent<Animator>().runtimeAnimatorController = PlayerMovingAnimatorControllers[PlayerPrefs.GetInt("CurrentPlayer")];
-
     }
     void Start()
     {
@@ -76,11 +73,14 @@ public class MainMenuUI : MonoBehaviour
     void Update()
     {
         UpdateCurrencyText();
-
+        UpdatePlayerSkin();
+    }
+    public void UpdatePlayerSkin()
+    {
         MainMenuPlayer.GetComponent<Image>().sprite = PlayerSkin[PlayerPrefs.GetInt("CurrentPlayer")];
         MainMenuPlayer.GetComponent<Animator>().runtimeAnimatorController = PlayerMovingAnimatorControllers[PlayerPrefs.GetInt("CurrentPlayer")];
+        MainMenuPlayer.GetComponent<Image>().SetNativeSize();
     }
-
     private void OnApplicationQuit()
     {
         PlayerPrefs.SetInt("GameplayStarted", 0);
