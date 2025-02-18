@@ -61,7 +61,6 @@ public class GamePlayUI : MonoBehaviour
         timerPanel = FindObjectOfType<TimerPanel>();
         playerHealth = FindObjectOfType<PlayerHealth>();
 
-        print("ActualLoaded Scene Count " + SceneManager.GetActiveScene().buildIndex);
         PlayerPrefs.SetInt("CurrentLevel", SceneManager.GetActiveScene().buildIndex);
 
         CheckChaperterLocks();
@@ -162,7 +161,6 @@ public class GamePlayUI : MonoBehaviour
     {
         int currentPlayerIndex = PlayerPrefs.GetInt("CurrentPlayer"); // Default to skin 0 if not set
         Instantiate(playerPrefebs[currentPlayerIndex], playerInstantiatePosition.position, Quaternion.identity);
-        print(currentPlayerIndex + "CurrentPlayer Index");
     }
 
     public void CheckChaperterLocks()

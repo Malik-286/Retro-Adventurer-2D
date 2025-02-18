@@ -90,7 +90,18 @@ public class PlayerController : MonoBehaviour
         startingGravity = rb.gravityScale;
 
     }
-
+    private void Update()
+    {
+        if (moveUpPressed)
+        {
+            PlayerMovingUpward();
+        }
+        if (moveDownPressed)
+        {
+            PlayerMovingDownward();
+        }
+        HoldPlayerAtLadderCenter();
+    }
 
 
     void FixedUpdate()
@@ -102,13 +113,6 @@ public class PlayerController : MonoBehaviour
 
         PlayerMoving();
         FlipPlayerSprite();
-        PlayerMovingUpward();
-        PlayerMovingDownward();
-
-        print("Playermovement Up +" + moveUpPressed);
-        print("Playermovement down +" + moveDownPressed);
-
-        print("isfeet grounded = " + CheckIfGrounded());
     }
 
 
@@ -200,7 +204,6 @@ public class PlayerController : MonoBehaviour
         else if (moveLeftPressed)
         {
             MoveLeft();
-
         }
         else if (moveRightPressed)
         {
@@ -215,21 +218,44 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("isRunning", isMoving);
 
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    void HoldPlayerAtLadderCenter()
     {
-        if (collision.gameObject.layer == LayerMask.GetMask("Ladder"))
-        { 
-            animator.SetBool("isIdeling", false);
-            animator.SetBool("isJumping", false);
+        if (playerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ladder")) && !moveUpPressed && !moveDownPressed)
+        {
+            rb.linearVelocity = Vector2.zero; // Stop vertical movement
+            rb.gravityScale = 0f; // Disable gravity only when on the ladder
 
-
-            animator.SetBool("isClimbing", true);
+            // Snap player to center of the ladder only if still touching it
+            Vector3 position = transform.position;
+            position.x = Mathf.Round(position.x); // Align X with ladder
+            transform.position = position;
+            // Check if the player is NOT pressing move up or down keys
+            if (!moveUpPressed && !moveDownPressed)
+            {
+                animator.SetBool("isClimbing", false);  // Stop climbing animation
+                animator.SetBool("isIdeling", true);   // Switch to idle animation
+            }
         }
         else
         {
-            animator.SetBool("isClimbing", false);
+            rb.gravityScale = startingGravity; // Restore gravity when leaving the ladder
         }
+    }
+
+
+    public void UnHoldPlayeronLadder()
+    {
+
+        if (PlayerHealth.Instance)
+        {
+            PlayerHealth.Instance.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+            PlayerHealth.Instance.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
         if(collision.gameObject.tag == "GoldChestBox")
         {
             if (ChestPrize.Instance)
@@ -243,44 +269,54 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.GetMask("Ladder"))
+        {
+            animator.SetBool("isClimbing", false);
+            animator.SetBool("isJumping", false);
+            animator.SetBool("isIdeling", true);
+            rb.gravityScale = startingGravity; // Restore gravity when leaving the ladder
+        }
+    }
+
     void PlayerMovingUpward()
     {
-        if (playerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ladder")) && moveUpPressed)
+        if (playerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ladder")))
         {
+            rb.gravityScale = 0f; // Disable gravity while climbing
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, climbForce); // Move up
 
             animator.SetBool("isClimbing", true);
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, climbForce);
-            //ClimbLadder();
-            animator.SetBool("isIdeling", false);
             animator.SetBool("isJumping", false);
+            animator.SetBool("isIdeling", false);
         }
         else
         {
-            animator.SetBool("isIdeling", true);
+            rb.gravityScale = startingGravity; // Restore gravity if not on ladder
             animator.SetBool("isClimbing", false);
         }
     }
+
     void PlayerMovingDownward()
     {
-        if (playerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ladder")) && moveDownPressed)
+        if (playerFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ladder")))
         {
-            // Climb down the ladder
+            rb.gravityScale = 0f; // Disable gravity
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, -climbForce); // Move down
 
             animator.SetBool("isClimbing", true);
-            playerFeetCollider.isTrigger = false;
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, -climbForce);
-            //ClimbLadder();
-            animator.SetBool("isIdeling", false);
             animator.SetBool("isJumping", false);
+            animator.SetBool("isIdeling", false);
         }
         else
         {
-            animator.SetBool("isIdeling", true);
+            rb.gravityScale = startingGravity;
             animator.SetBool("isClimbing", false);
         }
-
     }
-    public void Jump()
+
+public void Jump()
     {
 
         if (CheckIfGrounded())
